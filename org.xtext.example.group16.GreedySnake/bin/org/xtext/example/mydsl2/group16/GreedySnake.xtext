@@ -1,0 +1,428 @@
+grammar org.xtext.example.mydsl2.group16.GreedySnake with org.eclipse.xtext.common.Terminals
+
+generate greedySnake "http://www.xtext.org/example/mydsl2/Group16/GreedySnake"
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+
+//xtext里面显示的应该都是静态的东西，比如图像，长宽什么的，都是固定的
+GreedySnake:
+	//需要增加help/about/background/music/SnakeSpeed/map
+	"game" name=ID "{"
+		(snakes += InitialSnakeSpecificatin|
+		 foods += InitialFoodSpecificatin|
+		 obstacles += InitialObstacleSpecificatin|
+		 speed += InitialSpeedSpecification |
+		 fire += InitialFireSpecification |
+		 time += TimeLimited|
+		 Map += GlobalMap |
+		 about += AboutSpecification |
+		 Help += HelpSpecification |
+		 Music += MusicSpecification |
+		 Backgrounds += BackSpecification|
+		 fields += GlobalFieldInitialisation |
+		 options += OptionSpecification)+	
+	"}"
+;
+
+//map的filePath
+GlobalMap:
+ 	"Filepath" "=" map=STRING
+;
+
+//初始界面---随机障碍，食物
+//因为没有设计简单/困难模式 所以就只有一个field
+GlobalFieldInitialisation:
+	"field" name = ID "{"
+		//画布的宽
+		"Panel_width" "=" panelWidth=INT //900
+		//画布的长
+		"Panel_Height" "=" panelHeight=INT //480
+		"column" "=" width=INT //40
+		"row" "=" height=INT //21
+		"label_width" "=" labelWidth=INT //1000
+		"label_Height" "=" labelHeight=INT //540
+		field_initialisation = InitialField
+	"}"
+;
+
+//FieldInitailisation:
+//	ref = initFieldReference | init = InitialField
+//;
+//
+//initFieldReference:
+//	"init" fieldRef=[InitialField] "(" ")"
+//;
+//关键字default
+InitialField:
+	"init" name=ID "(" ")" "{"
+			"Default" ":" Default=Default
+	"}"
+;
+
+Default:
+	"snakeLength" "=" length=STRING //"1" 
+	"Score" "=" score=STRING //""
+	"Time" "=" time=STRING// ""
+	"Amount" "=" amount=STRING //"0"
+	"Weapon" "=" weapon=STRING //"20"
+;
+
+InitialSnakeSpecificatin:
+	//headIcon 4个， bodyIcon 4个， 身体节点为1， Icon大小为20(height/width)， default speed 为300
+	"snake" name=ID "{"
+			members = SnakeMembers
+	"}" (Multiples += [InitialSnakeSpecificatin])?
+;
+InitialFoodSpecificatin:
+	"food" name=ID "{"
+			members = FoodMembers
+	"}" (Multiples += [InitialFoodSpecificatin])?
+;
+InitialObstacleSpecificatin:
+	"obstacle" name=ID "{"
+			members = ObstacleMembers
+	"}" (Multiples += [InitialObstacleSpecificatin])?
+;
+InitialFireSpecification:
+	"fire" name=ID "{"
+			members = FireMembers
+	"}" (Multiples += [InitialSnakeSpecificatin])?
+;
+
+InitialSpeedSpecification:
+	{InitialSpeedSpecification} "Speed" "{"
+			speedGroup += SpeedGroup*
+	"}" 
+;
+//example: run = 200
+SpeedGroup:
+	name=ID "=" value=INT
+;
+
+FireMembers:
+	fire = FireInitDisplay 
+;
+
+SnakeMembers:
+	sna = SnakeInitDisplay 
+;
+
+FoodMembers:
+	food = FoodInitDisplay 
+;
+
+ObstacleMembers:
+	obstacle = ObstacleInitDisplay 
+;
+
+
+//Members:
+//	sna += SnakeInitDisplay |
+//	FoodInitDisplay |
+//	ObstacleInitDisplay |
+//	AllItemDisplaySpec |
+//	AllItemVarSpec|
+//	AllItemStateSpec
+//;
+
+FireInitDisplay:
+	"FireIcon" "{" FireIcon += IconTag* "}"
+	"Icon_size" "=" Iconsize=IconSize //20
+;
+
+//头部位置,头部设计的Icon和身体的位置与Icon
+SnakeInitDisplay:
+	"head" "=" head = "("initial_x = INT "," initial_y = INT ")" //(0,0)
+	"headIcon" "{" headIcon += IconTag* "}"
+	"Icon_size" "=" Iconsize=IconSize //20
+	"BodyIcon" "{" BodyIcon += IconTag* "}"
+//	"headIcon" headIcon = AllItemVarSpec "=" locate=STRING
+	"defaultSpeed" "=" defaultSpeed = INT //需要改
+	"snakeTag" "=" snakeTag=INT //1
+;
+
+//定义头部image的一些东西--4个tag,分别0,1,2,3
+Icon:
+  {Icon} IconTag += IconTag*
+;
+
+IconSize:
+	INT
+;
+//example: tag1 "xixi" = 1
+IconTag:
+	 name=ID value=STRING "=" tag=INT
+	 "Locate" ":" Locate=STRING//图像地址
+;
+//locate locateTag1 = "..//.."
+//IconLocate:
+//	"Locate" "=" Locate=STRING
+//;
+
+//食物设计Icon与locate的设计 ---与上面一样,foodTag有6个
+FoodInitDisplay:
+	"foodIcon" "{" foodIcon += IconTag* "}" //设置foodImage和filePath----可能定义有问题
+	"Icon_size" "=" Iconsize=IconSize //20
+	"foodKind" "{" foodKind += FoodKind* "}" //食物种类并且对应分数
+	"randomFoodSize" produce = RandomFoodSize //产生food的最大值，最小值
+	"foodTag" "=" foodTag=INT //2
+;
+
+
+//kind1 = 0 : point = 50
+FoodKind:
+	kind=[IconTag] ":" "point" "=" point=Addition 
+;
+
+//障碍设计
+//locate
+//需要改----Icon filepath 的设计
+ObstacleInitDisplay:
+	"ObstacleIcon" "{" ObstacleIcon += IconTag* "}"
+	"Icon_size" "=" Iconsize=IconSize
+	"ObstacleTag" "=" ObstacleTag=INT //3
+;
+
+RandomFoodSize:
+	"Maxsize" maxsize = INT
+	"Minsize" minsize = INT
+;
+
+Minsize:
+	"Maxsize" maxsize = INT
+;
+
+Maxsize:
+	"Minsize" minsize = INT
+;
+
+//时间限制
+TimeLimited:
+	"timeLimited" "{"
+	FoodTime | ObstacleTime
+	"}"
+;
+
+ObstacleTime:
+	name=ID "=" ObstacleTime=INT
+;
+
+FoodTime:
+	name=ID "=" FoodTime=INT
+;
+
+
+////所有东西的状态---可以传label参数
+//GlobalAllItemStateSpec:
+//	"states" name=ID ("(" params += ParamSpec ( "," params += ParamSpec)*")") "{"
+//			states += AllItemState+
+//			"start" "=" start = [AllItemState]
+//	"}"
+//;
+////所有东西的状态
+//AllItemState:
+//	name=ID "{"
+//		display = AllItemDisplaySpec
+//		("Restart" "{"
+//			restart += RestartMenu
+//		 "}")?
+//		 ("Obstacle_Refresh" "{"
+//			//每隔2000s刷新
+//			refresh += ObstacleRefresh
+//		 "}")?
+//		 ("food_Refresh" "{"
+//			//每隔2000s产生新的food
+//			refresh += FoodRefresh
+//		 "}")?
+//	"}"
+//;
+////到时间就重新刷新obstacle
+//ObstacleRefresh:
+//	"time" "limited" "=" time=[ObstacleTime]
+//	"random" "refresh" random=[InitialObstacleSpecificatin]
+//;
+//
+////到时间就增加food并且random出现
+//FoodRefresh: 
+//	"time" "limited" "=" time=[FoodTime]
+//	"add" "random"":" random=[InitialFoodSpecificatin] size = RandomFoodSize
+//;
+//
+////显示label---也就是在画板上的图片
+//AllItemDisplaySpec:
+//	"display" "{"
+//		"as" display_type="label"
+//		"var" var = [VarSpec]
+//	"}"
+//;
+
+VarSpec:
+	AllItemVarSpec |
+	ParamSpec
+;
+//变量---显示label(参考discovered)--在不同内部定义的变量
+AllItemVarSpec:
+	 type = ("int"|"String") name=ID
+;
+//普通参数--形式参数
+ParamSpec:
+	type=("int"|"String"|"Behaviour") name=ID
+;
+
+//AllItemStateSpec:
+//	AllItemStateSpecReference |LocalAllItemStateSpec 
+//;
+
+////单独所有的状态
+//LocalAllItemStateSpec:
+//	"states" "{"
+//		states+=AllItemState+
+//		
+//		"start" "=" start=[AllItemState]
+//	"}"
+//;
+//
+////调用states方法
+//AllItemStateSpecReference:
+//	"states" stateSpec=[GlobalAllItemStateSpec] ("(" params += Value ("," params += Value )*")")?
+//;
+Addition returns Expression:
+	Multiplication ({Addition.left = current} operator+=("+"|"-") right+=Multiplication)*
+;
+
+Multiplication returns Expression:
+	Primary ({Multiplication.left = current} operator+=("*"|"/") right+=Primary)*
+;
+
+Primary returns Expression:
+	IntLiteral |
+	RealLiteral |
+	"(" Addition ")"
+;
+
+IntLiteral:
+	val = INT
+;
+
+RealLiteral:
+	val = REAL
+;
+
+REAL returns ecore::EFloat hidden():
+	INT? "." INT
+; 
+
+//VarRef:
+//	ref = [AllItemVarSpec]
+//;
+//
+//DirectBehaviour:
+//	EndGameBehaviour |
+//	NoOpBehaviour {NoOpBehaviour}
+//;
+//
+////没有任何behaviour
+//NoOpBehaviour :
+//	"nop" 
+//;
+//
+//IntValue:
+//	value = INT
+//;
+//
+//StringValue:
+//	value = STRING
+//;
+
+
+//选择---开始和重新开始菜单
+OptionSpecification:
+	StartFieldDeclaration | 
+	RestartMenu 
+;
+
+//AllItemsStateBehavior:
+//	DirectBehaviour |
+//	BehaviourReference
+//;
+//
+//BehaviourReference:
+//	ref = [VarSpec]
+//;
+//
+//
+//EndGameBehaviour:
+//	"failed" "(" message=STRING ")"
+//;
+
+
+RestartMenu:
+	"restartGame" {RestartMenu}
+;
+
+StartFieldDeclaration:
+	"start" "=" field = [GlobalFieldInitialisation]
+;
+
+AboutSpecification:
+	"about" name=ID "{"
+	"Title" ":" AboutTitle=STRING //TitlePath
+	"Information" ":" AboutInfor=STRING //information
+	"Label_size" ":" "("x = INT","y = INT")" // x = 410, y = 380
+	"}"
+;
+
+//不能重复很多次
+StringVal:
+	value=STRING
+;
+
+HelpSpecification:
+	"help" name=ID "{"
+	"Title" ":" HelpTitle=STRING //TitlePath
+	"Information" ":" HelpInfor=STRING //information
+	"Label_size" ":" "("x = INT","y = INT")" //x = 410, y = 380
+	"}"
+;
+
+BackSpecification:
+	"backGround" "{"
+	"Icon" "{" BackgroundIcon = BackgroundIcon "}" //背景图片的一些detail
+	"Height" "=" BackGroundHeight=BackGroundSize //高
+	"Width" "=" BackGroundWidth=BackGroundSize //宽
+	"}"
+;
+
+//定义头部image的一些东西--4个tag,分别0,1,2,3
+BackgroundIcon:
+  {BackgroundIcon} BackgroundTag += BackgroundTag*
+;
+
+BackGroundSize:
+	INT
+;
+//example: tag1 "xixi" = 1
+BackgroundTag:
+	 name=ID value=STRING "=" BKtag=INT
+	 "Locate" ":" locate=STRING //图像地址
+;
+
+//locate locateTag1 = "..//.."
+BackgroundTagLocate:
+	"Locate" name=ID "=" value=STRING
+;
+
+MusicSpecification: 
+	 "Music" "{" 
+	 "BufferSize" "=" buffersize = INT
+	  MusicPath += MusicPath* 
+	  "}"//音乐的路径
+;
+
+MusicPath:
+	name=ID  "path" "=" path=STRING
+;
+
+
+	
+

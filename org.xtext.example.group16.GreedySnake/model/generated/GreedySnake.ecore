@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="greedySnake" nsURI="http://www.xtext.org/example/mydsl2/Group16/GreedySnake"
+    nsPrefix="greedySnake">
+  <eClassifiers xsi:type="ecore:EClass" name="GreedySnake">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="snakes" upperBound="-1"
+        eType="#//InitialSnakeSpecificatin" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foods" upperBound="-1"
+        eType="#//InitialFoodSpecificatin" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="obstacles" upperBound="-1"
+        eType="#//InitialObstacleSpecificatin" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="speed" upperBound="-1"
+        eType="#//InitialSpeedSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fire" upperBound="-1" eType="#//InitialFireSpecification"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="time" upperBound="-1" eType="#//TimeLimited"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Map" upperBound="-1" eType="#//GlobalMap"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="about" upperBound="-1"
+        eType="#//AboutSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Help" upperBound="-1" eType="#//HelpSpecification"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Music" upperBound="-1"
+        eType="#//MusicSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Backgrounds" upperBound="-1"
+        eType="#//BackSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fields" upperBound="-1"
+        eType="#//GlobalFieldInitialisation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="options" upperBound="-1"
+        eType="#//OptionSpecification" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalMap">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="map" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GlobalFieldInitialisation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="panelWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="panelHeight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="width" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="height" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelHeight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="field_initialisation" eType="#//InitialField"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialField">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Default" eType="#//Default"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Default">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="length" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="score" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="amount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weapon" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialSnakeSpecificatin">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" eType="#//SnakeMembers"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Multiples" unique="false"
+        upperBound="-1" eType="#//InitialSnakeSpecificatin"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialFoodSpecificatin">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" eType="#//FoodMembers"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Multiples" unique="false"
+        upperBound="-1" eType="#//InitialFoodSpecificatin"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialObstacleSpecificatin">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" eType="#//ObstacleMembers"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Multiples" unique="false"
+        upperBound="-1" eType="#//InitialObstacleSpecificatin"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialFireSpecification">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="members" eType="#//FireMembers"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="Multiples" unique="false"
+        upperBound="-1" eType="#//InitialSnakeSpecificatin"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InitialSpeedSpecification">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="speedGroup" upperBound="-1"
+        eType="#//SpeedGroup" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SpeedGroup">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FireMembers">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fire" eType="#//FireInitDisplay"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SnakeMembers">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sna" eType="#//SnakeInitDisplay"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FoodMembers">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="food" eType="#//FoodInitDisplay"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObstacleMembers">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="obstacle" eType="#//ObstacleInitDisplay"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FireInitDisplay">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="FireIcon" upperBound="-1"
+        eType="#//IconTag" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Iconsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SnakeInitDisplay">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="head" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initial_x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="initial_y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="headIcon" upperBound="-1"
+        eType="#//IconTag" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Iconsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="BodyIcon" upperBound="-1"
+        eType="#//IconTag" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultSpeed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="snakeTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Icon">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="IconTag" upperBound="-1"
+        eType="#//IconTag" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IconTag">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Locate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FoodInitDisplay">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foodIcon" upperBound="-1"
+        eType="#//IconTag" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Iconsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foodKind" upperBound="-1"
+        eType="#//FoodKind" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="produce" eType="#//RandomFoodSize"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="foodTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FoodKind">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kind" eType="#//IconTag"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="point" eType="#//Expression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObstacleInitDisplay">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ObstacleIcon" upperBound="-1"
+        eType="#//IconTag" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="Iconsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ObstacleTag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RandomFoodSize">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Minsize">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Maxsize">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TimeLimited">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ObstacleTime" eSuperTypes="#//TimeLimited">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ObstacleTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FoodTime" eSuperTypes="#//TimeLimited">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="FoodTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VarSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AllItemVarSpec" eSuperTypes="#//VarSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParamSpec" eSuperTypes="#//VarSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="IntLiteral" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RealLiteral" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OptionSpecification"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RestartMenu" eSuperTypes="#//OptionSpecification"/>
+  <eClassifiers xsi:type="ecore:EClass" name="StartFieldDeclaration" eSuperTypes="#//OptionSpecification">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="field" eType="#//GlobalFieldInitialisation"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AboutSpecification">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AboutTitle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="AboutInfor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringVal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HelpSpecification">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="HelpTitle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="HelpInfor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BackSpecification">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="BackgroundIcon" eType="#//BackgroundIcon"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BackGroundHeight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BackGroundWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BackgroundIcon">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="BackgroundTag" upperBound="-1"
+        eType="#//BackgroundTag" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BackgroundTag">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BKtag" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="locate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BackgroundTagLocate">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MusicSpecification">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="buffersize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="MusicPath" upperBound="-1"
+        eType="#//MusicPath" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MusicPath">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Addition" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Multiplication" eSuperTypes="#//Expression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" upperBound="-1"
+        eType="#//Expression" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "http://www.xtext.org/example/mydsl2/Group16/GreedySnake"
+			class = "org.xtext.example.mydsl2.group16.greedySnake.GreedySnakePackage"
+			genModel = "model/generated/GreedySnake.genmodel" />
+	</extension>
+</plugin>

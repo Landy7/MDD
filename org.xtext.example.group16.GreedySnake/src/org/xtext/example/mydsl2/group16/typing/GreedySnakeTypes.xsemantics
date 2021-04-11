@@ -1,0 +1,93 @@
+import org.xtext.example.mydsl2.group16.validation.AbstractGreedySnakeValidator
+import org.xtext.example.mydsl2.group16.greedySnake.Expression
+import org.xtext.example.mydsl2.group16.greedySnake.IntLiteral
+import org.xtext.example.mydsl2.group16.greedySnake.RealLiteral
+import org.xtext.example.mydsl2.group16.greedySnake.Multiplication
+import org.xtext.example.mydsl2.group16.greedySnake.Addition
+import org.xtext.example.mydsl2.group16.greedySnake.FoodKind
+
+system org.xtext.example.mydsl2.group16.typing.GreedySnakeSystem
+
+validatorExtends AbstractGreedySnakeValidator
+
+auxiliary{
+	typeExpression(Iterable<Expression> exps): GreedySnakeTypes cached
+	//we will give all the subExpressions, and tell us what the overal greedysnake types should be
+}
+
+judgments{
+	//contain definitonas and declaration 
+	//the calculations and result the calculations
+	//create a class which contains the type we will use----GreedySnakeTypes
+	//成功就直接跳过，不正确就给提示语言
+	//stringRep----string help function to calculate a sensible representation
+	type |- Expression exp : output GreedySnakeTypes
+		cached
+		error "Cannot type" + stringRep(exp)
+	// there is no output types ---is a essentially a boolean judgement
+	subType |- GreedySnakeTypes left <: GreedySnakeTypes right
+		error stringRep(left) + "is not a subtype of " + stringRep(right)
+}
+auxiliary typeExpression(Iterable<Expression> exps){
+	// go through all the expression in exps
+	if(exps.forall[exp | 
+		//empty context without knowing anything, and we can evaluate the Expression types 
+		//empty is context without knowing anything that exp is of a type type
+		//adn the type is in fact the INT Type 
+		empty |- exp: var GreedySnakeTypes type
+		type === GreedySnakeTypes.INT]){
+			//the overall type should be int
+			return GreedySnakeTypes.INT
+		}else{
+			return GreedySnakeTypes.REAL
+		}
+}
+
+// to calculate the type of an expression
+//axioms and some rules
+//axiom ---takes an expressions just computes the value of the judgement
+//the rule means: if you give me Int Expressions, the result should be INT
+axiom TIntLit
+		G |- IntLiteral exp: GreedySnakeTypes.INT
+		
+axiom TRealLit
+		G |- RealLiteral exp:  GreedySnakeTypes.REAL	
+		
+//use the rules rather than axioms		
+//in any arbitrary context G, a multiplication expression
+//variable name, 然后分类讨论		
+rule TMultiplication
+		G |- Multiplication exp: GreedySnakeTypes t	
+from{
+	//write some rules/statements/expressions that tell us what the value "t" is---depending on the Expressions
+	//if subexpression is type real, the whole expression need to be real type
+}
+rule SubTyping
+		G |- GreedySnakeTypes left <: GreedySnakeTypes right
+from{
+	right === GreedySnakeTypes.INT or left === right
+}
+
+//Addition is the same
+rule TAddition
+		G |- Addition exp: GreedySnakeTypes t	
+from{
+	//write some rules/statements/expressions that tell us what the value "t" is---depending on the Expressions
+	//if subexpression is type real, the whole expression need to be real type
+	
+	// and all the sub-expression into one iterable and apply our TypeExpression auxiliary to that 
+	t = (#[exp.left] + exp.right).typeExpression
+	//left is an object and turn into an array by wrapping into array
+}		
+
+
+//additional rules that allows check some types	
+checkrule CheckFoodKind for 
+	FoodKind fk
+from {
+	//subTyping 
+	empty |- fk.point : var GreedySnakeTypes pointTypes
+	//pointTypes is a subtype of real 
+	empty |- pointTypes <: GreedySnakeTypes.REAL 
+	
+}		
