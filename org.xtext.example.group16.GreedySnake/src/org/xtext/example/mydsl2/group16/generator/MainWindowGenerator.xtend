@@ -7,6 +7,7 @@ import org.xtext.example.mydsl2.group16.greedySnake.IconTag
 import java.util.ArrayList
 import org.xtext.example.mydsl2.group16.greedySnake.BackSpecification
 import org.xtext.example.mydsl2.group16.greedySnake.InitialSpeedSpecification
+import org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification
 
 class MainWindowGenerator extends GeneralGenerator{
 	new(ModelPreprocessor mpp){
@@ -33,8 +34,8 @@ class MainWindowGenerator extends GeneralGenerator{
 				 * 
 				 */
 				private static final long serialVersionUID = -1877974685325498861L;
-				private Font f = new Font("微软雅黑",Font.PLAIN,15);
-				private Font f2 = new Font("微软雅黑",Font.PLAIN,12);
+				private Font f = new Font("Calibri",Font.PLAIN,15);
+				private Font f2 = new Font("Calibri",Font.PLAIN,12);
 				private JRadioButtonMenuItem speedItems[];
 				private JRadioButtonMenuItem headItems[]; 
 				private JRadioButtonMenuItem bodyItems[];
@@ -44,25 +45,22 @@ class MainWindowGenerator extends GeneralGenerator{
 				private ImageIcon backgroundImage;
 				private JLabel background_label;
 				private JPanel imagePanel;
-				private JPanel paintPanel;//画板，画线条用的
-				private JLabel label  = new JLabel("当前长度：");
-				private JLabel label2 = new JLabel("所花时间：");
-				private JLabel label3 = new JLabel("当前得分：");
-				private JLabel label4 = new JLabel("食物个数：");
-				private JLabel label5 = new JLabel("剩余子弹：");
-				private JLabel label6 = new JLabel("AI长度：");
-				private JLabel label7 = new JLabel("食物坐标：");
-				private JLabel label8 = new JLabel("下一步：");
+				private JPanel paintPanel;
+			    private JLabel label  = new JLabel("Length：");
+			    private JLabel label2 = new JLabel("Cost Time：");
+			    private JLabel label3 = new JLabel("Point：");
+			    private JLabel label4 = new JLabel("FoodNumber：");
+			    private JLabel label5 = new JLabel("RestBullet：");
 				private JLabel FoodCoor = new JLabel("");
 				private JLabel NextStepCoor = new JLabel("");
 				«gs.fields.join("",[fi | generateInitalJPanel(fi)])»
 				
-				private JPanel p = new JPanel();
+«««				private JPanel p = new JPanel();
 				private Timer timer;
 				private boolean pause = false;
 				private boolean isrun = true;
-				private boolean IfSpeedUp = false;//标记是否加速,true表示当前在加速
-				private boolean IfRemove = false;//标记是否移除界面上的网格线，true表示移除，false表示不移除，默认不移除
+				private boolean IfSpeedUp = false;
+				private boolean IfRemove = false;
 				
 				private PlayerSnake snake;
 				private Foodset food;
@@ -140,9 +138,6 @@ class MainWindowGenerator extends GeneralGenerator{
 				public void resetLabel(){
 					FoodCoor.setText("");
 					NextStepCoor.setText("");
-					AILength.setText("1");
-					//一次不能筛选就再一次
-					//ok
 					«gs.fields.join("",[o | resetDefault(o)])»
 				}
 				
@@ -156,7 +151,7 @@ class MainWindowGenerator extends GeneralGenerator{
 					
 					resetLabel();
 					
-					//初始化map数组全为0
+					//initial map
 					for(int i = 0;i < HEIGHT;i++)
 						for(int j = 0;j < WIDTH;j++)
 							setMap(i,j,0);		
@@ -193,7 +188,6 @@ class MainWindowGenerator extends GeneralGenerator{
 					while(true)
 					{
 						//P();
-						//保证身体节点，食物，障碍物都不能和该坐标重合
 						if(getMap()[x][y] != 0 || x <= 5 || y <= 10)
 						{
 							x = rand.nextInt(HEIGHT);//[0,20], row 21
@@ -210,7 +204,6 @@ class MainWindowGenerator extends GeneralGenerator{
 				}
 				
 				public void run(){
-					//初始化map数组全为0
 					for(int i = 0;i < HEIGHT;i++)
 						for(int j = 0;j < WIDTH;j++)
 							map[i][j] = 0;
@@ -241,25 +234,8 @@ class MainWindowGenerator extends GeneralGenerator{
 						e1.printStackTrace();
 					}
 					
-					Image img = Toolkit.getDefaultToolkit().getImage("image//title.png");//窗口图标
-					setIconImage(img);
-				    setTitle("«gs.name»");
-				    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				    setSize(1000,540);
-				    setResizable(false);
-				    setLayout(null);
-				    setLocationRelativeTo(null);
-				    
-				    //waiting modify
-				    //modify--initialbackground
-				    backgroundImage = new ImageIcon("background//sky2.jpg");
-				    backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(1000,540,Image.SCALE_SMOOTH));
-				    background_label = new JLabel(backgroundImage);  
-				    background_label.setBounds(0,0, this.getWidth(), this.getHeight());   
-			        this.getLayeredPane().add(background_label, new Integer(Integer.MIN_VALUE));
-			        
-			        imagePanel = (JPanel) this.getContentPane();  
-			        imagePanel.setOpaque(false);
+					«gs.backgrounds.join("",[bk | generateInitialBack(bk)])»
+					
 			        
 			        paintPanel = new JPanel(){
 			        	//graph UI
@@ -269,24 +245,23 @@ class MainWindowGenerator extends GeneralGenerator{
 			        		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
 			        		g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,RenderingHints.VALUE_STROKE_NORMALIZE);
 			        		
-			        		//墙
+			        		
 			        		g.setPaint(new GradientPaint(115,135,Color.CYAN,230,135,Color.MAGENTA,true));
 			        		g.setStroke( new BasicStroke(4,BasicStroke.CAP_BUTT,BasicStroke.JOIN_BEVEL));
 			        		g.drawRect(3, 6, 887, 468);//+400
 			        		
 			        		if(!IfRemove)
 			        		{
-			        			//网格线
 			        			for(int i = 1;i < 40;i++)
 			        			{
 			        				g.setStroke( new BasicStroke(1f, BasicStroke.CAP_BUTT,
 			                                BasicStroke.JOIN_ROUND, 3.5f, new float[] { 15, 10, },
-			                                0f));//虚线
+			                                0f));
 			        				g.setColor(Color.black);
-			        				g.drawLine(5+i*22,9,5+i*22,472);//画竖线，共39根竖线，40列
+			        				g.drawLine(5+i*22,9,5+i*22,472);
 			        				if(i <= 20)
 			        				{
-			        					g.drawLine(4,10+i*22,887,10+i*22);//画横线，共20根横线，21行
+			        					g.drawLine(4,10+i*22,887,10+i*22);
 			        				}
 			        			}
 			        		}
@@ -298,72 +273,47 @@ class MainWindowGenerator extends GeneralGenerator{
 			        add(paintPanel);
 			        
 			        //------------------------------------------------------------------
-			        //布局
+			        //layout
 			        add(label);
-			 		label.setBounds(900, 10, 80, 20);
-				    label.setFont(f);
-				    add(Length);
-				    Length.setBounds(900, 35, 80, 20);
-				    Length.setFont(f);
-				    add(label2);
-				    label2.setBounds(900, 70, 80, 20);
-				    label2.setFont(f);
-				    add(Time);
-				    Time.setBounds(900, 95, 80, 20);
-				    Time.setFont(f);    
-				    add(label3);
-				    label3.setBounds(900, 130, 80, 20);
-				    label3.setFont(f);
-				    add(Score);
-				    Score.setBounds(900, 155, 80, 20);
-				    Score.setFont(f);
-				    add(label4);
-				    label4.setBounds(900, 190, 80, 20);
-				    label4.setFont(f);
-				    add(Amount);
-				    Amount.setBounds(900, 215, 80, 20);
-				    Amount.setFont(f);
-				    add(label5);
-				    label5.setBounds(900, 250, 80, 20);
-				    label5.setFont(f);
-				    add(Weapon);
-				    Weapon.setBounds(900, 275, 80, 20);
-				    Weapon.setFont(f);
+			        label.setBounds(900, 10, 250, 30);
+			        label.setFont(f);
+			        add(Length);
+			        Length.setBounds(900, 35, 250, 30);
+			        Length.setFont(f);
+			        	    
+			        add(label2);
+			        label2.setBounds(900, 90, 250, 30);
+			        label2.setFont(f);
+			        add(Time);
+			        Time.setBounds(900, 115, 250, 30);
+			        Time.setFont(f);
+			        	    
+			        add(label3);
+			        label3.setBounds(900, 170, 250, 30);
+			        label3.setFont(f);
+			        add(Score);
+			        Score.setBounds(900, 195, 250, 30);
+			        Score.setFont(f);
+			        	    
+			        add(label4);
+			        label4.setBounds(900, 250, 250, 30);
+			        label4.setFont(f);
+			        add(Amount);
+			        Amount.setBounds(900, 275, 250, 30);
+			        Amount.setFont(f);
+			        	    
+			        add(label5);
+			        label5.setBounds(900, 330, 250, 30);
+			        label5.setFont(f);
+			        add(Weapon);
+			        Weapon.setBounds(900, 355, 250, 30);
+			        Weapon.setFont(f);
 				    
-				    add(p);
-				    p.setBounds(898, 300, 93, 1);
-				    p.setBorder(BorderFactory.createLineBorder(Color.white));
-				    
-				    add(label6);
-				    label6.setBounds(900, 315, 80, 20);
-				    label6.setFont(f);
-				    add(AILength);
-				    AILength.setBounds(900, 340, 80, 20);
-				    AILength.setFont(f);
-				    
-				    add(label7);
-				    label7.setBounds(900, 365, 80, 20);
-				    label7.setFont(f);
-				    add(FoodCoor);
-				    FoodCoor.setBounds(900, 390, 80, 20);
-				    FoodCoor.setFont(f);
-				    
-				    add(label8);
-				    label8.setBounds(900, 415, 80, 20);
-				    label8.setFont(f);
-				    add(NextStepCoor);
-				    NextStepCoor.setBounds(900, 440, 80, 20);
-				    NextStepCoor.setFont(f);
-				    
-				    //字体颜色，为了便于分辨，设为白色
 				    label.setForeground(Color.white);
 				    label2.setForeground(Color.white);
 				    label3.setForeground(Color.white);
 				    label4.setForeground(Color.white);
 				    label5.setForeground(Color.white);
-				    label6.setForeground(Color.white);
-				    label7.setForeground(Color.white);
-				    label8.setForeground(Color.white);
 				    FoodCoor.setForeground(Color.white);
 				    NextStepCoor.setForeground(Color.white);
 				    AILength.setForeground(Color.white);
@@ -373,7 +323,6 @@ class MainWindowGenerator extends GeneralGenerator{
 					Amount.setForeground(Color.white);    
 					Weapon.setForeground(Color.white);
 					
-					//菜单栏
 			        JMenuBar bar = new JMenuBar();
 			        bar.setBackground(Color.white);
 			  		setJMenuBar(bar);
@@ -386,7 +335,6 @@ class MainWindowGenerator extends GeneralGenerator{
 			  		bar.add(Settings);
 			  		bar.add(Help);
 			  		bar.add(About);	
-			      		
 			  		JMenuItem set_background = new JMenuItem("setting background");
 			  		set_background.setFont(f2);
 					JMenu set_head = new JMenu("change snakeHead");
@@ -417,8 +365,7 @@ class MainWindowGenerator extends GeneralGenerator{
 			       
 					//---------------------------------------------------------------------
 					
-					//添加监听器
-					//监听键盘事件
+					
 					this.addKeyListener(new MyKeyListener());
 					
 					remove_net.addActionListener(new ActionListener(){
@@ -464,19 +411,15 @@ class MainWindowGenerator extends GeneralGenerator{
 			        });
 				}
 				
-				//主函数入口
+				//main function
 				public static void main(String[] args) {
 					MainWindow game = new MainWindow();
-					game.InitialUI();//初始化界面
+					game.InitialUI();//initial field
 					game.run();
 				}
 				
 				
-				/*
-				 * 计时器类,负责计时
-				 * 调用方法，直接new一个此类，然后主界面就开始显示计时
-				 * new Timer();
-				 */
+				
 				private class Timer extends Thread{
 					
 					private int hour = 0;
@@ -536,7 +479,7 @@ class MainWindowGenerator extends GeneralGenerator{
 				        else
 				            strTime = strTime+""+sec;
 				         
-				        //在窗体上设置显示时间
+				       
 				        Time.setText(strTime);
 				    }
 				}
@@ -546,59 +489,10 @@ class MainWindowGenerator extends GeneralGenerator{
 					private int MI,MI3;
 					private int SS,SS3;
 			
-					@Override
-					public void keyPressed(KeyEvent e) {
-						int key = e.getKeyCode();
-						Direction direction = snake.getDirection();
-			    		if(key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D)//向右
-			    		{
-			    			if(isrun && direction != Direction.LEFT)
-			    			{
-			    				snake.setDirection(Direction.RIGHT);
-			    			}
-			    		}
-			    		else if(key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A)//向左
-			    		{
-			    			if(isrun && direction != Direction.RIGHT)
-			    			{
-			    				snake.setDirection(Direction.LEFT);
-			    			}
-			    		}
-			    		else if(key == KeyEvent.VK_UP || key == KeyEvent.VK_W)//向上
-			    		{
-			    			if(isrun && direction != Direction.DOWN)
-			    			{
-			    				snake.setDirection(Direction.UP);
-			    			}
-			    		}
-			    		else if(key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S)//向下
-			    		{
-			    			if(isrun && direction != Direction.UP)
-			    			{
-			    				snake.setDirection(Direction.DOWN);
-			    			}
-			    		}
-			    		else if(key == KeyEvent.VK_ESCAPE)//重新开始
-			    		{
-			    			restart();
-			    		}
-			    		else if(key == KeyEvent.VK_SPACE)
-			    		{
-			    			if(!pause)//暂停
-			    			{
-			    				pause = true;
-			    				isrun = false;
-			    				System.out.println("暂停...");
-			    			}
-			    			else//开始
-			    			{
-			    				pause = false;
-			    				isrun = true;
-			    				System.out.println("开始...");
-			    			}
-			    		}
+			    «gs.directions.join("",[di | generateKeyPress(di)])»
+					
 			    		
-			//    		//发射子弹
+			
 			    		if(e.isShiftDown())
 			    		{
 			    			if(snake.getBulletNum() > 0)
@@ -606,7 +500,7 @@ class MainWindowGenerator extends GeneralGenerator{
 			    				System.out.println("Fire a bullet");
 			    				Direction d = snake.getDirection();
 			    				Coordinate coor = snake.getHeadCoor();
-			    				Coordinate target = obstacle.searchTarget(coor, d);//找到火焰的目标
+			    				Coordinate target = obstacle.searchTarget(coor, d);
 			    				
 			    				System.out.println("Target is:" + target.x + "," +target.y);
 			    				
@@ -624,9 +518,9 @@ class MainWindowGenerator extends GeneralGenerator{
 			    			SS3 = Cld.get(Calendar.SECOND);
 			    	        MI3 = Cld.get(Calendar.MILLISECOND); 
 			    	        int x = SS3 * 1000 + MI3 - ( SS * 1000 + MI);
-			    	        if(x > 500)//按一个按钮的时长大于500毫秒识别为长按
+			    	        if(x > 500)
 			    	        {
-			    	        	snake.setSpeed(100);//加速时每隔100毫秒刷新一次
+			    	        	snake.setSpeed(100);
 			    	        	//System.out.println("Long Pressed");
 			    	        }
 			    		}
@@ -663,6 +557,89 @@ class MainWindowGenerator extends GeneralGenerator{
 				}
 			}
 	'''
+	
+	def generateInitialBack(BackSpecification bks) {
+		
+		val backIconLocate = new ArrayList<String>
+		bks.backgroundIcon.backgroundTag.forEach[o | backIconLocate.add('''"'''+o.locate+'''"''')]
+		'''
+		Image img = Toolkit.getDefaultToolkit().getImage("image//title.png");
+		setIconImage(img);
+		setTitle("«gs.name»");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setSize(«bks.backGroundWidth»,«bks.backGroundHeight»);
+		setResizable(false);
+		setLayout(null);
+		setLocationRelativeTo(null);
+						    
+		backgroundImage = new ImageIcon(«backIconLocate.get(5)»);
+		backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(«bks.backGroundWidth»,«bks.backGroundHeight»,Image.SCALE_SMOOTH));
+		background_label = new JLabel(backgroundImage);  
+		background_label.setBounds(0,0, this.getWidth(), this.getHeight());   
+		this.getLayeredPane().add(background_label, new Integer(Integer.MIN_VALUE));
+					        
+		imagePanel = (JPanel) this.getContentPane();  
+		imagePanel.setOpaque(false);
+		'''
+	}
+	
+	def generateKeyPress(DirectionSpecification ds) {
+		val Dire = new ArrayList<String>
+		ds.di.forEach[ o | Dire.add(o.direction.getName)]
+		'''
+		@Override
+		public void keyPressed(KeyEvent e) {
+		int key = e.getKeyCode();
+		Direction direction = snake.getDirection();
+		if(key == KeyEvent.VK_RIGHT || key == KeyEvent.VK_D)
+		{
+			if(isrun && direction != Direction.«Dire.get(2)») //left
+			{
+				snake.setDirection(Direction.«Dire.get(3)»); //right
+			}
+		}
+		else if(key == KeyEvent.VK_LEFT || key == KeyEvent.VK_A)
+		{
+			if(isrun && direction != Direction.«Dire.get(3)»)//right
+			{
+				snake.setDirection(Direction.«Dire.get(2)»);//left
+			}
+		}
+		else if(key == KeyEvent.VK_UP || key == KeyEvent.VK_W)
+		{
+			if(isrun && direction != Direction.«Dire.get(1)») //down
+			{
+				snake.setDirection(Direction.«Dire.get(0)»); //up 
+			}
+		}
+		else if(key == KeyEvent.VK_DOWN || key == KeyEvent.VK_S)
+		{
+			if(isrun && direction != Direction.«Dire.get(0)») //up
+			{
+				snake.setDirection(Direction.«Dire.get(1)»); //down
+			}
+		}
+		else if(key == KeyEvent.VK_ESCAPE)//restart
+		{
+			restart();
+		}
+		else if(key == KeyEvent.VK_SPACE)
+		{
+			if(!pause)
+			{
+				pause = true;
+				isrun = false;
+				System.out.println("pause...");
+			}
+			else
+			{
+				pause = false;
+				isrun = true;
+				System.out.println("start...");
+			}
+		}
+		'''
+	}
 	
 	def generateSpeed(InitialSpeedSpecification iss) {
 		val speed = new ArrayList<Integer>
@@ -742,8 +719,8 @@ class MainWindowGenerator extends GeneralGenerator{
 			«'''bodyIcon[«idx»] = new ImageIcon(«locateBody.get(idx)»);'''»
 		«ENDFOR»
 		«FOR idx:(0..bodyIcon.length-1)»
-		//size大小要改
-				«'''bodyIcon[«idx»].setImage(bodyIcon[«idx»].getImage().getScaledInstance(16,16,Image.SCALE_SMOOTH));//保持图片的清晰;'''»
+		//size
+				«'''bodyIcon[«idx»].setImage(bodyIcon[«idx»].getImage().getScaledInstance(16,16,Image.SCALE_SMOOTH));'''»
 		«ENDFOR»
 		//modify
 		for(int i = 0;i < «bodyIcon.length»;i++)
@@ -804,18 +781,18 @@ class MainWindowGenerator extends GeneralGenerator{
 		f.members.sna.headIcon.forEach[p | hello.add(hellp.next)]
 		val HeadIcon = new ArrayList<String>
 		val HeadTag = new ArrayList<Integer>
-		//获取里面的值
+		
 		hello.forEach[o | 
 			HeadIcon.add('''"'''+o.value+'''"''')
 		]
 		val len = HeadIcon.length
 		val locate = new ArrayList<String>
-		//locate值
+		//locate
 		hello.forEach[o | 
 			locate.add('''"'''+o.locate+'''"''')
 		]
 		
-		//tag值
+		//tag
 		hello.forEach[o | 
 			HeadTag.add(o.tag)
 		]
@@ -830,7 +807,7 @@ class MainWindowGenerator extends GeneralGenerator{
 					«'''headIcon[«idx»] = new ImageIcon(«locate.get(idx)»);'''»
 		«ENDFOR»
 		«FOR idx:(0..HeadIcon.length-1)»
-					«'''headIcon[«idx»].setImage(headIcon[«idx»].getImage().getScaledInstance(16,16,Image.SCALE_SMOOTH));//保持图片的清晰;'''»
+					«'''headIcon[«idx»].setImage(headIcon[«idx»].getImage().getScaledInstance(16,16,Image.SCALE_SMOOTH));'''»
 		«ENDFOR»
 		//modify
 		for(int i = 0;i < «HeadIcon.length»;i++)
@@ -861,10 +838,10 @@ class MainWindowGenerator extends GeneralGenerator{
 	def generateFieldInitialiseFor(GlobalFieldInitialisation f){ 
 		//initial Field height/width
 	'''
-		private static final int HEIGHT = «f.height»;			//游戏区域高，高21代表纵向有21行
-		private static final int WIDTH = «f.width»;			//游戏区域宽，宽40代表横向有40列
-		private int[][] map = new int[HEIGHT][WIDTH];	//map数组标记当前地图的使用情况
-																		//0表示空闲,1表示蛇身体节点,2表示食物,3表示障碍物
+		private static final int HEIGHT = «f.height»;			
+		private static final int WIDTH = «f.width»;			
+		private int[][] map = new int[HEIGHT][WIDTH];	
+							//0 presents empty,1 present snake ,2 present the food ,3 present the obstacle
 	'''
 	
 	}
@@ -884,15 +861,14 @@ class MainWindowGenerator extends GeneralGenerator{
 		private JPanel p = new JPanel();
 		
 		public AlterBacground(){
-		setTitle("Changing background");//设置窗体标题
-		Image img=Toolkit.getDefaultToolkit().getImage("title.png");//窗口图标
+		setTitle("Changing background");
+		Image img=Toolkit.getDefaultToolkit().getImage("title.png");
 		setIconImage(img);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setModal(true);//设置为模态窗口
+		setModal(true);
 		setSize(650,390);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		//modify
 		//backGround
 		ImageIcon background[] = new ImageIcon[«backIcon.length»];
 		«FOR idx:(0..backIcon.length-1)»
@@ -944,41 +920,17 @@ class MainWindowGenerator extends GeneralGenerator{
 						«bsf.backGroundWidth»,«bsf.backGroundHeight»,Image.SCALE_SMOOTH));
 						background_label.setIcon(background[0]);
 					}
-						else if(e.getSource() == choose[«backGoundTag.get(1)»])
-					{
-						background[1] = new ImageIcon(«backIconLocate.get(1)»);
-						background[1].setImage(background[1].getImage().getScaledInstance(
-						«bsf.backGroundWidth»,«bsf.backGroundHeight»,Image.SCALE_SMOOTH));
-						background_label.setIcon(background[1]);
-					}
-						else if(e.getSource() == choose[«backGoundTag.get(2)»])
-					{
-						background[2] = new ImageIcon(«backIconLocate.get(2)»);
-						background[2].setImage(background[2].getImage().getScaledInstance(
-						«bsf.backGroundWidth»,«bsf.backGroundHeight»,Image.SCALE_SMOOTH));
-						background_label.setIcon(background[2]);
-					}
-						else if(e.getSource() == choose[«backGoundTag.get(3)»])
-					{
-						background[3] = new ImageIcon(«backIconLocate.get(3)»);
-						background[3].setImage(background[3].getImage().getScaledInstance(
-						«bsf.backGroundWidth»,«bsf.backGroundHeight»,Image.SCALE_SMOOTH));
-						background_label.setIcon(background[3]);
-					}
-						else if(e.getSource() == choose[«backGoundTag.get(4)»])
-					{
-						background[4] = new ImageIcon(«backIconLocate.get(4)»);
-						background[4].setImage(background[4].getImage().getScaledInstance(
-						«bsf.backGroundWidth»,«bsf.backGroundHeight»,Image.SCALE_SMOOTH));
-						background_label.setIcon(background[4]);
-					}
-						else if(e.getSource() == choose[«backGoundTag.get(5)»])
-					{
-						background[5] = new ImageIcon(«backIconLocate.get(5)»);
-						background[5].setImage(background[5].getImage().getScaledInstance(
-						«bsf.backGroundWidth»,«bsf.backGroundHeight»,Image.SCALE_SMOOTH));
-						background_label.setIcon(background[5]);
-					}
+					«FOR idx:(1..backIcon.length-1)»
+					«'''
+						else if(e.getSource() == choose[«backGoundTag.get(idx)»])
+						{
+						  background[1] = new ImageIcon(«backIconLocate.get(idx)»);
+						  background[1].setImage(background[1].getImage().getScaledInstance(
+						  «bsf.backGroundWidth»,«bsf.backGroundHeight»,Image.SCALE_SMOOTH));
+						  background_label.setIcon(background[1]);
+						}
+					'''»
+					«ENDFOR»
 		'''
 	}
 

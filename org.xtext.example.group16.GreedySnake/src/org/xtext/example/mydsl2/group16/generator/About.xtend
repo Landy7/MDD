@@ -48,24 +48,23 @@ class About extends GeneralGenerator{
 			    }
 			    
 			    @Override
-			    protected void paintComponent(Graphics g1) {// 重写绘制组件外观
+			    protected void paintComponent(Graphics g1) {
 			        Graphics2D g = (Graphics2D) g1;
-			        super.paintComponent(g);// 执行超类方法
-			        int width = getWidth();// 获取组件大小
+			        super.paintComponent(g);
+			        int width = getWidth();
 			        int height = getHeight();
-			        // 创建填充模式对象
-			        GradientPaint paint = new GradientPaint(0, 0, Color.CYAN, 0, height,Color.MAGENTA);//实现颜色渐变
+			        GradientPaint paint = new GradientPaint(0, 0, Color.CYAN, 0, height,Color.MAGENTA);
 			        //GradientPaint paint = new GradientPaint(0, 0, Color.red, 0, height,Color.blue);
-			        g.setPaint(paint);// 设置绘图对象的填充模式
-			        g.fillRect(0, 0, width, height);// 绘制矩形填充控件界面
+			        g.setPaint(paint);
+			        g.fillRect(0, 0, width, height);
 			    }
 			}
 			 
 			public class About extends JDialog {
 			    private static final long serialVersionUID = 4693799019369193520L;
 			    private JPanel contentPane;
-			    private Font f1 = new Font("微软雅黑",Font.PLAIN,15);
-				private Font f2 = new Font("微软雅黑",Font.PLAIN,20);
+			    private Font f1 = new Font("Calibri",Font.PLAIN,15);
+				private Font f2 = new Font("Calibri",Font.PLAIN,20);
 				private ImageIcon icon;
 				private JLabel label;
 			    public About() {
@@ -118,19 +117,19 @@ class About extends GeneralGenerator{
 	
 	def generateAboutContext(AboutSpecification asf) {
 		'''
-		setTitle("«asf.aboutTitle»");//设置窗体标题
-		Image img=Toolkit.getDefaultToolkit().getImage("title.png");//窗口图标
+		setTitle("«asf.aboutTitle»");//title
+		Image img=Toolkit.getDefaultToolkit().getImage("title.png");
 		setIconImage(img);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setModal(true);//设置为模态窗口
+		setModal(true);
 		setSize(«asf.x»,«asf.y»);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		contentPane = new JPanel();// 创建内容面板
+		contentPane = new JPanel();
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-		ShadePanel shadePanel = new ShadePanel();// 创建渐变背景面板
-		contentPane.add(shadePanel, BorderLayout.CENTER);// 添加面板到窗体内容面板
+		ShadePanel shadePanel = new ShadePanel();
+		contentPane.add(shadePanel, BorderLayout.CENTER);
 		shadePanel.setLayout(null);
 					        
 		JTextArea J1 = new JTextArea("developer ：randy \nlanguage：Java & xtend \n"
@@ -138,11 +137,11 @@ class About extends GeneralGenerator{
 		J1.setFocusable(false);
 		J1.setFont(f2);
 		J1.setEditable(false);
-		J1.setOpaque(false);//背景透明
+		J1.setOpaque(false);
 		shadePanel.add(J1);
 		J1.setBounds(10, 10, 400, 180);
 		icon = new ImageIcon("title.png");
-		icon.setImage(icon.getImage().getScaledInstance(120,120,Image.SCALE_SMOOTH));//保持图片的清晰
+		icon.setImage(icon.getImage().getScaledInstance(120,120,Image.SCALE_SMOOTH));
 		label = new JLabel(icon);
 		shadePanel.add(label);
 		label.setBounds(270, 0, 130, 130);

@@ -51,7 +51,7 @@ public class BackSpecificationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected static final String BACK_GROUND_HEIGHT_EDEFAULT = null;
+  protected static final int BACK_GROUND_HEIGHT_EDEFAULT = 0;
 
   /**
    * The cached value of the '{@link #getBackGroundHeight() <em>Back Ground Height</em>}' attribute.
@@ -61,7 +61,7 @@ public class BackSpecificationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected String backGroundHeight = BACK_GROUND_HEIGHT_EDEFAULT;
+  protected int backGroundHeight = BACK_GROUND_HEIGHT_EDEFAULT;
 
   /**
    * The default value of the '{@link #getBackGroundWidth() <em>Back Ground Width</em>}' attribute.
@@ -71,7 +71,7 @@ public class BackSpecificationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected static final String BACK_GROUND_WIDTH_EDEFAULT = null;
+  protected static final int BACK_GROUND_WIDTH_EDEFAULT = 0;
 
   /**
    * The cached value of the '{@link #getBackGroundWidth() <em>Back Ground Width</em>}' attribute.
@@ -81,7 +81,7 @@ public class BackSpecificationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    * @ordered
    */
-  protected String backGroundWidth = BACK_GROUND_WIDTH_EDEFAULT;
+  protected int backGroundWidth = BACK_GROUND_WIDTH_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -160,7 +160,7 @@ public class BackSpecificationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public String getBackGroundHeight()
+  public int getBackGroundHeight()
   {
     return backGroundHeight;
   }
@@ -171,9 +171,9 @@ public class BackSpecificationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public void setBackGroundHeight(String newBackGroundHeight)
+  public void setBackGroundHeight(int newBackGroundHeight)
   {
-    String oldBackGroundHeight = backGroundHeight;
+    int oldBackGroundHeight = backGroundHeight;
     backGroundHeight = newBackGroundHeight;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GreedySnakePackage.BACK_SPECIFICATION__BACK_GROUND_HEIGHT, oldBackGroundHeight, backGroundHeight));
@@ -185,7 +185,7 @@ public class BackSpecificationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public String getBackGroundWidth()
+  public int getBackGroundWidth()
   {
     return backGroundWidth;
   }
@@ -196,9 +196,9 @@ public class BackSpecificationImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public void setBackGroundWidth(String newBackGroundWidth)
+  public void setBackGroundWidth(int newBackGroundWidth)
   {
-    String oldBackGroundWidth = backGroundWidth;
+    int oldBackGroundWidth = backGroundWidth;
     backGroundWidth = newBackGroundWidth;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, GreedySnakePackage.BACK_SPECIFICATION__BACK_GROUND_WIDTH, oldBackGroundWidth, backGroundWidth));
@@ -254,10 +254,10 @@ public class BackSpecificationImpl extends MinimalEObjectImpl.Container implemen
         setBackgroundIcon((BackgroundIcon)newValue);
         return;
       case GreedySnakePackage.BACK_SPECIFICATION__BACK_GROUND_HEIGHT:
-        setBackGroundHeight((String)newValue);
+        setBackGroundHeight((Integer)newValue);
         return;
       case GreedySnakePackage.BACK_SPECIFICATION__BACK_GROUND_WIDTH:
-        setBackGroundWidth((String)newValue);
+        setBackGroundWidth((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -299,9 +299,9 @@ public class BackSpecificationImpl extends MinimalEObjectImpl.Container implemen
       case GreedySnakePackage.BACK_SPECIFICATION__BACKGROUND_ICON:
         return backgroundIcon != null;
       case GreedySnakePackage.BACK_SPECIFICATION__BACK_GROUND_HEIGHT:
-        return BACK_GROUND_HEIGHT_EDEFAULT == null ? backGroundHeight != null : !BACK_GROUND_HEIGHT_EDEFAULT.equals(backGroundHeight);
+        return backGroundHeight != BACK_GROUND_HEIGHT_EDEFAULT;
       case GreedySnakePackage.BACK_SPECIFICATION__BACK_GROUND_WIDTH:
-        return BACK_GROUND_WIDTH_EDEFAULT == null ? backGroundWidth != null : !BACK_GROUND_WIDTH_EDEFAULT.equals(backGroundWidth);
+        return backGroundWidth != BACK_GROUND_WIDTH_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }

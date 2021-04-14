@@ -27,16 +27,7 @@ public class IndexToPixel extends GeneralGenerator {
     _builder.append("public class IndexToPixel {");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("//注意，序号从0开始");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("//横坐标：i -> 7+i*22");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("//纵坐标：i -> 12+i*22");
-    _builder.newLine();
-    _builder.append("\t");
-    _builder.append("public static int getXPixel(int i)//通过方格序号返回其横坐标");
+    _builder.append("public static int getXPixel(int i)");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("{");
@@ -50,7 +41,7 @@ public class IndexToPixel extends GeneralGenerator {
     _builder.append("\t\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("public static int getYPixel(int i)//通过方格序号返回其纵坐标");
+    _builder.append("public static int getYPixel(int i)");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("{");

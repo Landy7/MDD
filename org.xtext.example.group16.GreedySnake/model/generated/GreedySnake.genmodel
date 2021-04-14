@@ -6,6 +6,12 @@
     complianceLevel="8.0" copyrightFields="false" runtimeVersion="2.20">
   <genPackages prefix="GreedySnake" basePackage="org.xtext.example.mydsl2.group16"
       disposableProviderFactory="true" fileExtensions="gs" ecorePackage="GreedySnake.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="GreedySnake.ecore#//Direction">
+      <genEnumLiterals ecoreEnumLiteral="GreedySnake.ecore#//Direction/LEFT"/>
+      <genEnumLiterals ecoreEnumLiteral="GreedySnake.ecore#//Direction/RIGHT"/>
+      <genEnumLiterals ecoreEnumLiteral="GreedySnake.ecore#//Direction/UP"/>
+      <genEnumLiterals ecoreEnumLiteral="GreedySnake.ecore#//Direction/DOWN"/>
+    </genEnums>
     <genClasses ecoreClass="GreedySnake.ecore#//GreedySnake">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//GreedySnake/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//GreedySnake/snakes"/>
@@ -15,7 +21,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//GreedySnake/fire"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//GreedySnake/time"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//GreedySnake/Map"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//GreedySnake/SnakeMove"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//GreedySnake/about"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//GreedySnake/directions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//GreedySnake/Help"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//GreedySnake/Music"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//GreedySnake/Backgrounds"/>
@@ -85,6 +93,16 @@
     <genClasses ecoreClass="GreedySnake.ecore#//ObstacleMembers">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//ObstacleMembers/obstacle"/>
     </genClasses>
+    <genClasses ecoreClass="GreedySnake.ecore#//SnakeMoveSpecification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//SnakeMoveSpecification/IF"/>
+    </genClasses>
+    <genClasses ecoreClass="GreedySnake.ecore#//Move">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//Move/dir"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//Move/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//Move/coor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//Move/operator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//Move/moveVal"/>
+    </genClasses>
     <genClasses ecoreClass="GreedySnake.ecore#//FireInitDisplay">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//FireInitDisplay/FireIcon"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//FireInitDisplay/Iconsize"/>
@@ -128,12 +146,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//RandomFoodSize/maxsize"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//RandomFoodSize/minsize"/>
     </genClasses>
-    <genClasses ecoreClass="GreedySnake.ecore#//Minsize">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//Minsize/maxsize"/>
-    </genClasses>
-    <genClasses ecoreClass="GreedySnake.ecore#//Maxsize">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//Maxsize/minsize"/>
-    </genClasses>
     <genClasses ecoreClass="GreedySnake.ecore#//TimeLimited">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//TimeLimited/name"/>
     </genClasses>
@@ -143,12 +155,13 @@
     <genClasses ecoreClass="GreedySnake.ecore#//FoodTime">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//FoodTime/FoodTime"/>
     </genClasses>
-    <genClasses ecoreClass="GreedySnake.ecore#//VarSpec">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//VarSpec/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//VarSpec/name"/>
+    <genClasses ecoreClass="GreedySnake.ecore#//DirectionSpecification">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//DirectionSpecification/di"/>
     </genClasses>
-    <genClasses ecoreClass="GreedySnake.ecore#//AllItemVarSpec"/>
-    <genClasses ecoreClass="GreedySnake.ecore#//ParamSpec"/>
+    <genClasses ecoreClass="GreedySnake.ecore#//dis">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//dis/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//dis/direction"/>
+    </genClasses>
     <genClasses ecoreClass="GreedySnake.ecore#//Expression"/>
     <genClasses ecoreClass="GreedySnake.ecore#//IntLiteral">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//IntLiteral/val"/>
@@ -168,9 +181,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//AboutSpecification/x"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//AboutSpecification/y"/>
     </genClasses>
-    <genClasses ecoreClass="GreedySnake.ecore#//StringVal">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//StringVal/value"/>
-    </genClasses>
     <genClasses ecoreClass="GreedySnake.ecore#//HelpSpecification">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//HelpSpecification/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//HelpSpecification/HelpTitle"/>
@@ -185,6 +195,9 @@
     </genClasses>
     <genClasses ecoreClass="GreedySnake.ecore#//BackgroundIcon">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//BackgroundIcon/BackgroundTag"/>
+    </genClasses>
+    <genClasses ecoreClass="GreedySnake.ecore#//BackGroundSize">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//BackGroundSize/val"/>
     </genClasses>
     <genClasses ecoreClass="GreedySnake.ecore#//BackgroundTag">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//BackgroundTag/name"/>
@@ -203,6 +216,9 @@
     <genClasses ecoreClass="GreedySnake.ecore#//MusicPath">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//MusicPath/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//MusicPath/path"/>
+    </genClasses>
+    <genClasses ecoreClass="GreedySnake.ecore#//StringVal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute GreedySnake.ecore#//StringVal/value"/>
     </genClasses>
     <genClasses ecoreClass="GreedySnake.ecore#//Addition">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference GreedySnake.ecore#//Addition/left"/>

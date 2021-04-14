@@ -151,6 +151,16 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
         return createObstacleMembersAdapter();
       }
       @Override
+      public Adapter caseSnakeMoveSpecification(SnakeMoveSpecification object)
+      {
+        return createSnakeMoveSpecificationAdapter();
+      }
+      @Override
+      public Adapter caseMove(Move object)
+      {
+        return createMoveAdapter();
+      }
+      @Override
       public Adapter caseFireInitDisplay(FireInitDisplay object)
       {
         return createFireInitDisplayAdapter();
@@ -191,16 +201,6 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
         return createRandomFoodSizeAdapter();
       }
       @Override
-      public Adapter caseMinsize(Minsize object)
-      {
-        return createMinsizeAdapter();
-      }
-      @Override
-      public Adapter caseMaxsize(Maxsize object)
-      {
-        return createMaxsizeAdapter();
-      }
-      @Override
       public Adapter caseTimeLimited(TimeLimited object)
       {
         return createTimeLimitedAdapter();
@@ -216,19 +216,14 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
         return createFoodTimeAdapter();
       }
       @Override
-      public Adapter caseVarSpec(VarSpec object)
+      public Adapter caseDirectionSpecification(DirectionSpecification object)
       {
-        return createVarSpecAdapter();
+        return createDirectionSpecificationAdapter();
       }
       @Override
-      public Adapter caseAllItemVarSpec(AllItemVarSpec object)
+      public Adapter casedis(dis object)
       {
-        return createAllItemVarSpecAdapter();
-      }
-      @Override
-      public Adapter caseParamSpec(ParamSpec object)
-      {
-        return createParamSpecAdapter();
+        return createdisAdapter();
       }
       @Override
       public Adapter caseExpression(Expression object)
@@ -266,11 +261,6 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
         return createAboutSpecificationAdapter();
       }
       @Override
-      public Adapter caseStringVal(StringVal object)
-      {
-        return createStringValAdapter();
-      }
-      @Override
       public Adapter caseHelpSpecification(HelpSpecification object)
       {
         return createHelpSpecificationAdapter();
@@ -284,6 +274,11 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
       public Adapter caseBackgroundIcon(BackgroundIcon object)
       {
         return createBackgroundIconAdapter();
+      }
+      @Override
+      public Adapter caseBackGroundSize(BackGroundSize object)
+      {
+        return createBackGroundSizeAdapter();
       }
       @Override
       public Adapter caseBackgroundTag(BackgroundTag object)
@@ -304,6 +299,11 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
       public Adapter caseMusicPath(MusicPath object)
       {
         return createMusicPathAdapter();
+      }
+      @Override
+      public Adapter caseStringVal(StringVal object)
+      {
+        return createStringValAdapter();
       }
       @Override
       public Adapter caseAddition(Addition object)
@@ -563,6 +563,36 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification <em>Snake Move Specification</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification
+   * @generated
+   */
+  public Adapter createSnakeMoveSpecificationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.Move <em>Move</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.Move
+   * @generated
+   */
+  public Adapter createMoveAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.FireInitDisplay <em>Fire Init Display</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -683,36 +713,6 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.Minsize <em>Minsize</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.Minsize
-   * @generated
-   */
-  public Adapter createMinsizeAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.Maxsize <em>Maxsize</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.Maxsize
-   * @generated
-   */
-  public Adapter createMaxsizeAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.TimeLimited <em>Time Limited</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -758,46 +758,31 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.VarSpec <em>Var Spec</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification <em>Direction Specification</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.VarSpec
+   * @see org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification
    * @generated
    */
-  public Adapter createVarSpecAdapter()
+  public Adapter createDirectionSpecificationAdapter()
   {
     return null;
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.AllItemVarSpec <em>All Item Var Spec</em>}'.
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.dis <em>dis</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.AllItemVarSpec
+   * @see org.xtext.example.mydsl2.group16.greedySnake.dis
    * @generated
    */
-  public Adapter createAllItemVarSpecAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.ParamSpec <em>Param Spec</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.ParamSpec
-   * @generated
-   */
-  public Adapter createParamSpecAdapter()
+  public Adapter createdisAdapter()
   {
     return null;
   }
@@ -908,21 +893,6 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.StringVal <em>String Val</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.StringVal
-   * @generated
-   */
-  public Adapter createStringValAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.HelpSpecification <em>Help Specification</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -963,6 +933,21 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createBackgroundIconAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.BackGroundSize <em>Back Ground Size</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.BackGroundSize
+   * @generated
+   */
+  public Adapter createBackGroundSizeAdapter()
   {
     return null;
   }
@@ -1023,6 +1008,21 @@ public class GreedySnakeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMusicPathAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.xtext.example.mydsl2.group16.greedySnake.StringVal <em>String Val</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.StringVal
+   * @generated
+   */
+  public Adapter createStringValAdapter()
   {
     return null;
   }

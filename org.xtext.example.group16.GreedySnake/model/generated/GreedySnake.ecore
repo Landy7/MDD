@@ -18,8 +18,12 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Map" upperBound="-1" eType="#//GlobalMap"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="SnakeMove" upperBound="-1"
+        eType="#//SnakeMoveSpecification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="about" upperBound="-1"
         eType="#//AboutSpecification" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="directions" upperBound="-1"
+        eType="#//DirectionSpecification" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Help" upperBound="-1" eType="#//HelpSpecification"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="Music" upperBound="-1"
@@ -109,6 +113,17 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="obstacle" eType="#//ObstacleInitDisplay"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SnakeMoveSpecification">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="IF" upperBound="-1" eType="#//Move"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Move">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dir" eType="#//dis"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="coor" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="moveVal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FireInitDisplay">
     <eStructuralFeatures xsi:type="ecore:EReference" name="FireIcon" upperBound="-1"
         eType="#//IconTag" containment="true"/>
@@ -161,12 +176,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Minsize">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Maxsize">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minsize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TimeLimited">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -176,12 +185,20 @@
   <eClassifiers xsi:type="ecore:EClass" name="FoodTime" eSuperTypes="#//TimeLimited">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="FoodTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="VarSpec">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DirectionSpecification">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="di" upperBound="-1" eType="#//dis"
+        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="AllItemVarSpec" eSuperTypes="#//VarSpec"/>
-  <eClassifiers xsi:type="ecore:EClass" name="ParamSpec" eSuperTypes="#//VarSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="dis">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="direction" eType="#//Direction"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Direction">
+    <eLiterals name="LEFT" literal="LEFT"/>
+    <eLiterals name="RIGHT" value="1" literal="RIGHT"/>
+    <eLiterals name="UP" value="2" literal="UP"/>
+    <eLiterals name="DOWN" value="3" literal="DOWN"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Expression"/>
   <eClassifiers xsi:type="ecore:EClass" name="IntLiteral" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -201,9 +218,6 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="y" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StringVal">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HelpSpecification">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="HelpTitle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -214,12 +228,15 @@
   <eClassifiers xsi:type="ecore:EClass" name="BackSpecification">
     <eStructuralFeatures xsi:type="ecore:EReference" name="BackgroundIcon" eType="#//BackgroundIcon"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BackGroundHeight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BackGroundWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BackGroundHeight" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="BackGroundWidth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BackgroundIcon">
     <eStructuralFeatures xsi:type="ecore:EReference" name="BackgroundTag" upperBound="-1"
         eType="#//BackgroundTag" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BackGroundSize">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="val" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="BackgroundTag">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -239,6 +256,9 @@
   <eClassifiers xsi:type="ecore:EClass" name="MusicPath">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="path" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StringVal">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Addition" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="left" eType="#//Expression"

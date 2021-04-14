@@ -3,16 +3,15 @@
  */
 package org.xtext.example.mydsl2.group16.scoping;
 
-import com.google.common.base.Objects;
-import java.util.List;
-import org.eclipse.emf.ecore.EClass;
+import java.util.Arrays;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
-import org.xtext.example.mydsl2.group16.greedySnake.GreedySnakePackage;
-import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin;
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
+import org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification;
+import org.xtext.example.mydsl2.group16.greedySnake.Move;
+import org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification;
 
 /**
  * This class contains custom scoping description.
@@ -21,17 +20,27 @@ import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin;
  * on how and when to use it.
  */
 @SuppressWarnings("all")
-public class GreedySnakeScopeProvider extends AbstractGreedySnakeScopeProvider {
-  @Override
-  public IScope getScope(final EObject context, final EReference reference) {
-    EClass _eReferenceType = reference.getEReferenceType();
-    boolean _equals = Objects.equal(_eReferenceType, GreedySnakePackage.Literals.INITIAL_SNAKE_SPECIFICATIN);
-    if (_equals) {
-      EObject rootElement = EcoreUtil2.getRootContainer(context);
-      List<? extends EObject> candidates = EcoreUtil2.<InitialSnakeSpecificatin>getAllContentsOfType(rootElement, InitialSnakeSpecificatin.class);
-      return Scopes.scopeFor(candidates);
+public class GreedySnakeScopeProvider extends AbstractDeclarativeScopeProvider {
+  public IScope scope_Move_dir(final Move context, final EReference ref) {
+    return this.visibleVariablesScope(context);
+  }
+  
+  protected IScope _visibleVariablesScope(final SnakeMoveSpecification sms) {
+    return this.visibleVariablesScope(sms.eContainer());
+  }
+  
+  protected IScope _visibleVariablesScope(final DirectionSpecification ds) {
+    return Scopes.scopeFor(ds.getDi());
+  }
+  
+  public IScope visibleVariablesScope(final EObject ds) {
+    if (ds instanceof DirectionSpecification) {
+      return _visibleVariablesScope((DirectionSpecification)ds);
+    } else if (ds instanceof SnakeMoveSpecification) {
+      return _visibleVariablesScope((SnakeMoveSpecification)ds);
     } else {
-      return super.getScope(context, reference);
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(ds).toString());
     }
   }
 }

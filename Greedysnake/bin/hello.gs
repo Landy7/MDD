@@ -20,9 +20,9 @@ game GreedySnake{
 		}
 	}
 	
-	snake Snake_initial {
+	snake snake_initial {
 		head = (0,0)
-		//locate--modify
+		//locate
 		headIcon {
 			HeadTag1 "emotion1" = 0
 			Locate : "head//head0.png"
@@ -35,7 +35,7 @@ game GreedySnake{
 			
 			HeadTag4 "emotion4" = 3
 			Locate : "head//head3.png"
-			
+				
 		}
 		Icon_size = 20
 		BodyIcon {
@@ -50,15 +50,35 @@ game GreedySnake{
 			
 			BodyTag4 "hello4" = 3
 			Locate : "body//body3.png"
+			
+			BodyTag5 "hello4" = 4
+			Locate : "body//body3.png"
 		}
 		
 		defaultSpeed = 300
 		snakeTag = 1
-//        states AllItemStates(head_Icon,nop)
 	}
 	
+	Direction{
+		up = UP
+		down = DOWN
+		left = LEFT
+		right = RIGHT
+	}
+	
+	snake move{
+		 if(direction = up)
+		 snakehead.y - 1
+		 if (direction = down)
+		 snakehead.y + 1
+		 if (direction = left)
+		 snakehead.x - 1
+		 if (direction = right)
+		 snakehead.x + 1
+	}
+	
+	//at least the 6 icon
 	food food_initial {
-		//modify
 		foodIcon {
 			FoodTag1 "kind1" = 0
 			Locate : "food//food1.png"
@@ -77,16 +97,17 @@ game GreedySnake{
 			
 			FoodTag6 "kind6" = 5
 			Locate : "food//food6.png"
+			
+			
 		}
 		Icon_size = 20
 		foodKind {
-			//problem
-			FoodTag1 : point = (0 * 2 + 1) + 1
+			FoodTag1 : point = (2 * 2) + 3.5
 			FoodTag2 : point = (1 * 10.5 + 3)
-			FoodTag3 : point = (2 * 10 + 3)
-			FoodTag4 : point = (3 * 10 + 3)
-			FoodTag5 : point = (4 * 10 + 3)
-			FoodTag6 : point = (5 * 10 + 3)
+			FoodTag3 : point = (2 * 10 + 3.5)
+			FoodTag4 : point = (3 + 2) + 2.5
+			FoodTag5 : point = (4 * 10 + 3.7)
+			FoodTag6 : point = (5 * 10 + 3.6)
 		}
 		//modify
 		randomFoodSize  Maxsize 8 Minsize 3
@@ -113,7 +134,6 @@ game GreedySnake{
 	timeLimited {
 	refresh_food = 10000
 	refresh_obstacle = 20000
-	
 	}
 		
 	Speed{
@@ -123,18 +143,19 @@ game GreedySnake{
 		crazy = 150
 	}
 	
-	about About{
+	about aboutContent {
 		Title : "About game"
 		Information  : "......"
 		Label_size : (410,380)
 	}
 	
-	help Help {
+	help helpContent {
 		Title : "Help"
 		Information : "......"
 		Label_size : (410,380)
 	}
 	
+	//at least 5 icon
 	backGround {
 		Icon {
 			BodyTag1 "desert" = 0
@@ -154,6 +175,7 @@ game GreedySnake{
 			
 			BodyTag4 "sky2" = 5
 			Locate  : "background//sky2.jpg"
+			
 		}
 		Height = 540
 		Width = 1000
@@ -164,5 +186,7 @@ game GreedySnake{
 		MusicOver  path =  "music//over.wav"
 		MusicExplode  path = "music//Explode.wav"
 		MusicEat  path = "music//eat.wav"
- 	} //音乐
+ 	} //music
+ 	
+ 	start  = init_field
 }       

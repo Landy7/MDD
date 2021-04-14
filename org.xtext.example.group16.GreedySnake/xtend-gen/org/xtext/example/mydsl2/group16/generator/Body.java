@@ -36,12 +36,11 @@ public class Body extends GeneralGenerator {
     _builder.append(".*;");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("//身体节点的数据结构");
     _builder.newLine();
     _builder.append("public class Body {");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("Coordinate coor;//坐标");
+    _builder.append("Coordinate coor;");
     _builder.newLine();
     _builder.append("\t");
     _builder.append("JLabel label;");

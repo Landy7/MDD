@@ -10,50 +10,50 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.xtext.example.mydsl2.group16.greedySnake.BackGroundSize;
 import org.xtext.example.mydsl2.group16.greedySnake.GreedySnakePackage;
-import org.xtext.example.mydsl2.group16.greedySnake.Maxsize;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Maxsize</b></em>'.
+ * An implementation of the model object '<em><b>Back Ground Size</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.MaxsizeImpl#getMinsize <em>Minsize</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.BackGroundSizeImpl#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class MaxsizeImpl extends MinimalEObjectImpl.Container implements Maxsize
+public class BackGroundSizeImpl extends MinimalEObjectImpl.Container implements BackGroundSize
 {
   /**
-   * The default value of the '{@link #getMinsize() <em>Minsize</em>}' attribute.
+   * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMinsize()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected static final int MINSIZE_EDEFAULT = 0;
+  protected static final int VAL_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getMinsize() <em>Minsize</em>}' attribute.
+   * The cached value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getMinsize()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected int minsize = MINSIZE_EDEFAULT;
+  protected int val = VAL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected MaxsizeImpl()
+  protected BackGroundSizeImpl()
   {
     super();
   }
@@ -66,7 +66,7 @@ public class MaxsizeImpl extends MinimalEObjectImpl.Container implements Maxsize
   @Override
   protected EClass eStaticClass()
   {
-    return GreedySnakePackage.Literals.MAXSIZE;
+    return GreedySnakePackage.Literals.BACK_GROUND_SIZE;
   }
 
   /**
@@ -75,9 +75,9 @@ public class MaxsizeImpl extends MinimalEObjectImpl.Container implements Maxsize
    * @generated
    */
   @Override
-  public int getMinsize()
+  public int getVal()
   {
-    return minsize;
+    return val;
   }
 
   /**
@@ -86,12 +86,12 @@ public class MaxsizeImpl extends MinimalEObjectImpl.Container implements Maxsize
    * @generated
    */
   @Override
-  public void setMinsize(int newMinsize)
+  public void setVal(int newVal)
   {
-    int oldMinsize = minsize;
-    minsize = newMinsize;
+    int oldVal = val;
+    val = newVal;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GreedySnakePackage.MAXSIZE__MINSIZE, oldMinsize, minsize));
+      eNotify(new ENotificationImpl(this, Notification.SET, GreedySnakePackage.BACK_GROUND_SIZE__VAL, oldVal, val));
   }
 
   /**
@@ -104,8 +104,8 @@ public class MaxsizeImpl extends MinimalEObjectImpl.Container implements Maxsize
   {
     switch (featureID)
     {
-      case GreedySnakePackage.MAXSIZE__MINSIZE:
-        return getMinsize();
+      case GreedySnakePackage.BACK_GROUND_SIZE__VAL:
+        return getVal();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +120,8 @@ public class MaxsizeImpl extends MinimalEObjectImpl.Container implements Maxsize
   {
     switch (featureID)
     {
-      case GreedySnakePackage.MAXSIZE__MINSIZE:
-        setMinsize((Integer)newValue);
+      case GreedySnakePackage.BACK_GROUND_SIZE__VAL:
+        setVal((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +137,8 @@ public class MaxsizeImpl extends MinimalEObjectImpl.Container implements Maxsize
   {
     switch (featureID)
     {
-      case GreedySnakePackage.MAXSIZE__MINSIZE:
-        setMinsize(MINSIZE_EDEFAULT);
+      case GreedySnakePackage.BACK_GROUND_SIZE__VAL:
+        setVal(VAL_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +154,8 @@ public class MaxsizeImpl extends MinimalEObjectImpl.Container implements Maxsize
   {
     switch (featureID)
     {
-      case GreedySnakePackage.MAXSIZE__MINSIZE:
-        return minsize != MINSIZE_EDEFAULT;
+      case GreedySnakePackage.BACK_GROUND_SIZE__VAL:
+        return val != VAL_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -171,10 +171,10 @@ public class MaxsizeImpl extends MinimalEObjectImpl.Container implements Maxsize
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (minsize: ");
-    result.append(minsize);
+    result.append(" (val: ");
+    result.append(val);
     result.append(')');
     return result.toString();
   }
 
-} //MaxsizeImpl
+} //BackGroundSizeImpl

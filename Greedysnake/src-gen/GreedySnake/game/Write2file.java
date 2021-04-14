@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Write2file {
-	//字符串写出到文本
+	
     public static void  Write2Txt(String str,String filepath) throws Exception{
         FileWriter fw = null;
         String path = filepath;

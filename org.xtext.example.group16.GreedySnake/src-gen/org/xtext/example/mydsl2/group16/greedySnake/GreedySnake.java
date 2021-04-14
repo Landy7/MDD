@@ -24,7 +24,9 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getFire <em>Fire</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getTime <em>Time</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getMap <em>Map</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getSnakeMove <em>Snake Move</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getAbout <em>About</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getDirections <em>Directions</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getHelp <em>Help</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getMusic <em>Music</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getBackgrounds <em>Backgrounds</em>}</li>
@@ -145,6 +147,18 @@ public interface GreedySnake extends EObject
   EList<GlobalMap> getMap();
 
   /**
+   * Returns the value of the '<em><b>Snake Move</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Snake Move</em>' containment reference list.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.GreedySnakePackage#getGreedySnake_SnakeMove()
+   * @model containment="true"
+   * @generated
+   */
+  EList<SnakeMoveSpecification> getSnakeMove();
+
+  /**
    * Returns the value of the '<em><b>About</b></em>' containment reference list.
    * The list contents are of type {@link org.xtext.example.mydsl2.group16.greedySnake.AboutSpecification}.
    * <!-- begin-user-doc -->
@@ -155,6 +169,18 @@ public interface GreedySnake extends EObject
    * @generated
    */
   EList<AboutSpecification> getAbout();
+
+  /**
+   * Returns the value of the '<em><b>Directions</b></em>' containment reference list.
+   * The list contents are of type {@link org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Directions</em>' containment reference list.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.GreedySnakePackage#getGreedySnake_Directions()
+   * @model containment="true"
+   * @generated
+   */
+  EList<DirectionSpecification> getDirections();
 
   /**
    * Returns the value of the '<em><b>Help</b></em>' containment reference list.

@@ -4,8 +4,12 @@
 package org.xtext.example.mydsl2.group16.validation;
 
 import org.eclipse.xtext.validation.Check;
+import org.xtext.example.mydsl2.group16.greedySnake.BackSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.GlobalFieldInitialisation;
 import org.xtext.example.mydsl2.group16.greedySnake.GreedySnakePackage;
+import org.xtext.example.mydsl2.group16.greedySnake.InitialFoodSpecificatin;
+import org.xtext.example.mydsl2.group16.greedySnake.InitialObstacleSpecificatin;
+import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin;
 import org.xtext.example.mydsl2.group16.typing.validation.GreedySnakeSystemValidator;
 
 /**
@@ -15,15 +19,100 @@ import org.xtext.example.mydsl2.group16.typing.validation.GreedySnakeSystemValid
  */
 @SuppressWarnings("all")
 public class GreedySnakeValidator extends GreedySnakeSystemValidator {
-  public static final String INVALID_NAME = "org.xtext.example.mydsl2.group16.greedySnake.INVALID_GLOBALFIELD_NAME";
+  public static final String INVALID_FIELD_NAME = "org.xtext.example.mydsl2.group16.greedySnake.INVALID_GLOBALFIELD_NAME";
+  
+  public static final String INVALID_SNAKE_NAME = "org.xtext.example.mydsl2.group16.greedySnake.INVALID_SNAKE_NAME";
+  
+  public static final String INVALID_FOOD_NAME = "org.xtext.example.mydsl2.group16.greedySnake.INVALID_FOOD_NAME";
+  
+  public static final String INVALID_OBSTACLE_NAME = "org.xtext.example.mydsl2.group16.greedySnake.INVALID_OBSTACLE_NAME";
+  
+  public static final String INVALID_WIDTH = "org.xtext.example.mydsl2.group16.greedySnake.INVALID_WIDTH";
+  
+  public static final String INVALID_SNAKE_TAG = "org.xtext.example.mydsl2.group16.greedySnake.INVALID_SNAKE_TAG";
+  
+  public static final String INVALID_FOOD_TAG = "org.xtext.example.mydsl2.group16.greedySnake.INVALID_FOOD_TAG";
+  
+  public static final String INVALID_OBSTACLE_TAG = "org.xtext.example.mydsl2.group16.greedySnake.INVALID_OBSTACLE_TAG";
   
   @Check
-  public void checkVariableStartWithLowerCase(final GlobalFieldInitialisation gfi) {
+  public void checkFieldStartWithLowerCase(final GlobalFieldInitialisation gfi) {
     boolean _isLowerCase = Character.isLowerCase(gfi.getName().charAt(0));
     boolean _not = (!_isLowerCase);
     if (_not) {
       this.warning("Name should start with a lower-case character", gfi, GreedySnakePackage.Literals.GLOBAL_FIELD_INITIALISATION__NAME, 
-        GreedySnakeValidator.INVALID_NAME);
+        GreedySnakeValidator.INVALID_FIELD_NAME);
+    }
+  }
+  
+  @Check
+  public void checkSnakeStartWithLowerCase(final InitialSnakeSpecificatin iss) {
+    boolean _isLowerCase = Character.isLowerCase(iss.getName().charAt(0));
+    boolean _not = (!_isLowerCase);
+    if (_not) {
+      this.warning("Name should start with a lower-case character", iss, GreedySnakePackage.Literals.INITIAL_SNAKE_SPECIFICATIN__NAME, 
+        GreedySnakeValidator.INVALID_SNAKE_NAME);
+    }
+  }
+  
+  @Check
+  public void checkFoodStartWithLowerCase(final InitialFoodSpecificatin ifs) {
+    boolean _isLowerCase = Character.isLowerCase(ifs.getName().charAt(0));
+    boolean _not = (!_isLowerCase);
+    if (_not) {
+      this.warning("Name should start with a lower-case character", ifs, GreedySnakePackage.Literals.INITIAL_FOOD_SPECIFICATIN__NAME, 
+        GreedySnakeValidator.INVALID_FOOD_NAME);
+    }
+  }
+  
+  @Check
+  public void checkObsatcleStartWithLowerCase(final InitialObstacleSpecificatin ios) {
+    boolean _isLowerCase = Character.isLowerCase(ios.getName().charAt(0));
+    boolean _not = (!_isLowerCase);
+    if (_not) {
+      this.warning("Name should start with a lower-case character", ios, GreedySnakePackage.Literals.INITIAL_OBSTACLE_SPECIFICATIN__NAME, 
+        GreedySnakeValidator.INVALID_OBSTACLE_NAME);
+    }
+  }
+  
+  @Check
+  public void checkTheTag(final InitialFoodSpecificatin ifs, final InitialObstacleSpecificatin ios, final InitialSnakeSpecificatin iss) {
+    ifs.getMembers().getFood().getFoodTag();
+    int _snakeTag = iss.getMembers().getSna().getSnakeTag();
+    boolean _tripleNotEquals = (_snakeTag != 1);
+    if (_tripleNotEquals) {
+      this.warning("Snake Tag must be 1", iss.getMembers(), 
+        GreedySnakePackage.Literals.SNAKE_INIT_DISPLAY__SNAKE_TAG, 
+        GreedySnakeValidator.INVALID_SNAKE_TAG);
+    }
+    int _foodTag = ifs.getMembers().getFood().getFoodTag();
+    boolean _tripleNotEquals_1 = (_foodTag != 2);
+    if (_tripleNotEquals_1) {
+      this.warning("Food Tag must be 2", ifs.getMembers(), 
+        GreedySnakePackage.Literals.FOOD_INIT_DISPLAY__FOOD_TAG, 
+        GreedySnakeValidator.INVALID_FOOD_TAG);
+    }
+    int _obstacleTag = ios.getMembers().getObstacle().getObstacleTag();
+    boolean _tripleNotEquals_2 = (_obstacleTag != 3);
+    if (_tripleNotEquals_2) {
+      this.warning("Obstacle Tag must be 3", ios.getMembers(), 
+        GreedySnakePackage.Literals.OBSTACLE_INIT_DISPLAY__OBSTACLE_TAG, 
+        GreedySnakeValidator.INVALID_OBSTACLE_TAG);
+    }
+  }
+  
+  @Check
+  public void checkHeightAndWeight(final GlobalFieldInitialisation gfi, final BackSpecification bs) {
+    int _labelWidth = gfi.getLabelWidth();
+    int _backGroundWidth = bs.getBackGroundWidth();
+    boolean _tripleNotEquals = (_labelWidth != _backGroundWidth);
+    if (_tripleNotEquals) {
+      this.warning("height of background and field should be the same", bs, 
+        GreedySnakePackage.Literals.BACK_SPECIFICATION__BACK_GROUND_WIDTH, 
+        GreedySnakeValidator.INVALID_WIDTH);
+      this.warning("height of background and field should be the same", gfi, 
+        GreedySnakePackage.Literals.GLOBAL_FIELD_INITIALISATION__LABEL_WIDTH, 
+        GreedySnakeValidator.INVALID_WIDTH);
     }
   }
 }

@@ -5,6 +5,7 @@ package org.xtext.example.mydsl2.group16.greedySnake.impl;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -12,12 +13,14 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.xtext.example.mydsl2.group16.greedySnake.AboutSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.Addition;
-import org.xtext.example.mydsl2.group16.greedySnake.AllItemVarSpec;
+import org.xtext.example.mydsl2.group16.greedySnake.BackGroundSize;
 import org.xtext.example.mydsl2.group16.greedySnake.BackSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.BackgroundIcon;
 import org.xtext.example.mydsl2.group16.greedySnake.BackgroundTag;
 import org.xtext.example.mydsl2.group16.greedySnake.BackgroundTagLocate;
 import org.xtext.example.mydsl2.group16.greedySnake.Default;
+import org.xtext.example.mydsl2.group16.greedySnake.Direction;
+import org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.Expression;
 import org.xtext.example.mydsl2.group16.greedySnake.FireInitDisplay;
 import org.xtext.example.mydsl2.group16.greedySnake.FireMembers;
@@ -40,8 +43,7 @@ import org.xtext.example.mydsl2.group16.greedySnake.InitialObstacleSpecificatin;
 import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin;
 import org.xtext.example.mydsl2.group16.greedySnake.InitialSpeedSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.IntLiteral;
-import org.xtext.example.mydsl2.group16.greedySnake.Maxsize;
-import org.xtext.example.mydsl2.group16.greedySnake.Minsize;
+import org.xtext.example.mydsl2.group16.greedySnake.Move;
 import org.xtext.example.mydsl2.group16.greedySnake.Multiplication;
 import org.xtext.example.mydsl2.group16.greedySnake.MusicPath;
 import org.xtext.example.mydsl2.group16.greedySnake.MusicSpecification;
@@ -49,17 +51,17 @@ import org.xtext.example.mydsl2.group16.greedySnake.ObstacleInitDisplay;
 import org.xtext.example.mydsl2.group16.greedySnake.ObstacleMembers;
 import org.xtext.example.mydsl2.group16.greedySnake.ObstacleTime;
 import org.xtext.example.mydsl2.group16.greedySnake.OptionSpecification;
-import org.xtext.example.mydsl2.group16.greedySnake.ParamSpec;
 import org.xtext.example.mydsl2.group16.greedySnake.RandomFoodSize;
 import org.xtext.example.mydsl2.group16.greedySnake.RealLiteral;
 import org.xtext.example.mydsl2.group16.greedySnake.RestartMenu;
 import org.xtext.example.mydsl2.group16.greedySnake.SnakeInitDisplay;
 import org.xtext.example.mydsl2.group16.greedySnake.SnakeMembers;
+import org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.SpeedGroup;
 import org.xtext.example.mydsl2.group16.greedySnake.StartFieldDeclaration;
 import org.xtext.example.mydsl2.group16.greedySnake.StringVal;
 import org.xtext.example.mydsl2.group16.greedySnake.TimeLimited;
-import org.xtext.example.mydsl2.group16.greedySnake.VarSpec;
+import org.xtext.example.mydsl2.group16.greedySnake.dis;
 
 /**
  * <!-- begin-user-doc -->
@@ -179,6 +181,20 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass snakeMoveSpecificationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass moveEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass fireInitDisplayEClass = null;
 
   /**
@@ -235,20 +251,6 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass minsizeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass maxsizeEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass timeLimitedEClass = null;
 
   /**
@@ -270,21 +272,14 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass varSpecEClass = null;
+  private EClass directionSpecificationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass allItemVarSpecEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass paramSpecEClass = null;
+  private EClass disEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -340,13 +335,6 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass stringValEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   private EClass helpSpecificationEClass = null;
 
   /**
@@ -362,6 +350,13 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   private EClass backgroundIconEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass backGroundSizeEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -396,6 +391,13 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass stringValEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass additionEClass = null;
 
   /**
@@ -404,6 +406,13 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   private EClass multiplicationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum directionEEnum = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -573,7 +582,7 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EReference getGreedySnake_About()
+  public EReference getGreedySnake_SnakeMove()
   {
     return (EReference)greedySnakeEClass.getEStructuralFeatures().get(8);
   }
@@ -584,7 +593,7 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EReference getGreedySnake_Help()
+  public EReference getGreedySnake_About()
   {
     return (EReference)greedySnakeEClass.getEStructuralFeatures().get(9);
   }
@@ -595,7 +604,7 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EReference getGreedySnake_Music()
+  public EReference getGreedySnake_Directions()
   {
     return (EReference)greedySnakeEClass.getEStructuralFeatures().get(10);
   }
@@ -606,7 +615,7 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EReference getGreedySnake_Backgrounds()
+  public EReference getGreedySnake_Help()
   {
     return (EReference)greedySnakeEClass.getEStructuralFeatures().get(11);
   }
@@ -617,7 +626,7 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EReference getGreedySnake_Fields()
+  public EReference getGreedySnake_Music()
   {
     return (EReference)greedySnakeEClass.getEStructuralFeatures().get(12);
   }
@@ -628,9 +637,31 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EReference getGreedySnake_Options()
+  public EReference getGreedySnake_Backgrounds()
   {
     return (EReference)greedySnakeEClass.getEStructuralFeatures().get(13);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGreedySnake_Fields()
+  {
+    return (EReference)greedySnakeEClass.getEStructuralFeatures().get(14);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getGreedySnake_Options()
+  {
+    return (EReference)greedySnakeEClass.getEStructuralFeatures().get(15);
   }
 
   /**
@@ -1178,6 +1209,94 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
+  public EClass getSnakeMoveSpecification()
+  {
+    return snakeMoveSpecificationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSnakeMoveSpecification_IF()
+  {
+    return (EReference)snakeMoveSpecificationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMove()
+  {
+    return moveEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMove_Dir()
+  {
+    return (EReference)moveEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMove_Name()
+  {
+    return (EAttribute)moveEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMove_Coor()
+  {
+    return (EAttribute)moveEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMove_Operator()
+  {
+    return (EAttribute)moveEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getMove_MoveVal()
+  {
+    return (EAttribute)moveEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getFireInitDisplay()
   {
     return fireInitDisplayEClass;
@@ -1563,50 +1682,6 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EClass getMinsize()
-  {
-    return minsizeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getMinsize_Maxsize()
-  {
-    return (EAttribute)minsizeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EClass getMaxsize()
-  {
-    return maxsizeEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getMaxsize_Minsize()
-  {
-    return (EAttribute)maxsizeEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getTimeLimited()
   {
     return timeLimitedEClass;
@@ -1673,9 +1748,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EClass getVarSpec()
+  public EClass getDirectionSpecification()
   {
-    return varSpecEClass;
+    return directionSpecificationEClass;
   }
 
   /**
@@ -1684,9 +1759,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EAttribute getVarSpec_Type()
+  public EReference getDirectionSpecification_Di()
   {
-    return (EAttribute)varSpecEClass.getEStructuralFeatures().get(0);
+    return (EReference)directionSpecificationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1695,9 +1770,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EAttribute getVarSpec_Name()
+  public EClass getdis()
   {
-    return (EAttribute)varSpecEClass.getEStructuralFeatures().get(1);
+    return disEClass;
   }
 
   /**
@@ -1706,9 +1781,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EClass getAllItemVarSpec()
+  public EAttribute getdis_Name()
   {
-    return allItemVarSpecEClass;
+    return (EAttribute)disEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1717,9 +1792,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EClass getParamSpec()
+  public EAttribute getdis_Direction()
   {
-    return paramSpecEClass;
+    return (EAttribute)disEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1893,28 +1968,6 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
-  public EClass getStringVal()
-  {
-    return stringValEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getStringVal_Value()
-  {
-    return (EAttribute)stringValEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getHelpSpecification()
   {
     return helpSpecificationEClass;
@@ -2039,6 +2092,28 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
   public EReference getBackgroundIcon_BackgroundTag()
   {
     return (EReference)backgroundIconEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBackGroundSize()
+  {
+    return backGroundSizeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getBackGroundSize_Val()
+  {
+    return (EAttribute)backGroundSizeEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -2201,6 +2276,28 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
+  public EClass getStringVal()
+  {
+    return stringValEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStringVal_Value()
+  {
+    return (EAttribute)stringValEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getAddition()
   {
     return additionEClass;
@@ -2289,6 +2386,17 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
    * @generated
    */
   @Override
+  public EEnum getDirection()
+  {
+    return directionEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public GreedySnakeFactory getGreedySnakeFactory()
   {
     return (GreedySnakeFactory)getEFactoryInstance();
@@ -2323,7 +2431,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     createEReference(greedySnakeEClass, GREEDY_SNAKE__FIRE);
     createEReference(greedySnakeEClass, GREEDY_SNAKE__TIME);
     createEReference(greedySnakeEClass, GREEDY_SNAKE__MAP);
+    createEReference(greedySnakeEClass, GREEDY_SNAKE__SNAKE_MOVE);
     createEReference(greedySnakeEClass, GREEDY_SNAKE__ABOUT);
+    createEReference(greedySnakeEClass, GREEDY_SNAKE__DIRECTIONS);
     createEReference(greedySnakeEClass, GREEDY_SNAKE__HELP);
     createEReference(greedySnakeEClass, GREEDY_SNAKE__MUSIC);
     createEReference(greedySnakeEClass, GREEDY_SNAKE__BACKGROUNDS);
@@ -2393,6 +2503,16 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     obstacleMembersEClass = createEClass(OBSTACLE_MEMBERS);
     createEReference(obstacleMembersEClass, OBSTACLE_MEMBERS__OBSTACLE);
 
+    snakeMoveSpecificationEClass = createEClass(SNAKE_MOVE_SPECIFICATION);
+    createEReference(snakeMoveSpecificationEClass, SNAKE_MOVE_SPECIFICATION__IF);
+
+    moveEClass = createEClass(MOVE);
+    createEReference(moveEClass, MOVE__DIR);
+    createEAttribute(moveEClass, MOVE__NAME);
+    createEAttribute(moveEClass, MOVE__COOR);
+    createEAttribute(moveEClass, MOVE__OPERATOR);
+    createEAttribute(moveEClass, MOVE__MOVE_VAL);
+
     fireInitDisplayEClass = createEClass(FIRE_INIT_DISPLAY);
     createEReference(fireInitDisplayEClass, FIRE_INIT_DISPLAY__FIRE_ICON);
     createEAttribute(fireInitDisplayEClass, FIRE_INIT_DISPLAY__ICONSIZE);
@@ -2436,12 +2556,6 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     createEAttribute(randomFoodSizeEClass, RANDOM_FOOD_SIZE__MAXSIZE);
     createEAttribute(randomFoodSizeEClass, RANDOM_FOOD_SIZE__MINSIZE);
 
-    minsizeEClass = createEClass(MINSIZE);
-    createEAttribute(minsizeEClass, MINSIZE__MAXSIZE);
-
-    maxsizeEClass = createEClass(MAXSIZE);
-    createEAttribute(maxsizeEClass, MAXSIZE__MINSIZE);
-
     timeLimitedEClass = createEClass(TIME_LIMITED);
     createEAttribute(timeLimitedEClass, TIME_LIMITED__NAME);
 
@@ -2451,13 +2565,12 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     foodTimeEClass = createEClass(FOOD_TIME);
     createEAttribute(foodTimeEClass, FOOD_TIME__FOOD_TIME);
 
-    varSpecEClass = createEClass(VAR_SPEC);
-    createEAttribute(varSpecEClass, VAR_SPEC__TYPE);
-    createEAttribute(varSpecEClass, VAR_SPEC__NAME);
+    directionSpecificationEClass = createEClass(DIRECTION_SPECIFICATION);
+    createEReference(directionSpecificationEClass, DIRECTION_SPECIFICATION__DI);
 
-    allItemVarSpecEClass = createEClass(ALL_ITEM_VAR_SPEC);
-
-    paramSpecEClass = createEClass(PARAM_SPEC);
+    disEClass = createEClass(DIS);
+    createEAttribute(disEClass, DIS__NAME);
+    createEAttribute(disEClass, DIS__DIRECTION);
 
     expressionEClass = createEClass(EXPRESSION);
 
@@ -2481,9 +2594,6 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     createEAttribute(aboutSpecificationEClass, ABOUT_SPECIFICATION__X);
     createEAttribute(aboutSpecificationEClass, ABOUT_SPECIFICATION__Y);
 
-    stringValEClass = createEClass(STRING_VAL);
-    createEAttribute(stringValEClass, STRING_VAL__VALUE);
-
     helpSpecificationEClass = createEClass(HELP_SPECIFICATION);
     createEAttribute(helpSpecificationEClass, HELP_SPECIFICATION__NAME);
     createEAttribute(helpSpecificationEClass, HELP_SPECIFICATION__HELP_TITLE);
@@ -2498,6 +2608,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
 
     backgroundIconEClass = createEClass(BACKGROUND_ICON);
     createEReference(backgroundIconEClass, BACKGROUND_ICON__BACKGROUND_TAG);
+
+    backGroundSizeEClass = createEClass(BACK_GROUND_SIZE);
+    createEAttribute(backGroundSizeEClass, BACK_GROUND_SIZE__VAL);
 
     backgroundTagEClass = createEClass(BACKGROUND_TAG);
     createEAttribute(backgroundTagEClass, BACKGROUND_TAG__NAME);
@@ -2517,6 +2630,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     createEAttribute(musicPathEClass, MUSIC_PATH__NAME);
     createEAttribute(musicPathEClass, MUSIC_PATH__PATH);
 
+    stringValEClass = createEClass(STRING_VAL);
+    createEAttribute(stringValEClass, STRING_VAL__VALUE);
+
     additionEClass = createEClass(ADDITION);
     createEReference(additionEClass, ADDITION__LEFT);
     createEAttribute(additionEClass, ADDITION__OPERATOR);
@@ -2526,6 +2642,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     createEReference(multiplicationEClass, MULTIPLICATION__LEFT);
     createEAttribute(multiplicationEClass, MULTIPLICATION__OPERATOR);
     createEReference(multiplicationEClass, MULTIPLICATION__RIGHT);
+
+    // Create enums
+    directionEEnum = createEEnum(DIRECTION);
   }
 
   /**
@@ -2559,8 +2678,6 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     // Add supertypes to classes
     obstacleTimeEClass.getESuperTypes().add(this.getTimeLimited());
     foodTimeEClass.getESuperTypes().add(this.getTimeLimited());
-    allItemVarSpecEClass.getESuperTypes().add(this.getVarSpec());
-    paramSpecEClass.getESuperTypes().add(this.getVarSpec());
     intLiteralEClass.getESuperTypes().add(this.getExpression());
     realLiteralEClass.getESuperTypes().add(this.getExpression());
     restartMenuEClass.getESuperTypes().add(this.getOptionSpecification());
@@ -2578,7 +2695,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     initEReference(getGreedySnake_Fire(), this.getInitialFireSpecification(), null, "fire", null, 0, -1, GreedySnake.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGreedySnake_Time(), this.getTimeLimited(), null, "time", null, 0, -1, GreedySnake.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGreedySnake_Map(), this.getGlobalMap(), null, "Map", null, 0, -1, GreedySnake.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGreedySnake_SnakeMove(), this.getSnakeMoveSpecification(), null, "SnakeMove", null, 0, -1, GreedySnake.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGreedySnake_About(), this.getAboutSpecification(), null, "about", null, 0, -1, GreedySnake.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getGreedySnake_Directions(), this.getDirectionSpecification(), null, "directions", null, 0, -1, GreedySnake.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGreedySnake_Help(), this.getHelpSpecification(), null, "Help", null, 0, -1, GreedySnake.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGreedySnake_Music(), this.getMusicSpecification(), null, "Music", null, 0, -1, GreedySnake.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getGreedySnake_Backgrounds(), this.getBackSpecification(), null, "Backgrounds", null, 0, -1, GreedySnake.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2648,6 +2767,16 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     initEClass(obstacleMembersEClass, ObstacleMembers.class, "ObstacleMembers", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getObstacleMembers_Obstacle(), this.getObstacleInitDisplay(), null, "obstacle", null, 0, 1, ObstacleMembers.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(snakeMoveSpecificationEClass, SnakeMoveSpecification.class, "SnakeMoveSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSnakeMoveSpecification_IF(), this.getMove(), null, "IF", null, 0, -1, SnakeMoveSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(moveEClass, Move.class, "Move", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMove_Dir(), this.getdis(), null, "dir", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMove_Name(), ecorePackage.getEString(), "name", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMove_Coor(), ecorePackage.getEString(), "coor", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMove_Operator(), ecorePackage.getEString(), "operator", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getMove_MoveVal(), ecorePackage.getEInt(), "moveVal", null, 0, 1, Move.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(fireInitDisplayEClass, FireInitDisplay.class, "FireInitDisplay", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFireInitDisplay_FireIcon(), this.getIconTag(), null, "FireIcon", null, 0, -1, FireInitDisplay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFireInitDisplay_Iconsize(), ecorePackage.getEString(), "Iconsize", null, 0, 1, FireInitDisplay.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2691,12 +2820,6 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     initEAttribute(getRandomFoodSize_Maxsize(), ecorePackage.getEInt(), "maxsize", null, 0, 1, RandomFoodSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getRandomFoodSize_Minsize(), ecorePackage.getEInt(), "minsize", null, 0, 1, RandomFoodSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(minsizeEClass, Minsize.class, "Minsize", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMinsize_Maxsize(), ecorePackage.getEInt(), "maxsize", null, 0, 1, Minsize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(maxsizeEClass, Maxsize.class, "Maxsize", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getMaxsize_Minsize(), ecorePackage.getEInt(), "minsize", null, 0, 1, Maxsize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(timeLimitedEClass, TimeLimited.class, "TimeLimited", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTimeLimited_Name(), ecorePackage.getEString(), "name", null, 0, 1, TimeLimited.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -2706,13 +2829,12 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     initEClass(foodTimeEClass, FoodTime.class, "FoodTime", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFoodTime_FoodTime(), ecorePackage.getEInt(), "FoodTime", null, 0, 1, FoodTime.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(varSpecEClass, VarSpec.class, "VarSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVarSpec_Type(), ecorePackage.getEString(), "type", null, 0, 1, VarSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getVarSpec_Name(), ecorePackage.getEString(), "name", null, 0, 1, VarSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(directionSpecificationEClass, DirectionSpecification.class, "DirectionSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getDirectionSpecification_Di(), this.getdis(), null, "di", null, 0, -1, DirectionSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(allItemVarSpecEClass, AllItemVarSpec.class, "AllItemVarSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(paramSpecEClass, ParamSpec.class, "ParamSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(disEClass, dis.class, "dis", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getdis_Name(), ecorePackage.getEString(), "name", null, 0, 1, dis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getdis_Direction(), this.getDirection(), "direction", null, 0, 1, dis.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -2736,9 +2858,6 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     initEAttribute(getAboutSpecification_X(), ecorePackage.getEInt(), "x", null, 0, 1, AboutSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAboutSpecification_Y(), ecorePackage.getEInt(), "y", null, 0, 1, AboutSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(stringValEClass, StringVal.class, "StringVal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStringVal_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringVal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
     initEClass(helpSpecificationEClass, HelpSpecification.class, "HelpSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getHelpSpecification_Name(), ecorePackage.getEString(), "name", null, 0, 1, HelpSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getHelpSpecification_HelpTitle(), ecorePackage.getEString(), "HelpTitle", null, 0, 1, HelpSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2748,11 +2867,14 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
 
     initEClass(backSpecificationEClass, BackSpecification.class, "BackSpecification", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBackSpecification_BackgroundIcon(), this.getBackgroundIcon(), null, "BackgroundIcon", null, 0, 1, BackSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getBackSpecification_BackGroundHeight(), ecorePackage.getEString(), "BackGroundHeight", null, 0, 1, BackSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getBackSpecification_BackGroundWidth(), ecorePackage.getEString(), "BackGroundWidth", null, 0, 1, BackSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBackSpecification_BackGroundHeight(), ecorePackage.getEInt(), "BackGroundHeight", null, 0, 1, BackSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBackSpecification_BackGroundWidth(), ecorePackage.getEInt(), "BackGroundWidth", null, 0, 1, BackSpecification.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(backgroundIconEClass, BackgroundIcon.class, "BackgroundIcon", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getBackgroundIcon_BackgroundTag(), this.getBackgroundTag(), null, "BackgroundTag", null, 0, -1, BackgroundIcon.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(backGroundSizeEClass, BackGroundSize.class, "BackGroundSize", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBackGroundSize_Val(), ecorePackage.getEInt(), "val", null, 0, 1, BackGroundSize.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(backgroundTagEClass, BackgroundTag.class, "BackgroundTag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getBackgroundTag_Name(), ecorePackage.getEString(), "name", null, 0, 1, BackgroundTag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2772,6 +2894,9 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     initEAttribute(getMusicPath_Name(), ecorePackage.getEString(), "name", null, 0, 1, MusicPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMusicPath_Path(), ecorePackage.getEString(), "path", null, 0, 1, MusicPath.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(stringValEClass, StringVal.class, "StringVal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringVal_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringVal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(additionEClass, Addition.class, "Addition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAddition_Left(), this.getExpression(), null, "left", null, 0, 1, Addition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAddition_Operator(), ecorePackage.getEString(), "operator", null, 0, -1, Addition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2781,6 +2906,13 @@ public class GreedySnakePackageImpl extends EPackageImpl implements GreedySnakeP
     initEReference(getMultiplication_Left(), this.getExpression(), null, "left", null, 0, 1, Multiplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getMultiplication_Operator(), ecorePackage.getEString(), "operator", null, 0, -1, Multiplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getMultiplication_Right(), this.getExpression(), null, "right", null, 0, -1, Multiplication.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    // Initialize enums and add enum literals
+    initEEnum(directionEEnum, Direction.class, "Direction");
+    addEEnumLiteral(directionEEnum, Direction.LEFT);
+    addEEnumLiteral(directionEEnum, Direction.RIGHT);
+    addEEnumLiteral(directionEEnum, Direction.UP);
+    addEEnumLiteral(directionEEnum, Direction.DOWN);
 
     // Create resource
     createResource(eNS_URI);

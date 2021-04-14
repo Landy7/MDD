@@ -24,9 +24,6 @@ public class Coordinate extends GeneralGenerator {
     _builder.append(";");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("//坐标数据结构，用于表示蛇身体，食物，障碍物的坐标");
-    _builder.newLine();
-    _builder.append("//这里的坐标用方块的序号表示，实际显示时再换成屏幕真实坐标(即像素点)");
     _builder.newLine();
     _builder.append("public class Coordinate {");
     _builder.newLine();

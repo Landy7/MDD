@@ -10,6 +10,8 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.CrossReference;
+import org.eclipse.xtext.EnumLiteralDeclaration;
+import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
 import org.eclipse.xtext.Group;
@@ -46,39 +48,41 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final RuleCall cTimeTimeLimitedParserRuleCall_3_5_0 = (RuleCall)cTimeAssignment_3_5.eContents().get(0);
 		private final Assignment cMapAssignment_3_6 = (Assignment)cAlternatives_3.eContents().get(6);
 		private final RuleCall cMapGlobalMapParserRuleCall_3_6_0 = (RuleCall)cMapAssignment_3_6.eContents().get(0);
-		private final Assignment cAboutAssignment_3_7 = (Assignment)cAlternatives_3.eContents().get(7);
-		private final RuleCall cAboutAboutSpecificationParserRuleCall_3_7_0 = (RuleCall)cAboutAssignment_3_7.eContents().get(0);
-		private final Assignment cHelpAssignment_3_8 = (Assignment)cAlternatives_3.eContents().get(8);
-		private final RuleCall cHelpHelpSpecificationParserRuleCall_3_8_0 = (RuleCall)cHelpAssignment_3_8.eContents().get(0);
-		private final Assignment cMusicAssignment_3_9 = (Assignment)cAlternatives_3.eContents().get(9);
-		private final RuleCall cMusicMusicSpecificationParserRuleCall_3_9_0 = (RuleCall)cMusicAssignment_3_9.eContents().get(0);
-		private final Assignment cBackgroundsAssignment_3_10 = (Assignment)cAlternatives_3.eContents().get(10);
-		private final RuleCall cBackgroundsBackSpecificationParserRuleCall_3_10_0 = (RuleCall)cBackgroundsAssignment_3_10.eContents().get(0);
-		private final Assignment cFieldsAssignment_3_11 = (Assignment)cAlternatives_3.eContents().get(11);
-		private final RuleCall cFieldsGlobalFieldInitialisationParserRuleCall_3_11_0 = (RuleCall)cFieldsAssignment_3_11.eContents().get(0);
-		private final Assignment cOptionsAssignment_3_12 = (Assignment)cAlternatives_3.eContents().get(12);
-		private final RuleCall cOptionsOptionSpecificationParserRuleCall_3_12_0 = (RuleCall)cOptionsAssignment_3_12.eContents().get(0);
+		private final Assignment cSnakeMoveAssignment_3_7 = (Assignment)cAlternatives_3.eContents().get(7);
+		private final RuleCall cSnakeMoveSnakeMoveSpecificationParserRuleCall_3_7_0 = (RuleCall)cSnakeMoveAssignment_3_7.eContents().get(0);
+		private final Assignment cAboutAssignment_3_8 = (Assignment)cAlternatives_3.eContents().get(8);
+		private final RuleCall cAboutAboutSpecificationParserRuleCall_3_8_0 = (RuleCall)cAboutAssignment_3_8.eContents().get(0);
+		private final Assignment cDirectionsAssignment_3_9 = (Assignment)cAlternatives_3.eContents().get(9);
+		private final RuleCall cDirectionsDirectionSpecificationParserRuleCall_3_9_0 = (RuleCall)cDirectionsAssignment_3_9.eContents().get(0);
+		private final Assignment cHelpAssignment_3_10 = (Assignment)cAlternatives_3.eContents().get(10);
+		private final RuleCall cHelpHelpSpecificationParserRuleCall_3_10_0 = (RuleCall)cHelpAssignment_3_10.eContents().get(0);
+		private final Assignment cMusicAssignment_3_11 = (Assignment)cAlternatives_3.eContents().get(11);
+		private final RuleCall cMusicMusicSpecificationParserRuleCall_3_11_0 = (RuleCall)cMusicAssignment_3_11.eContents().get(0);
+		private final Assignment cBackgroundsAssignment_3_12 = (Assignment)cAlternatives_3.eContents().get(12);
+		private final RuleCall cBackgroundsBackSpecificationParserRuleCall_3_12_0 = (RuleCall)cBackgroundsAssignment_3_12.eContents().get(0);
+		private final Assignment cFieldsAssignment_3_13 = (Assignment)cAlternatives_3.eContents().get(13);
+		private final RuleCall cFieldsGlobalFieldInitialisationParserRuleCall_3_13_0 = (RuleCall)cFieldsAssignment_3_13.eContents().get(0);
+		private final Assignment cOptionsAssignment_3_14 = (Assignment)cAlternatives_3.eContents().get(14);
+		private final RuleCall cOptionsOptionSpecificationParserRuleCall_3_14_0 = (RuleCall)cOptionsAssignment_3_14.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		////xtext里面显示的应该都是静态的东西，比如图像，长宽什么的，都是固定的
 		//GreedySnake:
-		//	// 需要增加help/about/background/music/SnakeSpeed/map
 		//	"game" name=ID "{" (snakes+=InitialSnakeSpecificatin | foods+=InitialFoodSpecificatin |
 		//	obstacles+=InitialObstacleSpecificatin | speed+=InitialSpeedSpecification | fire+=InitialFireSpecification |
-		//	time+=TimeLimited | Map+=GlobalMap | about+=AboutSpecification | Help+=HelpSpecification | Music+=MusicSpecification
-		//	| Backgrounds+=BackSpecification | fields+=GlobalFieldInitialisation | options+=OptionSpecification)+
+		//	time+=TimeLimited | Map+=GlobalMap | SnakeMove+=SnakeMoveSpecification | about+=AboutSpecification |
+		//	directions+=DirectionSpecification | Help+=HelpSpecification | Music+=MusicSpecification |
+		//	Backgrounds+=BackSpecification | fields+=GlobalFieldInitialisation | options+=OptionSpecification)+
 		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//// 需要增加help/about/background/music/SnakeSpeed/map
 		//"game" name=ID "{" (snakes+=InitialSnakeSpecificatin | foods+=InitialFoodSpecificatin |
 		//obstacles+=InitialObstacleSpecificatin | speed+=InitialSpeedSpecification | fire+=InitialFireSpecification |
-		//time+=TimeLimited | Map+=GlobalMap | about+=AboutSpecification | Help+=HelpSpecification | Music+=MusicSpecification |
+		//time+=TimeLimited | Map+=GlobalMap | SnakeMove+=SnakeMoveSpecification | about+=AboutSpecification |
+		//directions+=DirectionSpecification | Help+=HelpSpecification | Music+=MusicSpecification |
 		//Backgrounds+=BackSpecification | fields+=GlobalFieldInitialisation | options+=OptionSpecification)+
 		//"}"
 		public Group getGroup() { return cGroup; }
 		
-		//// 需要增加help/about/background/music/SnakeSpeed/map
 		//"game"
 		public Keyword getGameKeyword_0() { return cGameKeyword_0; }
 		
@@ -93,8 +97,9 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		
 		//(snakes+=InitialSnakeSpecificatin | foods+=InitialFoodSpecificatin | obstacles+=InitialObstacleSpecificatin |
 		//speed+=InitialSpeedSpecification | fire+=InitialFireSpecification | time+=TimeLimited | Map+=GlobalMap |
-		//about+=AboutSpecification | Help+=HelpSpecification | Music+=MusicSpecification | Backgrounds+=BackSpecification |
-		//fields+=GlobalFieldInitialisation | options+=OptionSpecification)+
+		//SnakeMove+=SnakeMoveSpecification | about+=AboutSpecification | directions+=DirectionSpecification |
+		//Help+=HelpSpecification | Music+=MusicSpecification | Backgrounds+=BackSpecification | fields+=GlobalFieldInitialisation
+		//| options+=OptionSpecification)+
 		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
 		//snakes+=InitialSnakeSpecificatin
@@ -139,41 +144,53 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//GlobalMap
 		public RuleCall getMapGlobalMapParserRuleCall_3_6_0() { return cMapGlobalMapParserRuleCall_3_6_0; }
 		
+		//SnakeMove+=SnakeMoveSpecification
+		public Assignment getSnakeMoveAssignment_3_7() { return cSnakeMoveAssignment_3_7; }
+		
+		//SnakeMoveSpecification
+		public RuleCall getSnakeMoveSnakeMoveSpecificationParserRuleCall_3_7_0() { return cSnakeMoveSnakeMoveSpecificationParserRuleCall_3_7_0; }
+		
 		//about+=AboutSpecification
-		public Assignment getAboutAssignment_3_7() { return cAboutAssignment_3_7; }
+		public Assignment getAboutAssignment_3_8() { return cAboutAssignment_3_8; }
 		
 		//AboutSpecification
-		public RuleCall getAboutAboutSpecificationParserRuleCall_3_7_0() { return cAboutAboutSpecificationParserRuleCall_3_7_0; }
+		public RuleCall getAboutAboutSpecificationParserRuleCall_3_8_0() { return cAboutAboutSpecificationParserRuleCall_3_8_0; }
+		
+		//directions+=DirectionSpecification
+		public Assignment getDirectionsAssignment_3_9() { return cDirectionsAssignment_3_9; }
+		
+		//DirectionSpecification
+		public RuleCall getDirectionsDirectionSpecificationParserRuleCall_3_9_0() { return cDirectionsDirectionSpecificationParserRuleCall_3_9_0; }
 		
 		//Help+=HelpSpecification
-		public Assignment getHelpAssignment_3_8() { return cHelpAssignment_3_8; }
+		public Assignment getHelpAssignment_3_10() { return cHelpAssignment_3_10; }
 		
 		//HelpSpecification
-		public RuleCall getHelpHelpSpecificationParserRuleCall_3_8_0() { return cHelpHelpSpecificationParserRuleCall_3_8_0; }
+		public RuleCall getHelpHelpSpecificationParserRuleCall_3_10_0() { return cHelpHelpSpecificationParserRuleCall_3_10_0; }
 		
 		//Music+=MusicSpecification
-		public Assignment getMusicAssignment_3_9() { return cMusicAssignment_3_9; }
+		public Assignment getMusicAssignment_3_11() { return cMusicAssignment_3_11; }
 		
 		//MusicSpecification
-		public RuleCall getMusicMusicSpecificationParserRuleCall_3_9_0() { return cMusicMusicSpecificationParserRuleCall_3_9_0; }
+		public RuleCall getMusicMusicSpecificationParserRuleCall_3_11_0() { return cMusicMusicSpecificationParserRuleCall_3_11_0; }
 		
 		//Backgrounds+=BackSpecification
-		public Assignment getBackgroundsAssignment_3_10() { return cBackgroundsAssignment_3_10; }
+		public Assignment getBackgroundsAssignment_3_12() { return cBackgroundsAssignment_3_12; }
 		
 		//BackSpecification
-		public RuleCall getBackgroundsBackSpecificationParserRuleCall_3_10_0() { return cBackgroundsBackSpecificationParserRuleCall_3_10_0; }
+		public RuleCall getBackgroundsBackSpecificationParserRuleCall_3_12_0() { return cBackgroundsBackSpecificationParserRuleCall_3_12_0; }
 		
 		//fields+=GlobalFieldInitialisation
-		public Assignment getFieldsAssignment_3_11() { return cFieldsAssignment_3_11; }
+		public Assignment getFieldsAssignment_3_13() { return cFieldsAssignment_3_13; }
 		
 		//GlobalFieldInitialisation
-		public RuleCall getFieldsGlobalFieldInitialisationParserRuleCall_3_11_0() { return cFieldsGlobalFieldInitialisationParserRuleCall_3_11_0; }
+		public RuleCall getFieldsGlobalFieldInitialisationParserRuleCall_3_13_0() { return cFieldsGlobalFieldInitialisationParserRuleCall_3_13_0; }
 		
 		//options+=OptionSpecification
-		public Assignment getOptionsAssignment_3_12() { return cOptionsAssignment_3_12; }
+		public Assignment getOptionsAssignment_3_14() { return cOptionsAssignment_3_14; }
 		
 		//OptionSpecification
-		public RuleCall getOptionsOptionSpecificationParserRuleCall_3_12_0() { return cOptionsOptionSpecificationParserRuleCall_3_12_0; }
+		public RuleCall getOptionsOptionSpecificationParserRuleCall_3_14_0() { return cOptionsOptionSpecificationParserRuleCall_3_14_0; }
 		
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
@@ -241,13 +258,11 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final RuleCall cField_initialisationInitialFieldParserRuleCall_21_0 = (RuleCall)cField_initialisationAssignment_21.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_22 = (Keyword)cGroup.eContents().get(22);
 		
-		////初始界面---随机障碍，食物
-		////因为没有设计简单/困难模式 所以就只有一个field
 		//GlobalFieldInitialisation:
 		//	"field" name=ID "{"
-		//	// 画布的宽
+		//	// the width of panel
 		//	"Panel_width" "=" panelWidth=INT // 900
-		//	// 画布的长
+		//	// the height of panel
 		//	"Panel_Height" "=" panelHeight=INT // 480
 		//	"column" "=" width=INT // 40
 		//	"row" "=" height=INT // 21
@@ -258,9 +273,9 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		@Override public ParserRule getRule() { return rule; }
 		
 		//"field" name=ID "{"
-		//// 画布的宽
+		//// the width of panel
 		//"Panel_width" "=" panelWidth=INT // 900
-		//// 画布的长
+		//// the height of panel
 		//"Panel_Height" "=" panelHeight=INT // 480
 		//"column" "=" width=INT // 40
 		//"row" "=" height=INT // 21
@@ -282,7 +297,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//"{"
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
-		//// 画布的宽
+		//// the width of panel
 		//"Panel_width"
 		public Keyword getPanel_widthKeyword_3() { return cPanel_widthKeyword_3; }
 		
@@ -296,7 +311,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		public RuleCall getPanelWidthINTTerminalRuleCall_5_0() { return cPanelWidthINTTerminalRuleCall_5_0; }
 		
 		//// 900
-		//// 画布的长
+		//// the height of panel
 		//"Panel_Height"
 		public Keyword getPanel_HeightKeyword_6() { return cPanel_HeightKeyword_6; }
 		
@@ -386,14 +401,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final RuleCall cDefaultDefaultParserRuleCall_7_0 = (RuleCall)cDefaultAssignment_7.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
-		////FieldInitailisation:
-		////	ref = initFieldReference | init = InitialField
-		////;
-		////
-		////initFieldReference:
-		////	"init" fieldRef=[InitialField] "(" ")"
-		////;
-		////关键字default
 		//InitialField:
 		//	"init" name=ID "(" ")" "{"
 		//	"Default" ":" Default=Default
@@ -557,19 +564,16 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final RuleCall cMultiplesInitialSnakeSpecificatinIDTerminalRuleCall_5_0_1 = (RuleCall)cMultiplesInitialSnakeSpecificatinCrossReference_5_0.eContents().get(1);
 		
 		//InitialSnakeSpecificatin:
-		//	// headIcon 4个， bodyIcon 4个， 身体节点为1， Icon大小为20(height/width)， default speed 为300
 		//	"snake" name=ID "{"
 		//	members=SnakeMembers
 		//	"}" Multiples+=[InitialSnakeSpecificatin]?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//// headIcon 4个， bodyIcon 4个， 身体节点为1， Icon大小为20(height/width)， default speed 为300
 		//"snake" name=ID "{"
 		//members=SnakeMembers
 		//"}" Multiples+=[InitialSnakeSpecificatin]?
 		public Group getGroup() { return cGroup; }
 		
-		//// headIcon 4个， bodyIcon 4个， 身体节点为1， Icon大小为20(height/width)， default speed 为300
 		//"snake"
 		public Keyword getSnakeKeyword_0() { return cSnakeKeyword_0; }
 		
@@ -813,7 +817,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cValueINTTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
-		////example: run = 200
 		//SpeedGroup:
 		//	name=ID "=" value=INT;
 		@Override public ParserRule getRule() { return rule; }
@@ -896,6 +899,146 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//ObstacleInitDisplay
 		public RuleCall getObstacleObstacleInitDisplayParserRuleCall_0() { return cObstacleObstacleInitDisplayParserRuleCall_0; }
 	}
+	public class SnakeMoveSpecificationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.SnakeMoveSpecification");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cSnakeMoveSpecificationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cSnakeKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cMoveKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cIFAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cIFMoveParserRuleCall_4_0 = (RuleCall)cIFAssignment_4.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//SnakeMoveSpecification:
+		//	{SnakeMoveSpecification} "snake" "move" "{"
+		//	IF+=Move*
+		//	"}";
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{SnakeMoveSpecification} "snake" "move" "{"
+		//IF+=Move*
+		//"}"
+		public Group getGroup() { return cGroup; }
+		
+		//{SnakeMoveSpecification}
+		public Action getSnakeMoveSpecificationAction_0() { return cSnakeMoveSpecificationAction_0; }
+		
+		//"snake"
+		public Keyword getSnakeKeyword_1() { return cSnakeKeyword_1; }
+		
+		//"move"
+		public Keyword getMoveKeyword_2() { return cMoveKeyword_2; }
+		
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
+		
+		//IF+=Move*
+		public Assignment getIFAssignment_4() { return cIFAssignment_4; }
+		
+		//Move
+		public RuleCall getIFMoveParserRuleCall_4_0() { return cIFMoveParserRuleCall_4_0; }
+		
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
+	}
+	public class MoveElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.Move");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cIfKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cDirectionKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Keyword cEqualsSignKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cDirAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cDirDisCrossReference_4_0 = (CrossReference)cDirAssignment_4.eContents().get(0);
+		private final RuleCall cDirDisIDTerminalRuleCall_4_0_1 = (RuleCall)cDirDisCrossReference_4_0.eContents().get(1);
+		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cNameIDTerminalRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
+		private final Keyword cFullStopKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Assignment cCoorAssignment_8 = (Assignment)cGroup.eContents().get(8);
+		private final Alternatives cCoorAlternatives_8_0 = (Alternatives)cCoorAssignment_8.eContents().get(0);
+		private final Keyword cCoorXKeyword_8_0_0 = (Keyword)cCoorAlternatives_8_0.eContents().get(0);
+		private final Keyword cCoorYKeyword_8_0_1 = (Keyword)cCoorAlternatives_8_0.eContents().get(1);
+		private final Assignment cOperatorAssignment_9 = (Assignment)cGroup.eContents().get(9);
+		private final Alternatives cOperatorAlternatives_9_0 = (Alternatives)cOperatorAssignment_9.eContents().get(0);
+		private final Keyword cOperatorPlusSignKeyword_9_0_0 = (Keyword)cOperatorAlternatives_9_0.eContents().get(0);
+		private final Keyword cOperatorHyphenMinusKeyword_9_0_1 = (Keyword)cOperatorAlternatives_9_0.eContents().get(1);
+		private final Assignment cMoveValAssignment_10 = (Assignment)cGroup.eContents().get(10);
+		private final RuleCall cMoveValINTTerminalRuleCall_10_0 = (RuleCall)cMoveValAssignment_10.eContents().get(0);
+		
+		//Move:
+		//	"if" "(" "direction" "=" dir=[dis] ")"
+		//	name=ID "." coor=("x" | "y") operator=("+" | "-") moveVal=INT;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//"if" "(" "direction" "=" dir=[dis] ")"
+		//name=ID "." coor=("x" | "y") operator=("+" | "-") moveVal=INT
+		public Group getGroup() { return cGroup; }
+		
+		//"if"
+		public Keyword getIfKeyword_0() { return cIfKeyword_0; }
+		
+		//"("
+		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
+		
+		//"direction"
+		public Keyword getDirectionKeyword_2() { return cDirectionKeyword_2; }
+		
+		//"="
+		public Keyword getEqualsSignKeyword_3() { return cEqualsSignKeyword_3; }
+		
+		//dir=[dis]
+		public Assignment getDirAssignment_4() { return cDirAssignment_4; }
+		
+		//[dis]
+		public CrossReference getDirDisCrossReference_4_0() { return cDirDisCrossReference_4_0; }
+		
+		//ID
+		public RuleCall getDirDisIDTerminalRuleCall_4_0_1() { return cDirDisIDTerminalRuleCall_4_0_1; }
+		
+		//")"
+		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
+		
+		//name=ID
+		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_6_0() { return cNameIDTerminalRuleCall_6_0; }
+		
+		//"."
+		public Keyword getFullStopKeyword_7() { return cFullStopKeyword_7; }
+		
+		//coor=("x" | "y")
+		public Assignment getCoorAssignment_8() { return cCoorAssignment_8; }
+		
+		//("x" | "y")
+		public Alternatives getCoorAlternatives_8_0() { return cCoorAlternatives_8_0; }
+		
+		//"x"
+		public Keyword getCoorXKeyword_8_0_0() { return cCoorXKeyword_8_0_0; }
+		
+		//"y"
+		public Keyword getCoorYKeyword_8_0_1() { return cCoorYKeyword_8_0_1; }
+		
+		//operator=("+" | "-")
+		public Assignment getOperatorAssignment_9() { return cOperatorAssignment_9; }
+		
+		//("+" | "-")
+		public Alternatives getOperatorAlternatives_9_0() { return cOperatorAlternatives_9_0; }
+		
+		//"+"
+		public Keyword getOperatorPlusSignKeyword_9_0_0() { return cOperatorPlusSignKeyword_9_0_0; }
+		
+		//"-"
+		public Keyword getOperatorHyphenMinusKeyword_9_0_1() { return cOperatorHyphenMinusKeyword_9_0_1; }
+		
+		//moveVal=INT
+		public Assignment getMoveValAssignment_10() { return cMoveValAssignment_10; }
+		
+		//INT
+		public RuleCall getMoveValINTTerminalRuleCall_10_0() { return cMoveValINTTerminalRuleCall_10_0; }
+	}
 	public class FireInitDisplayElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.FireInitDisplay");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -909,14 +1052,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cIconsizeAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cIconsizeIconSizeParserRuleCall_6_0 = (RuleCall)cIconsizeAssignment_6.eContents().get(0);
 		
-		////Members:
-		////	sna += SnakeInitDisplay |
-		////	FoodInitDisplay |
-		////	ObstacleInitDisplay |
-		////	AllItemDisplaySpec |
-		////	AllItemVarSpec|
-		////	AllItemStateSpec
-		////;
 		//FireInitDisplay:
 		//	"FireIcon" "{" FireIcon+=IconTag* "}"
 		//	"Icon_size" "=" Iconsize=IconSize // 20
@@ -990,14 +1125,12 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cSnakeTagAssignment_23 = (Assignment)cGroup.eContents().get(23);
 		private final RuleCall cSnakeTagINTTerminalRuleCall_23_0 = (RuleCall)cSnakeTagAssignment_23.eContents().get(0);
 		
-		////头部位置,头部设计的Icon和身体的位置与Icon
 		//SnakeInitDisplay:
 		//	"head" "=" head="(" initial_x=INT "," initial_y=INT ")" // (0,0)
 		//	"headIcon" "{" headIcon+=IconTag* "}"
 		//	"Icon_size" "=" Iconsize=IconSize // 20
 		//	"BodyIcon" "{" BodyIcon+=IconTag* "}"
-		////	"headIcon" headIcon = AllItemVarSpec "=" locate=STRING
-		//	"defaultSpeed" "=" defaultSpeed=INT // 需要改
+		//	"defaultSpeed" "=" defaultSpeed=INT
 		//	"snakeTag" "=" snakeTag=INT // 1
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -1006,8 +1139,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//"headIcon" "{" headIcon+=IconTag* "}"
 		//"Icon_size" "=" Iconsize=IconSize // 20
 		//"BodyIcon" "{" BodyIcon+=IconTag* "}"
-		////	"headIcon" headIcon = AllItemVarSpec "=" locate=STRING
-		//"defaultSpeed" "=" defaultSpeed=INT // 需要改
+		//"defaultSpeed" "=" defaultSpeed=INT
 		//"snakeTag" "=" snakeTag=INT
 		public Group getGroup() { return cGroup; }
 		
@@ -1085,7 +1217,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_17() { return cRightCurlyBracketKeyword_17; }
 		
-		////	"headIcon" headIcon = AllItemVarSpec "=" locate=STRING
 		//"defaultSpeed"
 		public Keyword getDefaultSpeedKeyword_18() { return cDefaultSpeedKeyword_18; }
 		
@@ -1098,7 +1229,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//INT
 		public RuleCall getDefaultSpeedINTTerminalRuleCall_20_0() { return cDefaultSpeedINTTerminalRuleCall_20_0; }
 		
-		//// 需要改
 		//"snakeTag"
 		public Keyword getSnakeTagKeyword_21() { return cSnakeTagKeyword_21; }
 		
@@ -1118,7 +1248,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cIconTagAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cIconTagIconTagParserRuleCall_1_0 = (RuleCall)cIconTagAssignment_1.eContents().get(0);
 		
-		////定义头部image的一些东西--4个tag,分别0,1,2,3
 		//Icon:
 		//	{Icon} IconTag+=IconTag*;
 		@Override public ParserRule getRule() { return rule; }
@@ -1161,7 +1290,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cLocateAssignment_6 = (Assignment)cGroup.eContents().get(6);
 		private final RuleCall cLocateSTRINGTerminalRuleCall_6_0 = (RuleCall)cLocateAssignment_6.eContents().get(0);
 		
-		////example: tag1 "xixi" = 1
 		//IconTag:
 		//	name=ID value=STRING "=" tag=INT
 		//	"Locate" ":" Locate=STRING // 图像地址
@@ -1230,24 +1358,19 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cFoodTagAssignment_15 = (Assignment)cGroup.eContents().get(15);
 		private final RuleCall cFoodTagINTTerminalRuleCall_15_0 = (RuleCall)cFoodTagAssignment_15.eContents().get(0);
 		
-		////locate locateTag1 = "..//.."
-		////IconLocate:
-		////	"Locate" "=" Locate=STRING
-		////;
-		////食物设计Icon与locate的设计 ---与上面一样,foodTag有6个
 		//FoodInitDisplay:
-		//	"foodIcon" "{" foodIcon+=IconTag* "}" // 设置foodImage和filePath----可能定义有问题
+		//	"foodIcon" "{" foodIcon+=IconTag* "}"
 		//	"Icon_size" "=" Iconsize=IconSize // 20
-		//	"foodKind" "{" foodKind+=FoodKind* "}" // 食物种类并且对应分数
-		//	"randomFoodSize" produce=RandomFoodSize // 产生food的最大值，最小值
+		//	"foodKind" "{" foodKind+=FoodKind* "}"
+		//	"randomFoodSize" produce=RandomFoodSize
 		//	"foodTag" "=" foodTag=INT // 2
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"foodIcon" "{" foodIcon+=IconTag* "}" // 设置foodImage和filePath----可能定义有问题
+		//"foodIcon" "{" foodIcon+=IconTag* "}"
 		//"Icon_size" "=" Iconsize=IconSize // 20
-		//"foodKind" "{" foodKind+=FoodKind* "}" // 食物种类并且对应分数
-		//"randomFoodSize" produce=RandomFoodSize // 产生food的最大值，最小值
+		//"foodKind" "{" foodKind+=FoodKind* "}"
+		//"randomFoodSize" produce=RandomFoodSize
 		//"foodTag" "=" foodTag=INT
 		public Group getGroup() { return cGroup; }
 		
@@ -1266,7 +1389,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 		
-		//// 设置foodImage和filePath----可能定义有问题
 		//"Icon_size"
 		public Keyword getIcon_sizeKeyword_4() { return cIcon_sizeKeyword_4; }
 		
@@ -1295,7 +1417,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_10() { return cRightCurlyBracketKeyword_10; }
 		
-		//// 食物种类并且对应分数
 		//"randomFoodSize"
 		public Keyword getRandomFoodSizeKeyword_11() { return cRandomFoodSizeKeyword_11; }
 		
@@ -1305,7 +1426,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//RandomFoodSize
 		public RuleCall getProduceRandomFoodSizeParserRuleCall_12_0() { return cProduceRandomFoodSizeParserRuleCall_12_0; }
 		
-		//// 产生food的最大值，最小值
 		//"foodTag"
 		public Keyword getFoodTagKeyword_13() { return cFoodTagKeyword_13; }
 		
@@ -1379,9 +1499,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cObstacleTagAssignment_9 = (Assignment)cGroup.eContents().get(9);
 		private final RuleCall cObstacleTagINTTerminalRuleCall_9_0 = (RuleCall)cObstacleTagAssignment_9.eContents().get(0);
 		
-		////障碍设计
 		////locate
-		////需要改----Icon filepath 的设计
 		//ObstacleInitDisplay:
 		//	"ObstacleIcon" "{" ObstacleIcon+=IconTag* "}"
 		//	"Icon_size" "=" Iconsize=IconSize
@@ -1470,52 +1588,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//INT
 		public RuleCall getMinsizeINTTerminalRuleCall_3_0() { return cMinsizeINTTerminalRuleCall_3_0; }
 	}
-	public class MinsizeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.Minsize");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cMaxsizeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cMaxsizeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cMaxsizeINTTerminalRuleCall_1_0 = (RuleCall)cMaxsizeAssignment_1.eContents().get(0);
-		
-		//Minsize:
-		//	"Maxsize" maxsize=INT;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"Maxsize" maxsize=INT
-		public Group getGroup() { return cGroup; }
-		
-		//"Maxsize"
-		public Keyword getMaxsizeKeyword_0() { return cMaxsizeKeyword_0; }
-		
-		//maxsize=INT
-		public Assignment getMaxsizeAssignment_1() { return cMaxsizeAssignment_1; }
-		
-		//INT
-		public RuleCall getMaxsizeINTTerminalRuleCall_1_0() { return cMaxsizeINTTerminalRuleCall_1_0; }
-	}
-	public class MaxsizeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.Maxsize");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cMinsizeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cMinsizeAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cMinsizeINTTerminalRuleCall_1_0 = (RuleCall)cMinsizeAssignment_1.eContents().get(0);
-		
-		//Maxsize:
-		//	"Minsize" minsize=INT;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"Minsize" minsize=INT
-		public Group getGroup() { return cGroup; }
-		
-		//"Minsize"
-		public Keyword getMinsizeKeyword_0() { return cMinsizeKeyword_0; }
-		
-		//minsize=INT
-		public Assignment getMinsizeAssignment_1() { return cMinsizeAssignment_1; }
-		
-		//INT
-		public RuleCall getMinsizeINTTerminalRuleCall_1_0() { return cMinsizeINTTerminalRuleCall_1_0; }
-	}
 	public class TimeLimitedElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.TimeLimited");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -1527,7 +1599,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final RuleCall cObstacleTimeParserRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
 		
-		////时间限制
+		////time limited
 		//TimeLimited:
 		//	"timeLimited" "{"
 		//	FoodTime | ObstacleTime
@@ -1624,143 +1696,75 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//INT
 		public RuleCall getFoodTimeINTTerminalRuleCall_2_0() { return cFoodTimeINTTerminalRuleCall_2_0; }
 	}
-	public class VarSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.VarSpec");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cAllItemVarSpecParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cParamSpecParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//////所有东西的状态---可以传label参数
-		////GlobalAllItemStateSpec:
-		////	"states" name=ID ("(" params += ParamSpec ( "," params += ParamSpec)*")") "{"
-		////			states += AllItemState+
-		////			"start" "=" start = [AllItemState]
-		////	"}"
-		////;
-		//////所有东西的状态
-		////AllItemState:
-		////	name=ID "{"
-		////		display = AllItemDisplaySpec
-		////		("Restart" "{"
-		////			restart += RestartMenu
-		////		 "}")?
-		////		 ("Obstacle_Refresh" "{"
-		////			//每隔2000s刷新
-		////			refresh += ObstacleRefresh
-		////		 "}")?
-		////		 ("food_Refresh" "{"
-		////			//每隔2000s产生新的food
-		////			refresh += FoodRefresh
-		////		 "}")?
-		////	"}"
-		////;
-		//////到时间就重新刷新obstacle
-		////ObstacleRefresh:
-		////	"time" "limited" "=" time=[ObstacleTime]
-		////	"random" "refresh" random=[InitialObstacleSpecificatin]
-		////;
-		////
-		//////到时间就增加food并且random出现
-		////FoodRefresh: 
-		////	"time" "limited" "=" time=[FoodTime]
-		////	"add" "random"":" random=[InitialFoodSpecificatin] size = RandomFoodSize
-		////;
-		////
-		//////显示label---也就是在画板上的图片
-		////AllItemDisplaySpec:
-		////	"display" "{"
-		////		"as" display_type="label"
-		////		"var" var = [VarSpec]
-		////	"}"
-		////;
-		//VarSpec:
-		//	AllItemVarSpec | ParamSpec;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//AllItemVarSpec | ParamSpec
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//AllItemVarSpec
-		public RuleCall getAllItemVarSpecParserRuleCall_0() { return cAllItemVarSpecParserRuleCall_0; }
-		
-		//ParamSpec
-		public RuleCall getParamSpecParserRuleCall_1() { return cParamSpecParserRuleCall_1; }
-	}
-	public class AllItemVarSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.AllItemVarSpec");
+	public class DirectionSpecificationElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.DirectionSpecification");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Alternatives cTypeAlternatives_0_0 = (Alternatives)cTypeAssignment_0.eContents().get(0);
-		private final Keyword cTypeIntKeyword_0_0_0 = (Keyword)cTypeAlternatives_0_0.eContents().get(0);
-		private final Keyword cTypeStringKeyword_0_0_1 = (Keyword)cTypeAlternatives_0_0.eContents().get(1);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Action cDirectionSpecificationAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cDirectionKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cDiAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cDiDisParserRuleCall_3_0 = (RuleCall)cDiAssignment_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		////变量---显示label(参考discovered)--在不同内部定义的变量
-		//AllItemVarSpec:
-		//	type=("int" | "String") name=ID;
+		//DirectionSpecification:
+		//	{DirectionSpecification} "Direction" "{"
+		//	di+=dis*
+		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 		
-		//type=("int" | "String") name=ID
+		//{DirectionSpecification} "Direction" "{"
+		//di+=dis*
+		//"}"
 		public Group getGroup() { return cGroup; }
 		
-		//type=("int" | "String")
-		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		//{DirectionSpecification}
+		public Action getDirectionSpecificationAction_0() { return cDirectionSpecificationAction_0; }
 		
-		//("int" | "String")
-		public Alternatives getTypeAlternatives_0_0() { return cTypeAlternatives_0_0; }
+		//"Direction"
+		public Keyword getDirectionKeyword_1() { return cDirectionKeyword_1; }
 		
-		//"int"
-		public Keyword getTypeIntKeyword_0_0_0() { return cTypeIntKeyword_0_0_0; }
+		//"{"
+		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 		
-		//"String"
-		public Keyword getTypeStringKeyword_0_0_1() { return cTypeStringKeyword_0_0_1; }
+		//di+=dis*
+		public Assignment getDiAssignment_3() { return cDiAssignment_3; }
 		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		//dis
+		public RuleCall getDiDisParserRuleCall_3_0() { return cDiDisParserRuleCall_3_0; }
 		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		//"}"
+		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
-	public class ParamSpecElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.ParamSpec");
+	public class DisElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.dis");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Alternatives cTypeAlternatives_0_0 = (Alternatives)cTypeAssignment_0.eContents().get(0);
-		private final Keyword cTypeIntKeyword_0_0_0 = (Keyword)cTypeAlternatives_0_0.eContents().get(0);
-		private final Keyword cTypeStringKeyword_0_0_1 = (Keyword)cTypeAlternatives_0_0.eContents().get(1);
-		private final Keyword cTypeBehaviourKeyword_0_0_2 = (Keyword)cTypeAlternatives_0_0.eContents().get(2);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
+		private final Keyword cEqualsSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cDirectionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cDirectionDirectionEnumRuleCall_2_0 = (RuleCall)cDirectionAssignment_2.eContents().get(0);
 		
-		////普通参数--形式参数
-		//ParamSpec:
-		//	type=("int" | "String" | "Behaviour") name=ID;
+		//dis:
+		//	name=ID "=" direction=Direction;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//type=("int" | "String" | "Behaviour") name=ID
+		//name=ID "=" direction=Direction
 		public Group getGroup() { return cGroup; }
 		
-		//type=("int" | "String" | "Behaviour")
-		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
-		
-		//("int" | "String" | "Behaviour")
-		public Alternatives getTypeAlternatives_0_0() { return cTypeAlternatives_0_0; }
-		
-		//"int"
-		public Keyword getTypeIntKeyword_0_0_0() { return cTypeIntKeyword_0_0_0; }
-		
-		//"String"
-		public Keyword getTypeStringKeyword_0_0_1() { return cTypeStringKeyword_0_0_1; }
-		
-		//"Behaviour"
-		public Keyword getTypeBehaviourKeyword_0_0_2() { return cTypeBehaviourKeyword_0_0_2; }
-		
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		
+		//"="
+		public Keyword getEqualsSignKeyword_1() { return cEqualsSignKeyword_1; }
+		
+		//direction=Direction
+		public Assignment getDirectionAssignment_2() { return cDirectionAssignment_2; }
+		
+		//Direction
+		public RuleCall getDirectionDirectionEnumRuleCall_2_0() { return cDirectionDirectionEnumRuleCall_2_0; }
 	}
 	public class AdditionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.Addition");
@@ -1775,22 +1779,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightMultiplicationParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
-		////AllItemStateSpec:
-		////	AllItemStateSpecReference |LocalAllItemStateSpec 
-		////;
-		//////单独所有的状态
-		////LocalAllItemStateSpec:
-		////	"states" "{"
-		////		states+=AllItemState+
-		////		
-		////		"start" "=" start=[AllItemState]
-		////	"}"
-		////;
-		////
-		//////调用states方法
-		////AllItemStateSpecReference:
-		////	"states" stateSpec=[GlobalAllItemStateSpec] ("(" params += Value ("," params += Value )*")")?
-		////;
 		//Addition Expression:
 		//	Multiplication ({Addition.left=current} operator+=("+" | "-") right+=Multiplication)*;
 		@Override public ParserRule getRule() { return rule; }
@@ -1968,28 +1956,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final RuleCall cStartFieldDeclarationParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cRestartMenuParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		////VarRef:
-		////	ref = [AllItemVarSpec]
-		////;
-		////
-		////DirectBehaviour:
-		////	EndGameBehaviour |
-		////	NoOpBehaviour {NoOpBehaviour}
-		////;
-		////
-		//////没有任何behaviour
-		////NoOpBehaviour :
-		////	"nop" 
-		////;
-		////
-		////IntValue:
-		////	value = INT
-		////;
-		////
-		////StringValue:
-		////	value = STRING
-		////;
-		////选择---开始和重新开始菜单
 		//OptionSpecification:
 		//	StartFieldDeclaration | RestartMenu;
 		@Override public ParserRule getRule() { return rule; }
@@ -2009,19 +1975,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Keyword cRestartGameKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Action cRestartMenuAction_1 = (Action)cGroup.eContents().get(1);
 		
-		////AllItemsStateBehavior:
-		////	DirectBehaviour |
-		////	BehaviourReference
-		////;
-		////
-		////BehaviourReference:
-		////	ref = [VarSpec]
-		////;
-		////
-		////
-		////EndGameBehaviour:
-		////	"failed" "(" message=STRING ")"
-		////;
 		//RestartMenu:
 		//	"restartGame" {RestartMenu};
 		@Override public ParserRule getRule() { return rule; }
@@ -2176,22 +2129,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_16() { return cRightCurlyBracketKeyword_16; }
 	}
-	public class StringValElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.StringVal");
-		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
-		
-		////不能重复很多次
-		//StringVal:
-		//	value=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//value=STRING
-		public Assignment getValueAssignment() { return cValueAssignment; }
-		
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_0() { return cValueSTRINGTerminalRuleCall_0; }
-	}
 	public class HelpSpecificationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.HelpSpecification");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -2315,25 +2252,25 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Keyword cHeightKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Keyword cEqualsSignKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		private final Assignment cBackGroundHeightAssignment_8 = (Assignment)cGroup.eContents().get(8);
-		private final RuleCall cBackGroundHeightBackGroundSizeParserRuleCall_8_0 = (RuleCall)cBackGroundHeightAssignment_8.eContents().get(0);
+		private final RuleCall cBackGroundHeightINTTerminalRuleCall_8_0 = (RuleCall)cBackGroundHeightAssignment_8.eContents().get(0);
 		private final Keyword cWidthKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		private final Keyword cEqualsSignKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		private final Assignment cBackGroundWidthAssignment_11 = (Assignment)cGroup.eContents().get(11);
-		private final RuleCall cBackGroundWidthBackGroundSizeParserRuleCall_11_0 = (RuleCall)cBackGroundWidthAssignment_11.eContents().get(0);
+		private final RuleCall cBackGroundWidthINTTerminalRuleCall_11_0 = (RuleCall)cBackGroundWidthAssignment_11.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cGroup.eContents().get(12);
 		
 		//BackSpecification:
 		//	"backGround" "{"
-		//	"Icon" "{" BackgroundIcon=BackgroundIcon "}" // 背景图片的一些detail
-		//	"Height" "=" BackGroundHeight=BackGroundSize // 高
-		//	"Width" "=" BackGroundWidth=BackGroundSize // 宽
+		//	"Icon" "{" BackgroundIcon=BackgroundIcon "}" // the detail of background
+		//	"Height" "=" BackGroundHeight=INT // height
+		//	"Width" "=" BackGroundWidth=INT // width
 		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 		
 		//"backGround" "{"
-		//"Icon" "{" BackgroundIcon=BackgroundIcon "}" // 背景图片的一些detail
-		//"Height" "=" BackGroundHeight=BackGroundSize // 高
-		//"Width" "=" BackGroundWidth=BackGroundSize // 宽
+		//"Icon" "{" BackgroundIcon=BackgroundIcon "}" // the detail of background
+		//"Height" "=" BackGroundHeight=INT // height
+		//"Width" "=" BackGroundWidth=INT // width
 		//"}"
 		public Group getGroup() { return cGroup; }
 		
@@ -2358,33 +2295,33 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 		
-		//// 背景图片的一些detail
+		//// the detail of background
 		//"Height"
 		public Keyword getHeightKeyword_6() { return cHeightKeyword_6; }
 		
 		//"="
 		public Keyword getEqualsSignKeyword_7() { return cEqualsSignKeyword_7; }
 		
-		//BackGroundHeight=BackGroundSize
+		//BackGroundHeight=INT
 		public Assignment getBackGroundHeightAssignment_8() { return cBackGroundHeightAssignment_8; }
 		
-		//BackGroundSize
-		public RuleCall getBackGroundHeightBackGroundSizeParserRuleCall_8_0() { return cBackGroundHeightBackGroundSizeParserRuleCall_8_0; }
+		//INT
+		public RuleCall getBackGroundHeightINTTerminalRuleCall_8_0() { return cBackGroundHeightINTTerminalRuleCall_8_0; }
 		
-		//// 高
+		//// height
 		//"Width"
 		public Keyword getWidthKeyword_9() { return cWidthKeyword_9; }
 		
 		//"="
 		public Keyword getEqualsSignKeyword_10() { return cEqualsSignKeyword_10; }
 		
-		//BackGroundWidth=BackGroundSize
+		//BackGroundWidth=INT
 		public Assignment getBackGroundWidthAssignment_11() { return cBackGroundWidthAssignment_11; }
 		
-		//BackGroundSize
-		public RuleCall getBackGroundWidthBackGroundSizeParserRuleCall_11_0() { return cBackGroundWidthBackGroundSizeParserRuleCall_11_0; }
+		//INT
+		public RuleCall getBackGroundWidthINTTerminalRuleCall_11_0() { return cBackGroundWidthINTTerminalRuleCall_11_0; }
 		
-		//// 宽
+		//// width
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
 	}
@@ -2395,7 +2332,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		private final Assignment cBackgroundTagAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cBackgroundTagBackgroundTagParserRuleCall_1_0 = (RuleCall)cBackgroundTagAssignment_1.eContents().get(0);
 		
-		////定义头部image的一些东西--4个tag,分别0,1,2,3
 		//BackgroundIcon:
 		//	{BackgroundIcon} BackgroundTag+=BackgroundTag*;
 		@Override public ParserRule getRule() { return rule; }
@@ -2414,14 +2350,18 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	public class BackGroundSizeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.BackGroundSize");
-		private final RuleCall cINTTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		private final Assignment cValAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValINTTerminalRuleCall_0 = (RuleCall)cValAssignment.eContents().get(0);
 		
 		//BackGroundSize:
-		//	INT;
+		//	val=INT;
 		@Override public ParserRule getRule() { return rule; }
 		
+		//val=INT
+		public Assignment getValAssignment() { return cValAssignment; }
+		
 		//INT
-		public RuleCall getINTTerminalRuleCall() { return cINTTerminalRuleCall; }
+		public RuleCall getValINTTerminalRuleCall_0() { return cValINTTerminalRuleCall_0; }
 	}
 	public class BackgroundTagElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.BackgroundTag");
@@ -2441,7 +2381,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		////example: tag1 "xixi" = 1
 		//BackgroundTag:
 		//	name=ID value=STRING "=" BKtag=INT
-		//	"Locate" ":" locate=STRING // 图像地址
+		//	"Locate" ":" locate=STRING // filepath
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -2535,8 +2475,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//	"Music" "{"
 		//	"BufferSize" "=" buffersize=INT
 		//	MusicPath+=MusicPath*
-		//	"}" // 音乐的路径
-		//;
+		//	"}";
 		@Override public ParserRule getRule() { return rule; }
 		
 		//"Music" "{"
@@ -2607,7 +2546,65 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		//STRING
 		public RuleCall getPathSTRINGTerminalRuleCall_3_0() { return cPathSTRINGTerminalRuleCall_3_0; }
 	}
+	public class StringValElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.StringVal");
+		private final Assignment cValueAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_0 = (RuleCall)cValueAssignment.eContents().get(0);
+		
+		//StringVal:
+		//	value=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//value=STRING
+		public Assignment getValueAssignment() { return cValueAssignment; }
+		
+		//STRING
+		public RuleCall getValueSTRINGTerminalRuleCall_0() { return cValueSTRINGTerminalRuleCall_0; }
+	}
 	
+	public class DirectionElements extends AbstractElementFinder.AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl2.group16.GreedySnake.Direction");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cLEFTEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cLEFTLEFTKeyword_0_0 = (Keyword)cLEFTEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cRIGHTEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cRIGHTRIGHTKeyword_1_0 = (Keyword)cRIGHTEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cUPEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cUPUPKeyword_2_0 = (Keyword)cUPEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cDOWNEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cDOWNDOWNKeyword_3_0 = (Keyword)cDOWNEnumLiteralDeclaration_3.eContents().get(0);
+		
+		//enum Direction:
+		//	LEFT | RIGHT | UP | DOWN;
+		public EnumRule getRule() { return rule; }
+		
+		//LEFT | RIGHT | UP | DOWN
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//LEFT
+		public EnumLiteralDeclaration getLEFTEnumLiteralDeclaration_0() { return cLEFTEnumLiteralDeclaration_0; }
+		
+		//"LEFT"
+		public Keyword getLEFTLEFTKeyword_0_0() { return cLEFTLEFTKeyword_0_0; }
+		
+		//RIGHT
+		public EnumLiteralDeclaration getRIGHTEnumLiteralDeclaration_1() { return cRIGHTEnumLiteralDeclaration_1; }
+		
+		//"RIGHT"
+		public Keyword getRIGHTRIGHTKeyword_1_0() { return cRIGHTRIGHTKeyword_1_0; }
+		
+		//UP
+		public EnumLiteralDeclaration getUPEnumLiteralDeclaration_2() { return cUPEnumLiteralDeclaration_2; }
+		
+		//"UP"
+		public Keyword getUPUPKeyword_2_0() { return cUPUPKeyword_2_0; }
+		
+		//DOWN
+		public EnumLiteralDeclaration getDOWNEnumLiteralDeclaration_3() { return cDOWNEnumLiteralDeclaration_3; }
+		
+		//"DOWN"
+		public Keyword getDOWNDOWNKeyword_3_0() { return cDOWNDOWNKeyword_3_0; }
+	}
 	
 	private final GreedySnakeElements pGreedySnake;
 	private final GlobalMapElements pGlobalMap;
@@ -2624,6 +2621,8 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	private final SnakeMembersElements pSnakeMembers;
 	private final FoodMembersElements pFoodMembers;
 	private final ObstacleMembersElements pObstacleMembers;
+	private final SnakeMoveSpecificationElements pSnakeMoveSpecification;
+	private final MoveElements pMove;
 	private final FireInitDisplayElements pFireInitDisplay;
 	private final SnakeInitDisplayElements pSnakeInitDisplay;
 	private final IconElements pIcon;
@@ -2633,14 +2632,12 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	private final FoodKindElements pFoodKind;
 	private final ObstacleInitDisplayElements pObstacleInitDisplay;
 	private final RandomFoodSizeElements pRandomFoodSize;
-	private final MinsizeElements pMinsize;
-	private final MaxsizeElements pMaxsize;
 	private final TimeLimitedElements pTimeLimited;
 	private final ObstacleTimeElements pObstacleTime;
 	private final FoodTimeElements pFoodTime;
-	private final VarSpecElements pVarSpec;
-	private final AllItemVarSpecElements pAllItemVarSpec;
-	private final ParamSpecElements pParamSpec;
+	private final DirectionSpecificationElements pDirectionSpecification;
+	private final DisElements pDis;
+	private final DirectionElements eDirection;
 	private final AdditionElements pAddition;
 	private final MultiplicationElements pMultiplication;
 	private final PrimaryElements pPrimary;
@@ -2651,7 +2648,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	private final RestartMenuElements pRestartMenu;
 	private final StartFieldDeclarationElements pStartFieldDeclaration;
 	private final AboutSpecificationElements pAboutSpecification;
-	private final StringValElements pStringVal;
 	private final HelpSpecificationElements pHelpSpecification;
 	private final BackSpecificationElements pBackSpecification;
 	private final BackgroundIconElements pBackgroundIcon;
@@ -2660,6 +2656,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	private final BackgroundTagLocateElements pBackgroundTagLocate;
 	private final MusicSpecificationElements pMusicSpecification;
 	private final MusicPathElements pMusicPath;
+	private final StringValElements pStringVal;
 	
 	private final Grammar grammar;
 	
@@ -2685,6 +2682,8 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		this.pSnakeMembers = new SnakeMembersElements();
 		this.pFoodMembers = new FoodMembersElements();
 		this.pObstacleMembers = new ObstacleMembersElements();
+		this.pSnakeMoveSpecification = new SnakeMoveSpecificationElements();
+		this.pMove = new MoveElements();
 		this.pFireInitDisplay = new FireInitDisplayElements();
 		this.pSnakeInitDisplay = new SnakeInitDisplayElements();
 		this.pIcon = new IconElements();
@@ -2694,14 +2693,12 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		this.pFoodKind = new FoodKindElements();
 		this.pObstacleInitDisplay = new ObstacleInitDisplayElements();
 		this.pRandomFoodSize = new RandomFoodSizeElements();
-		this.pMinsize = new MinsizeElements();
-		this.pMaxsize = new MaxsizeElements();
 		this.pTimeLimited = new TimeLimitedElements();
 		this.pObstacleTime = new ObstacleTimeElements();
 		this.pFoodTime = new FoodTimeElements();
-		this.pVarSpec = new VarSpecElements();
-		this.pAllItemVarSpec = new AllItemVarSpecElements();
-		this.pParamSpec = new ParamSpecElements();
+		this.pDirectionSpecification = new DirectionSpecificationElements();
+		this.pDis = new DisElements();
+		this.eDirection = new DirectionElements();
 		this.pAddition = new AdditionElements();
 		this.pMultiplication = new MultiplicationElements();
 		this.pPrimary = new PrimaryElements();
@@ -2712,7 +2709,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		this.pRestartMenu = new RestartMenuElements();
 		this.pStartFieldDeclaration = new StartFieldDeclarationElements();
 		this.pAboutSpecification = new AboutSpecificationElements();
-		this.pStringVal = new StringValElements();
 		this.pHelpSpecification = new HelpSpecificationElements();
 		this.pBackSpecification = new BackSpecificationElements();
 		this.pBackgroundIcon = new BackgroundIconElements();
@@ -2721,6 +2717,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		this.pBackgroundTagLocate = new BackgroundTagLocateElements();
 		this.pMusicSpecification = new MusicSpecificationElements();
 		this.pMusicPath = new MusicPathElements();
+		this.pStringVal = new StringValElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -2750,13 +2747,12 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 
 	
-	////xtext里面显示的应该都是静态的东西，比如图像，长宽什么的，都是固定的
 	//GreedySnake:
-	//	// 需要增加help/about/background/music/SnakeSpeed/map
 	//	"game" name=ID "{" (snakes+=InitialSnakeSpecificatin | foods+=InitialFoodSpecificatin |
 	//	obstacles+=InitialObstacleSpecificatin | speed+=InitialSpeedSpecification | fire+=InitialFireSpecification |
-	//	time+=TimeLimited | Map+=GlobalMap | about+=AboutSpecification | Help+=HelpSpecification | Music+=MusicSpecification
-	//	| Backgrounds+=BackSpecification | fields+=GlobalFieldInitialisation | options+=OptionSpecification)+
+	//	time+=TimeLimited | Map+=GlobalMap | SnakeMove+=SnakeMoveSpecification | about+=AboutSpecification |
+	//	directions+=DirectionSpecification | Help+=HelpSpecification | Music+=MusicSpecification |
+	//	Backgrounds+=BackSpecification | fields+=GlobalFieldInitialisation | options+=OptionSpecification)+
 	//	"}";
 	public GreedySnakeElements getGreedySnakeAccess() {
 		return pGreedySnake;
@@ -2777,13 +2773,11 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getGlobalMapAccess().getRule();
 	}
 	
-	////初始界面---随机障碍，食物
-	////因为没有设计简单/困难模式 所以就只有一个field
 	//GlobalFieldInitialisation:
 	//	"field" name=ID "{"
-	//	// 画布的宽
+	//	// the width of panel
 	//	"Panel_width" "=" panelWidth=INT // 900
-	//	// 画布的长
+	//	// the height of panel
 	//	"Panel_Height" "=" panelHeight=INT // 480
 	//	"column" "=" width=INT // 40
 	//	"row" "=" height=INT // 21
@@ -2799,14 +2793,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getGlobalFieldInitialisationAccess().getRule();
 	}
 	
-	////FieldInitailisation:
-	////	ref = initFieldReference | init = InitialField
-	////;
-	////
-	////initFieldReference:
-	////	"init" fieldRef=[InitialField] "(" ")"
-	////;
-	////关键字default
 	//InitialField:
 	//	"init" name=ID "(" ")" "{"
 	//	"Default" ":" Default=Default
@@ -2835,7 +2821,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//InitialSnakeSpecificatin:
-	//	// headIcon 4个， bodyIcon 4个， 身体节点为1， Icon大小为20(height/width)， default speed 为300
 	//	"snake" name=ID "{"
 	//	members=SnakeMembers
 	//	"}" Multiples+=[InitialSnakeSpecificatin]?;
@@ -2895,7 +2880,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getInitialSpeedSpecificationAccess().getRule();
 	}
 	
-	////example: run = 200
 	//SpeedGroup:
 	//	name=ID "=" value=INT;
 	public SpeedGroupElements getSpeedGroupAccess() {
@@ -2946,14 +2930,29 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getObstacleMembersAccess().getRule();
 	}
 	
-	////Members:
-	////	sna += SnakeInitDisplay |
-	////	FoodInitDisplay |
-	////	ObstacleInitDisplay |
-	////	AllItemDisplaySpec |
-	////	AllItemVarSpec|
-	////	AllItemStateSpec
-	////;
+	//SnakeMoveSpecification:
+	//	{SnakeMoveSpecification} "snake" "move" "{"
+	//	IF+=Move*
+	//	"}";
+	public SnakeMoveSpecificationElements getSnakeMoveSpecificationAccess() {
+		return pSnakeMoveSpecification;
+	}
+	
+	public ParserRule getSnakeMoveSpecificationRule() {
+		return getSnakeMoveSpecificationAccess().getRule();
+	}
+	
+	//Move:
+	//	"if" "(" "direction" "=" dir=[dis] ")"
+	//	name=ID "." coor=("x" | "y") operator=("+" | "-") moveVal=INT;
+	public MoveElements getMoveAccess() {
+		return pMove;
+	}
+	
+	public ParserRule getMoveRule() {
+		return getMoveAccess().getRule();
+	}
+	
 	//FireInitDisplay:
 	//	"FireIcon" "{" FireIcon+=IconTag* "}"
 	//	"Icon_size" "=" Iconsize=IconSize // 20
@@ -2966,14 +2965,12 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getFireInitDisplayAccess().getRule();
 	}
 	
-	////头部位置,头部设计的Icon和身体的位置与Icon
 	//SnakeInitDisplay:
 	//	"head" "=" head="(" initial_x=INT "," initial_y=INT ")" // (0,0)
 	//	"headIcon" "{" headIcon+=IconTag* "}"
 	//	"Icon_size" "=" Iconsize=IconSize // 20
 	//	"BodyIcon" "{" BodyIcon+=IconTag* "}"
-	////	"headIcon" headIcon = AllItemVarSpec "=" locate=STRING
-	//	"defaultSpeed" "=" defaultSpeed=INT // 需要改
+	//	"defaultSpeed" "=" defaultSpeed=INT
 	//	"snakeTag" "=" snakeTag=INT // 1
 	//;
 	public SnakeInitDisplayElements getSnakeInitDisplayAccess() {
@@ -2984,7 +2981,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getSnakeInitDisplayAccess().getRule();
 	}
 	
-	////定义头部image的一些东西--4个tag,分别0,1,2,3
 	//Icon:
 	//	{Icon} IconTag+=IconTag*;
 	public IconElements getIconAccess() {
@@ -3005,7 +3001,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getIconSizeAccess().getRule();
 	}
 	
-	////example: tag1 "xixi" = 1
 	//IconTag:
 	//	name=ID value=STRING "=" tag=INT
 	//	"Locate" ":" Locate=STRING // 图像地址
@@ -3018,16 +3013,11 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getIconTagAccess().getRule();
 	}
 	
-	////locate locateTag1 = "..//.."
-	////IconLocate:
-	////	"Locate" "=" Locate=STRING
-	////;
-	////食物设计Icon与locate的设计 ---与上面一样,foodTag有6个
 	//FoodInitDisplay:
-	//	"foodIcon" "{" foodIcon+=IconTag* "}" // 设置foodImage和filePath----可能定义有问题
+	//	"foodIcon" "{" foodIcon+=IconTag* "}"
 	//	"Icon_size" "=" Iconsize=IconSize // 20
-	//	"foodKind" "{" foodKind+=FoodKind* "}" // 食物种类并且对应分数
-	//	"randomFoodSize" produce=RandomFoodSize // 产生food的最大值，最小值
+	//	"foodKind" "{" foodKind+=FoodKind* "}"
+	//	"randomFoodSize" produce=RandomFoodSize
 	//	"foodTag" "=" foodTag=INT // 2
 	//;
 	public FoodInitDisplayElements getFoodInitDisplayAccess() {
@@ -3049,9 +3039,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getFoodKindAccess().getRule();
 	}
 	
-	////障碍设计
 	////locate
-	////需要改----Icon filepath 的设计
 	//ObstacleInitDisplay:
 	//	"ObstacleIcon" "{" ObstacleIcon+=IconTag* "}"
 	//	"Icon_size" "=" Iconsize=IconSize
@@ -3076,27 +3064,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getRandomFoodSizeAccess().getRule();
 	}
 	
-	//Minsize:
-	//	"Maxsize" maxsize=INT;
-	public MinsizeElements getMinsizeAccess() {
-		return pMinsize;
-	}
-	
-	public ParserRule getMinsizeRule() {
-		return getMinsizeAccess().getRule();
-	}
-	
-	//Maxsize:
-	//	"Minsize" minsize=INT;
-	public MaxsizeElements getMaxsizeAccess() {
-		return pMaxsize;
-	}
-	
-	public ParserRule getMaxsizeRule() {
-		return getMaxsizeAccess().getRule();
-	}
-	
-	////时间限制
+	////time limited
 	//TimeLimited:
 	//	"timeLimited" "{"
 	//	FoodTime | ObstacleTime
@@ -3129,97 +3097,38 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getFoodTimeAccess().getRule();
 	}
 	
-	//////所有东西的状态---可以传label参数
-	////GlobalAllItemStateSpec:
-	////	"states" name=ID ("(" params += ParamSpec ( "," params += ParamSpec)*")") "{"
-	////			states += AllItemState+
-	////			"start" "=" start = [AllItemState]
-	////	"}"
-	////;
-	//////所有东西的状态
-	////AllItemState:
-	////	name=ID "{"
-	////		display = AllItemDisplaySpec
-	////		("Restart" "{"
-	////			restart += RestartMenu
-	////		 "}")?
-	////		 ("Obstacle_Refresh" "{"
-	////			//每隔2000s刷新
-	////			refresh += ObstacleRefresh
-	////		 "}")?
-	////		 ("food_Refresh" "{"
-	////			//每隔2000s产生新的food
-	////			refresh += FoodRefresh
-	////		 "}")?
-	////	"}"
-	////;
-	//////到时间就重新刷新obstacle
-	////ObstacleRefresh:
-	////	"time" "limited" "=" time=[ObstacleTime]
-	////	"random" "refresh" random=[InitialObstacleSpecificatin]
-	////;
-	////
-	//////到时间就增加food并且random出现
-	////FoodRefresh: 
-	////	"time" "limited" "=" time=[FoodTime]
-	////	"add" "random"":" random=[InitialFoodSpecificatin] size = RandomFoodSize
-	////;
-	////
-	//////显示label---也就是在画板上的图片
-	////AllItemDisplaySpec:
-	////	"display" "{"
-	////		"as" display_type="label"
-	////		"var" var = [VarSpec]
-	////	"}"
-	////;
-	//VarSpec:
-	//	AllItemVarSpec | ParamSpec;
-	public VarSpecElements getVarSpecAccess() {
-		return pVarSpec;
+	//DirectionSpecification:
+	//	{DirectionSpecification} "Direction" "{"
+	//	di+=dis*
+	//	"}";
+	public DirectionSpecificationElements getDirectionSpecificationAccess() {
+		return pDirectionSpecification;
 	}
 	
-	public ParserRule getVarSpecRule() {
-		return getVarSpecAccess().getRule();
+	public ParserRule getDirectionSpecificationRule() {
+		return getDirectionSpecificationAccess().getRule();
 	}
 	
-	////变量---显示label(参考discovered)--在不同内部定义的变量
-	//AllItemVarSpec:
-	//	type=("int" | "String") name=ID;
-	public AllItemVarSpecElements getAllItemVarSpecAccess() {
-		return pAllItemVarSpec;
+	//dis:
+	//	name=ID "=" direction=Direction;
+	public DisElements getDisAccess() {
+		return pDis;
 	}
 	
-	public ParserRule getAllItemVarSpecRule() {
-		return getAllItemVarSpecAccess().getRule();
+	public ParserRule getDisRule() {
+		return getDisAccess().getRule();
 	}
 	
-	////普通参数--形式参数
-	//ParamSpec:
-	//	type=("int" | "String" | "Behaviour") name=ID;
-	public ParamSpecElements getParamSpecAccess() {
-		return pParamSpec;
+	//enum Direction:
+	//	LEFT | RIGHT | UP | DOWN;
+	public DirectionElements getDirectionAccess() {
+		return eDirection;
 	}
 	
-	public ParserRule getParamSpecRule() {
-		return getParamSpecAccess().getRule();
+	public EnumRule getDirectionRule() {
+		return getDirectionAccess().getRule();
 	}
 	
-	////AllItemStateSpec:
-	////	AllItemStateSpecReference |LocalAllItemStateSpec 
-	////;
-	//////单独所有的状态
-	////LocalAllItemStateSpec:
-	////	"states" "{"
-	////		states+=AllItemState+
-	////		
-	////		"start" "=" start=[AllItemState]
-	////	"}"
-	////;
-	////
-	//////调用states方法
-	////AllItemStateSpecReference:
-	////	"states" stateSpec=[GlobalAllItemStateSpec] ("(" params += Value ("," params += Value )*")")?
-	////;
 	//Addition Expression:
 	//	Multiplication ({Addition.left=current} operator+=("+" | "-") right+=Multiplication)*;
 	public AdditionElements getAdditionAccess() {
@@ -3281,28 +3190,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getREALAccess().getRule();
 	}
 	
-	////VarRef:
-	////	ref = [AllItemVarSpec]
-	////;
-	////
-	////DirectBehaviour:
-	////	EndGameBehaviour |
-	////	NoOpBehaviour {NoOpBehaviour}
-	////;
-	////
-	//////没有任何behaviour
-	////NoOpBehaviour :
-	////	"nop" 
-	////;
-	////
-	////IntValue:
-	////	value = INT
-	////;
-	////
-	////StringValue:
-	////	value = STRING
-	////;
-	////选择---开始和重新开始菜单
 	//OptionSpecification:
 	//	StartFieldDeclaration | RestartMenu;
 	public OptionSpecificationElements getOptionSpecificationAccess() {
@@ -3313,19 +3200,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getOptionSpecificationAccess().getRule();
 	}
 	
-	////AllItemsStateBehavior:
-	////	DirectBehaviour |
-	////	BehaviourReference
-	////;
-	////
-	////BehaviourReference:
-	////	ref = [VarSpec]
-	////;
-	////
-	////
-	////EndGameBehaviour:
-	////	"failed" "(" message=STRING ")"
-	////;
 	//RestartMenu:
 	//	"restartGame" {RestartMenu};
 	public RestartMenuElements getRestartMenuAccess() {
@@ -3360,17 +3234,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getAboutSpecificationAccess().getRule();
 	}
 	
-	////不能重复很多次
-	//StringVal:
-	//	value=STRING;
-	public StringValElements getStringValAccess() {
-		return pStringVal;
-	}
-	
-	public ParserRule getStringValRule() {
-		return getStringValAccess().getRule();
-	}
-	
 	//HelpSpecification:
 	//	"help" name=ID "{"
 	//	"Title" ":" HelpTitle=STRING // TitlePath
@@ -3387,9 +3250,9 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	
 	//BackSpecification:
 	//	"backGround" "{"
-	//	"Icon" "{" BackgroundIcon=BackgroundIcon "}" // 背景图片的一些detail
-	//	"Height" "=" BackGroundHeight=BackGroundSize // 高
-	//	"Width" "=" BackGroundWidth=BackGroundSize // 宽
+	//	"Icon" "{" BackgroundIcon=BackgroundIcon "}" // the detail of background
+	//	"Height" "=" BackGroundHeight=INT // height
+	//	"Width" "=" BackGroundWidth=INT // width
 	//	"}";
 	public BackSpecificationElements getBackSpecificationAccess() {
 		return pBackSpecification;
@@ -3399,7 +3262,6 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		return getBackSpecificationAccess().getRule();
 	}
 	
-	////定义头部image的一些东西--4个tag,分别0,1,2,3
 	//BackgroundIcon:
 	//	{BackgroundIcon} BackgroundTag+=BackgroundTag*;
 	public BackgroundIconElements getBackgroundIconAccess() {
@@ -3411,7 +3273,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	}
 	
 	//BackGroundSize:
-	//	INT;
+	//	val=INT;
 	public BackGroundSizeElements getBackGroundSizeAccess() {
 		return pBackGroundSize;
 	}
@@ -3423,7 +3285,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	////example: tag1 "xixi" = 1
 	//BackgroundTag:
 	//	name=ID value=STRING "=" BKtag=INT
-	//	"Locate" ":" locate=STRING // 图像地址
+	//	"Locate" ":" locate=STRING // filepath
 	//;
 	public BackgroundTagElements getBackgroundTagAccess() {
 		return pBackgroundTag;
@@ -3448,8 +3310,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	//	"Music" "{"
 	//	"BufferSize" "=" buffersize=INT
 	//	MusicPath+=MusicPath*
-	//	"}" // 音乐的路径
-	//;
+	//	"}";
 	public MusicSpecificationElements getMusicSpecificationAccess() {
 		return pMusicSpecification;
 	}
@@ -3466,6 +3327,16 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	
 	public ParserRule getMusicPathRule() {
 		return getMusicPathAccess().getRule();
+	}
+	
+	//StringVal:
+	//	value=STRING;
+	public StringValElements getStringValAccess() {
+		return pStringVal;
+	}
+	
+	public ParserRule getStringValRule() {
+		return getStringValAccess().getRule();
 	}
 	
 	//terminal ID:

@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.xtext.example.mydsl2.group16.greedySnake.AboutSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.BackSpecification;
+import org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.GlobalFieldInitialisation;
 import org.xtext.example.mydsl2.group16.greedySnake.GlobalMap;
 import org.xtext.example.mydsl2.group16.greedySnake.GreedySnake;
@@ -33,6 +34,7 @@ import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin;
 import org.xtext.example.mydsl2.group16.greedySnake.InitialSpeedSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.MusicSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.OptionSpecification;
+import org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.TimeLimited;
 
 /**
@@ -51,7 +53,9 @@ import org.xtext.example.mydsl2.group16.greedySnake.TimeLimited;
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakeImpl#getFire <em>Fire</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakeImpl#getTime <em>Time</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakeImpl#getMap <em>Map</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakeImpl#getSnakeMove <em>Snake Move</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakeImpl#getAbout <em>About</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakeImpl#getDirections <em>Directions</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakeImpl#getHelp <em>Help</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakeImpl#getMusic <em>Music</em>}</li>
  *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakeImpl#getBackgrounds <em>Backgrounds</em>}</li>
@@ -154,6 +158,16 @@ public class GreedySnakeImpl extends MinimalEObjectImpl.Container implements Gre
   protected EList<GlobalMap> map;
 
   /**
+   * The cached value of the '{@link #getSnakeMove() <em>Snake Move</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSnakeMove()
+   * @generated
+   * @ordered
+   */
+  protected EList<SnakeMoveSpecification> snakeMove;
+
+  /**
    * The cached value of the '{@link #getAbout() <em>About</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -162,6 +176,16 @@ public class GreedySnakeImpl extends MinimalEObjectImpl.Container implements Gre
    * @ordered
    */
   protected EList<AboutSpecification> about;
+
+  /**
+   * The cached value of the '{@link #getDirections() <em>Directions</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDirections()
+   * @generated
+   * @ordered
+   */
+  protected EList<DirectionSpecification> directions;
 
   /**
    * The cached value of the '{@link #getHelp() <em>Help</em>}' containment reference list.
@@ -370,6 +394,21 @@ public class GreedySnakeImpl extends MinimalEObjectImpl.Container implements Gre
    * @generated
    */
   @Override
+  public EList<SnakeMoveSpecification> getSnakeMove()
+  {
+    if (snakeMove == null)
+    {
+      snakeMove = new EObjectContainmentEList<SnakeMoveSpecification>(SnakeMoveSpecification.class, this, GreedySnakePackage.GREEDY_SNAKE__SNAKE_MOVE);
+    }
+    return snakeMove;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<AboutSpecification> getAbout()
   {
     if (about == null)
@@ -377,6 +416,21 @@ public class GreedySnakeImpl extends MinimalEObjectImpl.Container implements Gre
       about = new EObjectContainmentEList<AboutSpecification>(AboutSpecification.class, this, GreedySnakePackage.GREEDY_SNAKE__ABOUT);
     }
     return about;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<DirectionSpecification> getDirections()
+  {
+    if (directions == null)
+    {
+      directions = new EObjectContainmentEList<DirectionSpecification>(DirectionSpecification.class, this, GreedySnakePackage.GREEDY_SNAKE__DIRECTIONS);
+    }
+    return directions;
   }
 
   /**
@@ -478,8 +532,12 @@ public class GreedySnakeImpl extends MinimalEObjectImpl.Container implements Gre
         return ((InternalEList<?>)getTime()).basicRemove(otherEnd, msgs);
       case GreedySnakePackage.GREEDY_SNAKE__MAP:
         return ((InternalEList<?>)getMap()).basicRemove(otherEnd, msgs);
+      case GreedySnakePackage.GREEDY_SNAKE__SNAKE_MOVE:
+        return ((InternalEList<?>)getSnakeMove()).basicRemove(otherEnd, msgs);
       case GreedySnakePackage.GREEDY_SNAKE__ABOUT:
         return ((InternalEList<?>)getAbout()).basicRemove(otherEnd, msgs);
+      case GreedySnakePackage.GREEDY_SNAKE__DIRECTIONS:
+        return ((InternalEList<?>)getDirections()).basicRemove(otherEnd, msgs);
       case GreedySnakePackage.GREEDY_SNAKE__HELP:
         return ((InternalEList<?>)getHelp()).basicRemove(otherEnd, msgs);
       case GreedySnakePackage.GREEDY_SNAKE__MUSIC:
@@ -520,8 +578,12 @@ public class GreedySnakeImpl extends MinimalEObjectImpl.Container implements Gre
         return getTime();
       case GreedySnakePackage.GREEDY_SNAKE__MAP:
         return getMap();
+      case GreedySnakePackage.GREEDY_SNAKE__SNAKE_MOVE:
+        return getSnakeMove();
       case GreedySnakePackage.GREEDY_SNAKE__ABOUT:
         return getAbout();
+      case GreedySnakePackage.GREEDY_SNAKE__DIRECTIONS:
+        return getDirections();
       case GreedySnakePackage.GREEDY_SNAKE__HELP:
         return getHelp();
       case GreedySnakePackage.GREEDY_SNAKE__MUSIC:
@@ -578,9 +640,17 @@ public class GreedySnakeImpl extends MinimalEObjectImpl.Container implements Gre
         getMap().clear();
         getMap().addAll((Collection<? extends GlobalMap>)newValue);
         return;
+      case GreedySnakePackage.GREEDY_SNAKE__SNAKE_MOVE:
+        getSnakeMove().clear();
+        getSnakeMove().addAll((Collection<? extends SnakeMoveSpecification>)newValue);
+        return;
       case GreedySnakePackage.GREEDY_SNAKE__ABOUT:
         getAbout().clear();
         getAbout().addAll((Collection<? extends AboutSpecification>)newValue);
+        return;
+      case GreedySnakePackage.GREEDY_SNAKE__DIRECTIONS:
+        getDirections().clear();
+        getDirections().addAll((Collection<? extends DirectionSpecification>)newValue);
         return;
       case GreedySnakePackage.GREEDY_SNAKE__HELP:
         getHelp().clear();
@@ -640,8 +710,14 @@ public class GreedySnakeImpl extends MinimalEObjectImpl.Container implements Gre
       case GreedySnakePackage.GREEDY_SNAKE__MAP:
         getMap().clear();
         return;
+      case GreedySnakePackage.GREEDY_SNAKE__SNAKE_MOVE:
+        getSnakeMove().clear();
+        return;
       case GreedySnakePackage.GREEDY_SNAKE__ABOUT:
         getAbout().clear();
+        return;
+      case GreedySnakePackage.GREEDY_SNAKE__DIRECTIONS:
+        getDirections().clear();
         return;
       case GreedySnakePackage.GREEDY_SNAKE__HELP:
         getHelp().clear();
@@ -688,8 +764,12 @@ public class GreedySnakeImpl extends MinimalEObjectImpl.Container implements Gre
         return time != null && !time.isEmpty();
       case GreedySnakePackage.GREEDY_SNAKE__MAP:
         return map != null && !map.isEmpty();
+      case GreedySnakePackage.GREEDY_SNAKE__SNAKE_MOVE:
+        return snakeMove != null && !snakeMove.isEmpty();
       case GreedySnakePackage.GREEDY_SNAKE__ABOUT:
         return about != null && !about.isEmpty();
+      case GreedySnakePackage.GREEDY_SNAKE__DIRECTIONS:
+        return directions != null && !directions.isEmpty();
       case GreedySnakePackage.GREEDY_SNAKE__HELP:
         return help != null && !help.isEmpty();
       case GreedySnakePackage.GREEDY_SNAKE__MUSIC:

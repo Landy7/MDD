@@ -9,8 +9,6 @@ import org.xtext.example.mydsl2.group16.greedySnake.GreedySnake;
 public class ModelPreprocessor {
   private final GreedySnake gs;
   
-  private int currentStateID = 0;
-  
   public ModelPreprocessor(final Resource resource) {
     this.gs = IteratorExtensions.<GreedySnake>head(Iterators.<GreedySnake>filter(resource.getAllContents(), GreedySnake.class));
   }

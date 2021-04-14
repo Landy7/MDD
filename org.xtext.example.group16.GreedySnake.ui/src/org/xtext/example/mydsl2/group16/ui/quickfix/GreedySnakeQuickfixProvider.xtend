@@ -4,6 +4,14 @@
 package org.xtext.example.mydsl2.group16.ui.quickfix
 
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
+import org.xtext.example.mydsl2.group16.validation.GreedySnakeValidator
+import org.eclipse.xtext.ui.editor.quickfix.Fix
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
+import org.eclipse.xtext.validation.Issue
+import org.xtext.example.mydsl2.group16.greedySnake.GlobalFieldInitialisation
+import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin
+import org.xtext.example.mydsl2.group16.greedySnake.InitialFoodSpecificatin
+import org.xtext.example.mydsl2.group16.greedySnake.InitialObstacleSpecificatin
 
 /**
  * Custom quickfixes.
@@ -11,14 +19,34 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
  * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#quick-fixes
  */
 class GreedySnakeQuickfixProvider extends DefaultQuickfixProvider {
-
-//	@Fix(GreedySnakeValidator.INVALID_NAME)
-//	def capitalizeName(Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 'Capitalize name', 'Capitalize the name.', 'upcase.png') [
-//			context |
-//			val xtextDocument = context.xtextDocument
-//			val firstLetter = xtextDocument.get(issue.offset, 1)
-//			xtextDocument.replace(issue.offset, 1, firstLetter.toUpperCase)
-//		]
-//	}
+	
+	@Fix(GreedySnakeValidator.INVALID_FIELD_NAME)
+ 	def checkFieldStartWithLowerCase(Issue issue,IssueResolutionAcceptor acceptor){
+ 		acceptor.acceptMulti(issue, "Lowercase field", "change the name to start with lower-case character",null)[ element |
+ 			val m  = element as GlobalFieldInitialisation
+ 			m.name = m.name.toFirstLower
+ 		]
+ 	}
+ 	
+ 	@Fix(GreedySnakeValidator.INVALID_SNAKE_NAME)
+ 	def checkSnakeStartWithLowerCase(Issue issue,IssueResolutionAcceptor acceptor){
+ 		acceptor.acceptMulti(issue, "Lowercase snake", "change the name to start with lower-case character",null)[ element |
+ 			val m  = element as InitialSnakeSpecificatin
+ 			m.name = m.name.toFirstLower
+ 		]
+ 	}
+ 	@Fix(GreedySnakeValidator.INVALID_FOOD_NAME)
+ 	def checkFoodStartWithLowerCase(Issue issue,IssueResolutionAcceptor acceptor){
+ 		acceptor.acceptMulti(issue, "Lowercase food", "change the name to start with lower-case character",null)[ element |
+ 			val m  = element as InitialFoodSpecificatin
+ 			m.name = m.name.toFirstLower
+ 		]
+ 	}
+ 	@Fix(GreedySnakeValidator.INVALID_OBSTACLE_NAME)
+ 	def checkObstacleStartWithLowerCase(Issue issue,IssueResolutionAcceptor acceptor){
+ 		acceptor.acceptMulti(issue, "Lowercase obstacle", "change the name to start with lower-case character",null)[ element |
+ 			val m  = element as InitialObstacleSpecificatin
+ 			m.name = m.name.toFirstLower
+ 		]
+ 	}
 }

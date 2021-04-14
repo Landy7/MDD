@@ -4,6 +4,7 @@ import com.google.common.collect.Iterables;
 import com.google.inject.Provider;
 import java.util.Collections;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xsemantics.runtime.ErrorInformation;
 import org.eclipse.xsemantics.runtime.Result;
 import org.eclipse.xsemantics.runtime.RuleApplicationTrace;
@@ -21,6 +22,7 @@ import org.xtext.example.mydsl2.group16.greedySnake.FoodKind;
 import org.xtext.example.mydsl2.group16.greedySnake.IntLiteral;
 import org.xtext.example.mydsl2.group16.greedySnake.Multiplication;
 import org.xtext.example.mydsl2.group16.greedySnake.RealLiteral;
+import org.xtext.example.mydsl2.group16.greedySnake.StringVal;
 
 @SuppressWarnings("all")
 public class GreedySnakeSystem extends XsemanticsRuntimeSystem {
@@ -29,6 +31,8 @@ public class GreedySnakeSystem extends XsemanticsRuntimeSystem {
   public static final String TINTLIT = "org.xtext.example.mydsl2.group16.typing.TIntLit";
   
   public static final String TREALLIT = "org.xtext.example.mydsl2.group16.typing.TRealLit";
+  
+  public static final String TSTRINGLIT = "org.xtext.example.mydsl2.group16.typing.TStringLit";
   
   public static final String TMULTIPLICATION = "org.xtext.example.mydsl2.group16.typing.TMultiplication";
   
@@ -67,15 +71,15 @@ public class GreedySnakeSystem extends XsemanticsRuntimeSystem {
     }
   }
   
-  public Result<GreedySnakeTypes> type(final Expression exp) {
+  public Result<GreedySnakeTypes> type(final EObject exp) {
     return type(new RuleEnvironment(), null, exp);
   }
   
-  public Result<GreedySnakeTypes> type(final RuleEnvironment _environment_, final Expression exp) {
+  public Result<GreedySnakeTypes> type(final RuleEnvironment _environment_, final EObject exp) {
     return type(_environment_, null, exp);
   }
   
-  public Result<GreedySnakeTypes> type(final RuleEnvironment _environment_, final RuleApplicationTrace _trace_, final Expression exp) {
+  public Result<GreedySnakeTypes> type(final RuleEnvironment _environment_, final RuleApplicationTrace _trace_, final EObject exp) {
     return getFromCache("type", _environment_, _trace_,
     	new XsemanticsProvider<Result<GreedySnakeTypes>>(_environment_, _trace_) {
     		public Result<GreedySnakeTypes> doGet() {
@@ -165,7 +169,7 @@ public class GreedySnakeSystem extends XsemanticsRuntimeSystem {
     throwRuleFailedException(_error, _issue, _ex, _errorInformations);
   }
   
-  protected Result<GreedySnakeTypes> typeInternal(final RuleEnvironment _environment_, final RuleApplicationTrace _trace_, final Expression exp) {
+  protected Result<GreedySnakeTypes> typeInternal(final RuleEnvironment _environment_, final RuleApplicationTrace _trace_, final EObject exp) {
     return getFromCache("typeInternal", _environment_, _trace_,
     	new XsemanticsProvider<Result<GreedySnakeTypes>>(_environment_, _trace_) {
     		public Result<GreedySnakeTypes> doGet() {
@@ -180,7 +184,7 @@ public class GreedySnakeSystem extends XsemanticsRuntimeSystem {
     	}, exp);
   }
   
-  protected void typeThrowException(final String _error, final String _issue, final Exception _ex, final Expression exp, final ErrorInformation[] _errorInformations) throws RuleFailedException {
+  protected void typeThrowException(final String _error, final String _issue, final Exception _ex, final EObject exp, final ErrorInformation[] _errorInformations) throws RuleFailedException {
     String _stringRep = this.stringRep(exp);
     String _plus = ("Cannot type" + _stringRep);
     String error = _plus;
@@ -305,6 +309,34 @@ public class GreedySnakeSystem extends XsemanticsRuntimeSystem {
     return GreedySnakeTypes.REAL;
   }
   
+  protected Result<GreedySnakeTypes> typeImpl(final RuleEnvironment G, final RuleApplicationTrace _trace_, final StringVal sv) throws RuleFailedException {
+    try {
+    	final RuleApplicationTrace _subtrace_ = newTrace(_trace_);
+    	final Result<GreedySnakeTypes> _result_ = applyRuleTStringLit(G, _subtrace_, sv);
+    	addToTrace(_trace_, new Provider<Object>() {
+    		public Object get() {
+    			return ruleName("TStringLit") + stringRepForEnv(G) + " |- " + stringRep(sv) + " : " + stringRep(_result_.getFirst());
+    		}
+    	});
+    	addAsSubtrace(_trace_, _subtrace_);
+    	return _result_;
+    } catch (Exception e_applyRuleTStringLit) {
+    	typeThrowException(ruleName("TStringLit") + stringRepForEnv(G) + " |- " + stringRep(sv) + " : " + "GreedySnakeTypes",
+    		TSTRINGLIT,
+    		e_applyRuleTStringLit, sv, new ErrorInformation[] {new ErrorInformation(sv)});
+    	return null;
+    }
+  }
+  
+  protected Result<GreedySnakeTypes> applyRuleTStringLit(final RuleEnvironment G, final RuleApplicationTrace _trace_, final StringVal sv) throws RuleFailedException {
+    
+    return new Result<GreedySnakeTypes>(_applyRuleTStringLit_1(G, sv));
+  }
+  
+  private GreedySnakeTypes _applyRuleTStringLit_1(final RuleEnvironment G, final StringVal sv) throws RuleFailedException {
+    return GreedySnakeTypes.STRING;
+  }
+  
   protected Result<GreedySnakeTypes> typeImpl(final RuleEnvironment G, final RuleApplicationTrace _trace_, final Multiplication exp) throws RuleFailedException {
     try {
     	final RuleApplicationTrace _subtrace_ = newTrace(_trace_);
@@ -326,6 +358,9 @@ public class GreedySnakeSystem extends XsemanticsRuntimeSystem {
   
   protected Result<GreedySnakeTypes> applyRuleTMultiplication(final RuleEnvironment G, final RuleApplicationTrace _trace_, final Multiplication exp) throws RuleFailedException {
     GreedySnakeTypes t = null; // output parameter
+    Expression _left = exp.getLeft();
+    EList<Expression> _right = exp.getRight();
+    t = this.typeExpressionInternal(_trace_, Iterables.<Expression>concat(Collections.<Expression>unmodifiableList(CollectionLiterals.<Expression>newArrayList(_left)), _right));
     return new Result<GreedySnakeTypes>(t);
   }
   

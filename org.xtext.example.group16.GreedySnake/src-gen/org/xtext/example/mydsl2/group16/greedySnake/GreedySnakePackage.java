@@ -5,6 +5,7 @@ package org.xtext.example.mydsl2.group16.greedySnake;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -140,13 +141,31 @@ public interface GreedySnakePackage extends EPackage
   int GREEDY_SNAKE__MAP = 7;
 
   /**
+   * The feature id for the '<em><b>Snake Move</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GREEDY_SNAKE__SNAKE_MOVE = 8;
+
+  /**
    * The feature id for the '<em><b>About</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GREEDY_SNAKE__ABOUT = 8;
+  int GREEDY_SNAKE__ABOUT = 9;
+
+  /**
+   * The feature id for the '<em><b>Directions</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int GREEDY_SNAKE__DIRECTIONS = 10;
 
   /**
    * The feature id for the '<em><b>Help</b></em>' containment reference list.
@@ -155,7 +174,7 @@ public interface GreedySnakePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GREEDY_SNAKE__HELP = 9;
+  int GREEDY_SNAKE__HELP = 11;
 
   /**
    * The feature id for the '<em><b>Music</b></em>' containment reference list.
@@ -164,7 +183,7 @@ public interface GreedySnakePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GREEDY_SNAKE__MUSIC = 10;
+  int GREEDY_SNAKE__MUSIC = 12;
 
   /**
    * The feature id for the '<em><b>Backgrounds</b></em>' containment reference list.
@@ -173,7 +192,7 @@ public interface GreedySnakePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GREEDY_SNAKE__BACKGROUNDS = 11;
+  int GREEDY_SNAKE__BACKGROUNDS = 13;
 
   /**
    * The feature id for the '<em><b>Fields</b></em>' containment reference list.
@@ -182,7 +201,7 @@ public interface GreedySnakePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GREEDY_SNAKE__FIELDS = 12;
+  int GREEDY_SNAKE__FIELDS = 14;
 
   /**
    * The feature id for the '<em><b>Options</b></em>' containment reference list.
@@ -191,7 +210,7 @@ public interface GreedySnakePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GREEDY_SNAKE__OPTIONS = 13;
+  int GREEDY_SNAKE__OPTIONS = 15;
 
   /**
    * The number of structural features of the '<em>Greedy Snake</em>' class.
@@ -200,7 +219,7 @@ public interface GreedySnakePackage extends EPackage
    * @generated
    * @ordered
    */
-  int GREEDY_SNAKE_FEATURE_COUNT = 14;
+  int GREEDY_SNAKE_FEATURE_COUNT = 16;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.GlobalMapImpl <em>Global Map</em>}' class.
@@ -784,6 +803,98 @@ public interface GreedySnakePackage extends EPackage
   int OBSTACLE_MEMBERS_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.SnakeMoveSpecificationImpl <em>Snake Move Specification</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.SnakeMoveSpecificationImpl
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getSnakeMoveSpecification()
+   * @generated
+   */
+  int SNAKE_MOVE_SPECIFICATION = 15;
+
+  /**
+   * The feature id for the '<em><b>IF</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SNAKE_MOVE_SPECIFICATION__IF = 0;
+
+  /**
+   * The number of structural features of the '<em>Snake Move Specification</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SNAKE_MOVE_SPECIFICATION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.MoveImpl <em>Move</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.MoveImpl
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getMove()
+   * @generated
+   */
+  int MOVE = 16;
+
+  /**
+   * The feature id for the '<em><b>Dir</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE__DIR = 0;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE__NAME = 1;
+
+  /**
+   * The feature id for the '<em><b>Coor</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE__COOR = 2;
+
+  /**
+   * The feature id for the '<em><b>Operator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE__OPERATOR = 3;
+
+  /**
+   * The feature id for the '<em><b>Move Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE__MOVE_VAL = 4;
+
+  /**
+   * The number of structural features of the '<em>Move</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MOVE_FEATURE_COUNT = 5;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.FireInitDisplayImpl <em>Fire Init Display</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -791,7 +902,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getFireInitDisplay()
    * @generated
    */
-  int FIRE_INIT_DISPLAY = 15;
+  int FIRE_INIT_DISPLAY = 17;
 
   /**
    * The feature id for the '<em><b>Fire Icon</b></em>' containment reference list.
@@ -828,7 +939,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getSnakeInitDisplay()
    * @generated
    */
-  int SNAKE_INIT_DISPLAY = 16;
+  int SNAKE_INIT_DISPLAY = 18;
 
   /**
    * The feature id for the '<em><b>Head</b></em>' attribute.
@@ -919,7 +1030,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getIcon()
    * @generated
    */
-  int ICON = 17;
+  int ICON = 19;
 
   /**
    * The feature id for the '<em><b>Icon Tag</b></em>' containment reference list.
@@ -947,7 +1058,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getIconTag()
    * @generated
    */
-  int ICON_TAG = 18;
+  int ICON_TAG = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1002,7 +1113,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getFoodInitDisplay()
    * @generated
    */
-  int FOOD_INIT_DISPLAY = 19;
+  int FOOD_INIT_DISPLAY = 21;
 
   /**
    * The feature id for the '<em><b>Food Icon</b></em>' containment reference list.
@@ -1066,7 +1177,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getFoodKind()
    * @generated
    */
-  int FOOD_KIND = 20;
+  int FOOD_KIND = 22;
 
   /**
    * The feature id for the '<em><b>Kind</b></em>' reference.
@@ -1103,7 +1214,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getObstacleInitDisplay()
    * @generated
    */
-  int OBSTACLE_INIT_DISPLAY = 21;
+  int OBSTACLE_INIT_DISPLAY = 23;
 
   /**
    * The feature id for the '<em><b>Obstacle Icon</b></em>' containment reference list.
@@ -1149,7 +1260,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getRandomFoodSize()
    * @generated
    */
-  int RANDOM_FOOD_SIZE = 22;
+  int RANDOM_FOOD_SIZE = 24;
 
   /**
    * The feature id for the '<em><b>Maxsize</b></em>' attribute.
@@ -1177,62 +1288,6 @@ public interface GreedySnakePackage extends EPackage
    * @ordered
    */
   int RANDOM_FOOD_SIZE_FEATURE_COUNT = 2;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.MinsizeImpl <em>Minsize</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.MinsizeImpl
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getMinsize()
-   * @generated
-   */
-  int MINSIZE = 23;
-
-  /**
-   * The feature id for the '<em><b>Maxsize</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MINSIZE__MAXSIZE = 0;
-
-  /**
-   * The number of structural features of the '<em>Minsize</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MINSIZE_FEATURE_COUNT = 1;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.MaxsizeImpl <em>Maxsize</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.MaxsizeImpl
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getMaxsize()
-   * @generated
-   */
-  int MAXSIZE = 24;
-
-  /**
-   * The feature id for the '<em><b>Minsize</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MAXSIZE__MINSIZE = 0;
-
-  /**
-   * The number of structural features of the '<em>Maxsize</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int MAXSIZE_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.TimeLimitedImpl <em>Time Limited</em>}' class.
@@ -1337,23 +1392,42 @@ public interface GreedySnakePackage extends EPackage
   int FOOD_TIME_FEATURE_COUNT = TIME_LIMITED_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.VarSpecImpl <em>Var Spec</em>}' class.
+   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.DirectionSpecificationImpl <em>Direction Specification</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.VarSpecImpl
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getVarSpec()
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.DirectionSpecificationImpl
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getDirectionSpecification()
    * @generated
    */
-  int VAR_SPEC = 28;
+  int DIRECTION_SPECIFICATION = 28;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * The feature id for the '<em><b>Di</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VAR_SPEC__TYPE = 0;
+  int DIRECTION_SPECIFICATION__DI = 0;
+
+  /**
+   * The number of structural features of the '<em>Direction Specification</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DIRECTION_SPECIFICATION_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.disImpl <em>dis</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.disImpl
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getdis()
+   * @generated
+   */
+  int DIS = 29;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1362,90 +1436,25 @@ public interface GreedySnakePackage extends EPackage
    * @generated
    * @ordered
    */
-  int VAR_SPEC__NAME = 1;
+  int DIS__NAME = 0;
 
   /**
-   * The number of structural features of the '<em>Var Spec</em>' class.
+   * The feature id for the '<em><b>Direction</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VAR_SPEC_FEATURE_COUNT = 2;
+  int DIS__DIRECTION = 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.AllItemVarSpecImpl <em>All Item Var Spec</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.AllItemVarSpecImpl
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getAllItemVarSpec()
-   * @generated
-   */
-  int ALL_ITEM_VAR_SPEC = 29;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * The number of structural features of the '<em>dis</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ALL_ITEM_VAR_SPEC__TYPE = VAR_SPEC__TYPE;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ALL_ITEM_VAR_SPEC__NAME = VAR_SPEC__NAME;
-
-  /**
-   * The number of structural features of the '<em>All Item Var Spec</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ALL_ITEM_VAR_SPEC_FEATURE_COUNT = VAR_SPEC_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.ParamSpecImpl <em>Param Spec</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.ParamSpecImpl
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getParamSpec()
-   * @generated
-   */
-  int PARAM_SPEC = 30;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAM_SPEC__TYPE = VAR_SPEC__TYPE;
-
-  /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAM_SPEC__NAME = VAR_SPEC__NAME;
-
-  /**
-   * The number of structural features of the '<em>Param Spec</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PARAM_SPEC_FEATURE_COUNT = VAR_SPEC_FEATURE_COUNT + 0;
+  int DIS_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -1455,7 +1464,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 31;
+  int EXPRESSION = 30;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -1474,7 +1483,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getIntLiteral()
    * @generated
    */
-  int INT_LITERAL = 32;
+  int INT_LITERAL = 31;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -1502,7 +1511,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getRealLiteral()
    * @generated
    */
-  int REAL_LITERAL = 33;
+  int REAL_LITERAL = 32;
 
   /**
    * The feature id for the '<em><b>Val</b></em>' attribute.
@@ -1530,7 +1539,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getOptionSpecification()
    * @generated
    */
-  int OPTION_SPECIFICATION = 34;
+  int OPTION_SPECIFICATION = 33;
 
   /**
    * The number of structural features of the '<em>Option Specification</em>' class.
@@ -1549,7 +1558,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getRestartMenu()
    * @generated
    */
-  int RESTART_MENU = 35;
+  int RESTART_MENU = 34;
 
   /**
    * The number of structural features of the '<em>Restart Menu</em>' class.
@@ -1568,7 +1577,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getStartFieldDeclaration()
    * @generated
    */
-  int START_FIELD_DECLARATION = 36;
+  int START_FIELD_DECLARATION = 35;
 
   /**
    * The feature id for the '<em><b>Field</b></em>' reference.
@@ -1596,7 +1605,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getAboutSpecification()
    * @generated
    */
-  int ABOUT_SPECIFICATION = 37;
+  int ABOUT_SPECIFICATION = 36;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1653,34 +1662,6 @@ public interface GreedySnakePackage extends EPackage
   int ABOUT_SPECIFICATION_FEATURE_COUNT = 5;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.StringValImpl <em>String Val</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.StringValImpl
-   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getStringVal()
-   * @generated
-   */
-  int STRING_VAL = 38;
-
-  /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_VAL__VALUE = 0;
-
-  /**
-   * The number of structural features of the '<em>String Val</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int STRING_VAL_FEATURE_COUNT = 1;
-
-  /**
    * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.HelpSpecificationImpl <em>Help Specification</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1688,7 +1669,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getHelpSpecification()
    * @generated
    */
-  int HELP_SPECIFICATION = 39;
+  int HELP_SPECIFICATION = 37;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1752,7 +1733,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getBackSpecification()
    * @generated
    */
-  int BACK_SPECIFICATION = 40;
+  int BACK_SPECIFICATION = 38;
 
   /**
    * The feature id for the '<em><b>Background Icon</b></em>' containment reference.
@@ -1798,7 +1779,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getBackgroundIcon()
    * @generated
    */
-  int BACKGROUND_ICON = 41;
+  int BACKGROUND_ICON = 39;
 
   /**
    * The feature id for the '<em><b>Background Tag</b></em>' containment reference list.
@@ -1819,6 +1800,34 @@ public interface GreedySnakePackage extends EPackage
   int BACKGROUND_ICON_FEATURE_COUNT = 1;
 
   /**
+   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.BackGroundSizeImpl <em>Back Ground Size</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.BackGroundSizeImpl
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getBackGroundSize()
+   * @generated
+   */
+  int BACK_GROUND_SIZE = 40;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BACK_GROUND_SIZE__VAL = 0;
+
+  /**
+   * The number of structural features of the '<em>Back Ground Size</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BACK_GROUND_SIZE_FEATURE_COUNT = 1;
+
+  /**
    * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.BackgroundTagImpl <em>Background Tag</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1826,7 +1835,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getBackgroundTag()
    * @generated
    */
-  int BACKGROUND_TAG = 42;
+  int BACKGROUND_TAG = 41;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1881,7 +1890,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getBackgroundTagLocate()
    * @generated
    */
-  int BACKGROUND_TAG_LOCATE = 43;
+  int BACKGROUND_TAG_LOCATE = 42;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1918,7 +1927,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getMusicSpecification()
    * @generated
    */
-  int MUSIC_SPECIFICATION = 44;
+  int MUSIC_SPECIFICATION = 43;
 
   /**
    * The feature id for the '<em><b>Buffersize</b></em>' attribute.
@@ -1955,7 +1964,7 @@ public interface GreedySnakePackage extends EPackage
    * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getMusicPath()
    * @generated
    */
-  int MUSIC_PATH = 45;
+  int MUSIC_PATH = 44;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1983,6 +1992,34 @@ public interface GreedySnakePackage extends EPackage
    * @ordered
    */
   int MUSIC_PATH_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.StringValImpl <em>String Val</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.StringValImpl
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getStringVal()
+   * @generated
+   */
+  int STRING_VAL = 45;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_VAL__VALUE = 0;
+
+  /**
+   * The number of structural features of the '<em>String Val</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_VAL_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.AdditionImpl <em>Addition</em>}' class.
@@ -2075,6 +2112,16 @@ public interface GreedySnakePackage extends EPackage
    * @ordered
    */
   int MULTIPLICATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl2.group16.greedySnake.Direction <em>Direction</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl2.group16.greedySnake.Direction
+   * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getDirection()
+   * @generated
+   */
+  int DIRECTION = 48;
 
 
   /**
@@ -2176,6 +2223,17 @@ public interface GreedySnakePackage extends EPackage
   EReference getGreedySnake_Map();
 
   /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getSnakeMove <em>Snake Move</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Snake Move</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getSnakeMove()
+   * @see #getGreedySnake()
+   * @generated
+   */
+  EReference getGreedySnake_SnakeMove();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getAbout <em>About</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2185,6 +2243,17 @@ public interface GreedySnakePackage extends EPackage
    * @generated
    */
   EReference getGreedySnake_About();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getDirections <em>Directions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Directions</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getDirections()
+   * @see #getGreedySnake()
+   * @generated
+   */
+  EReference getGreedySnake_Directions();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl2.group16.greedySnake.GreedySnake#getHelp <em>Help</em>}'.
@@ -2767,6 +2836,92 @@ public interface GreedySnakePackage extends EPackage
   EReference getObstacleMembers_Obstacle();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification <em>Snake Move Specification</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Snake Move Specification</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification
+   * @generated
+   */
+  EClass getSnakeMoveSpecification();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification#getIF <em>IF</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>IF</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification#getIF()
+   * @see #getSnakeMoveSpecification()
+   * @generated
+   */
+  EReference getSnakeMoveSpecification_IF();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.Move <em>Move</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Move</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.Move
+   * @generated
+   */
+  EClass getMove();
+
+  /**
+   * Returns the meta object for the reference '{@link org.xtext.example.mydsl2.group16.greedySnake.Move#getDir <em>Dir</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Dir</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.Move#getDir()
+   * @see #getMove()
+   * @generated
+   */
+  EReference getMove_Dir();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.Move#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.Move#getName()
+   * @see #getMove()
+   * @generated
+   */
+  EAttribute getMove_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.Move#getCoor <em>Coor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Coor</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.Move#getCoor()
+   * @see #getMove()
+   * @generated
+   */
+  EAttribute getMove_Coor();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.Move#getOperator <em>Operator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Operator</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.Move#getOperator()
+   * @see #getMove()
+   * @generated
+   */
+  EAttribute getMove_Operator();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.Move#getMoveVal <em>Move Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Move Val</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.Move#getMoveVal()
+   * @see #getMove()
+   * @generated
+   */
+  EAttribute getMove_MoveVal();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.FireInitDisplay <em>Fire Init Display</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3144,48 +3299,6 @@ public interface GreedySnakePackage extends EPackage
   EAttribute getRandomFoodSize_Minsize();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.Minsize <em>Minsize</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Minsize</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.Minsize
-   * @generated
-   */
-  EClass getMinsize();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.Minsize#getMaxsize <em>Maxsize</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Maxsize</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.Minsize#getMaxsize()
-   * @see #getMinsize()
-   * @generated
-   */
-  EAttribute getMinsize_Maxsize();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.Maxsize <em>Maxsize</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Maxsize</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.Maxsize
-   * @generated
-   */
-  EClass getMaxsize();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.Maxsize#getMinsize <em>Minsize</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Minsize</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.Maxsize#getMinsize()
-   * @see #getMaxsize()
-   * @generated
-   */
-  EAttribute getMaxsize_Minsize();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.TimeLimited <em>Time Limited</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3249,56 +3362,57 @@ public interface GreedySnakePackage extends EPackage
   EAttribute getFoodTime_FoodTime();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.VarSpec <em>Var Spec</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification <em>Direction Specification</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Var Spec</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.VarSpec
+   * @return the meta object for class '<em>Direction Specification</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification
    * @generated
    */
-  EClass getVarSpec();
+  EClass getDirectionSpecification();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.VarSpec#getType <em>Type</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification#getDi <em>Di</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.VarSpec#getType()
-   * @see #getVarSpec()
+   * @return the meta object for the containment reference list '<em>Di</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification#getDi()
+   * @see #getDirectionSpecification()
    * @generated
    */
-  EAttribute getVarSpec_Type();
+  EReference getDirectionSpecification_Di();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.VarSpec#getName <em>Name</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.dis <em>dis</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>dis</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.dis
+   * @generated
+   */
+  EClass getdis();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.dis#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.VarSpec#getName()
-   * @see #getVarSpec()
+   * @see org.xtext.example.mydsl2.group16.greedySnake.dis#getName()
+   * @see #getdis()
    * @generated
    */
-  EAttribute getVarSpec_Name();
+  EAttribute getdis_Name();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.AllItemVarSpec <em>All Item Var Spec</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.dis#getDirection <em>Direction</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>All Item Var Spec</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.AllItemVarSpec
+   * @return the meta object for the attribute '<em>Direction</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.dis#getDirection()
+   * @see #getdis()
    * @generated
    */
-  EClass getAllItemVarSpec();
-
-  /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.ParamSpec <em>Param Spec</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Param Spec</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.ParamSpec
-   * @generated
-   */
-  EClass getParamSpec();
+  EAttribute getdis_Direction();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.Expression <em>Expression</em>}'.
@@ -3459,27 +3573,6 @@ public interface GreedySnakePackage extends EPackage
   EAttribute getAboutSpecification_Y();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.StringVal <em>String Val</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>String Val</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.StringVal
-   * @generated
-   */
-  EClass getStringVal();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.StringVal#getValue <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
-   * @see org.xtext.example.mydsl2.group16.greedySnake.StringVal#getValue()
-   * @see #getStringVal()
-   * @generated
-   */
-  EAttribute getStringVal_Value();
-
-  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.HelpSpecification <em>Help Specification</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3607,6 +3700,27 @@ public interface GreedySnakePackage extends EPackage
    * @generated
    */
   EReference getBackgroundIcon_BackgroundTag();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.BackGroundSize <em>Back Ground Size</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Back Ground Size</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.BackGroundSize
+   * @generated
+   */
+  EClass getBackGroundSize();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.BackGroundSize#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Val</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.BackGroundSize#getVal()
+   * @see #getBackGroundSize()
+   * @generated
+   */
+  EAttribute getBackGroundSize_Val();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.BackgroundTag <em>Background Tag</em>}'.
@@ -3759,6 +3873,27 @@ public interface GreedySnakePackage extends EPackage
   EAttribute getMusicPath_Path();
 
   /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.StringVal <em>String Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Val</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.StringVal
+   * @generated
+   */
+  EClass getStringVal();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl2.group16.greedySnake.StringVal#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.StringVal#getValue()
+   * @see #getStringVal()
+   * @generated
+   */
+  EAttribute getStringVal_Value();
+
+  /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl2.group16.greedySnake.Addition <em>Addition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -3843,6 +3978,16 @@ public interface GreedySnakePackage extends EPackage
    * @generated
    */
   EReference getMultiplication_Right();
+
+  /**
+   * Returns the meta object for enum '{@link org.xtext.example.mydsl2.group16.greedySnake.Direction <em>Direction</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Direction</em>'.
+   * @see org.xtext.example.mydsl2.group16.greedySnake.Direction
+   * @generated
+   */
+  EEnum getDirection();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -3942,12 +4087,28 @@ public interface GreedySnakePackage extends EPackage
     EReference GREEDY_SNAKE__MAP = eINSTANCE.getGreedySnake_Map();
 
     /**
+     * The meta object literal for the '<em><b>Snake Move</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GREEDY_SNAKE__SNAKE_MOVE = eINSTANCE.getGreedySnake_SnakeMove();
+
+    /**
      * The meta object literal for the '<em><b>About</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
     EReference GREEDY_SNAKE__ABOUT = eINSTANCE.getGreedySnake_About();
+
+    /**
+     * The meta object literal for the '<em><b>Directions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference GREEDY_SNAKE__DIRECTIONS = eINSTANCE.getGreedySnake_Directions();
 
     /**
      * The meta object literal for the '<em><b>Help</b></em>' containment reference list feature.
@@ -4410,6 +4571,74 @@ public interface GreedySnakePackage extends EPackage
     EReference OBSTACLE_MEMBERS__OBSTACLE = eINSTANCE.getObstacleMembers_Obstacle();
 
     /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.SnakeMoveSpecificationImpl <em>Snake Move Specification</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.SnakeMoveSpecificationImpl
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getSnakeMoveSpecification()
+     * @generated
+     */
+    EClass SNAKE_MOVE_SPECIFICATION = eINSTANCE.getSnakeMoveSpecification();
+
+    /**
+     * The meta object literal for the '<em><b>IF</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SNAKE_MOVE_SPECIFICATION__IF = eINSTANCE.getSnakeMoveSpecification_IF();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.MoveImpl <em>Move</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.MoveImpl
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getMove()
+     * @generated
+     */
+    EClass MOVE = eINSTANCE.getMove();
+
+    /**
+     * The meta object literal for the '<em><b>Dir</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MOVE__DIR = eINSTANCE.getMove_Dir();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MOVE__NAME = eINSTANCE.getMove_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Coor</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MOVE__COOR = eINSTANCE.getMove_Coor();
+
+    /**
+     * The meta object literal for the '<em><b>Operator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MOVE__OPERATOR = eINSTANCE.getMove_Operator();
+
+    /**
+     * The meta object literal for the '<em><b>Move Val</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute MOVE__MOVE_VAL = eINSTANCE.getMove_MoveVal();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.FireInitDisplayImpl <em>Fire Init Display</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4706,42 +4935,6 @@ public interface GreedySnakePackage extends EPackage
     EAttribute RANDOM_FOOD_SIZE__MINSIZE = eINSTANCE.getRandomFoodSize_Minsize();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.MinsizeImpl <em>Minsize</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.MinsizeImpl
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getMinsize()
-     * @generated
-     */
-    EClass MINSIZE = eINSTANCE.getMinsize();
-
-    /**
-     * The meta object literal for the '<em><b>Maxsize</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MINSIZE__MAXSIZE = eINSTANCE.getMinsize_Maxsize();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.MaxsizeImpl <em>Maxsize</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.MaxsizeImpl
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getMaxsize()
-     * @generated
-     */
-    EClass MAXSIZE = eINSTANCE.getMaxsize();
-
-    /**
-     * The meta object literal for the '<em><b>Minsize</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute MAXSIZE__MINSIZE = eINSTANCE.getMaxsize_Minsize();
-
-    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.TimeLimitedImpl <em>Time Limited</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -4796,22 +4989,32 @@ public interface GreedySnakePackage extends EPackage
     EAttribute FOOD_TIME__FOOD_TIME = eINSTANCE.getFoodTime_FoodTime();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.VarSpecImpl <em>Var Spec</em>}' class.
+     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.DirectionSpecificationImpl <em>Direction Specification</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.VarSpecImpl
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getVarSpec()
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.DirectionSpecificationImpl
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getDirectionSpecification()
      * @generated
      */
-    EClass VAR_SPEC = eINSTANCE.getVarSpec();
+    EClass DIRECTION_SPECIFICATION = eINSTANCE.getDirectionSpecification();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Di</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute VAR_SPEC__TYPE = eINSTANCE.getVarSpec_Type();
+    EReference DIRECTION_SPECIFICATION__DI = eINSTANCE.getDirectionSpecification_Di();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.disImpl <em>dis</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.disImpl
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getdis()
+     * @generated
+     */
+    EClass DIS = eINSTANCE.getdis();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -4819,27 +5022,15 @@ public interface GreedySnakePackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute VAR_SPEC__NAME = eINSTANCE.getVarSpec_Name();
+    EAttribute DIS__NAME = eINSTANCE.getdis_Name();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.AllItemVarSpecImpl <em>All Item Var Spec</em>}' class.
+     * The meta object literal for the '<em><b>Direction</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.AllItemVarSpecImpl
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getAllItemVarSpec()
      * @generated
      */
-    EClass ALL_ITEM_VAR_SPEC = eINSTANCE.getAllItemVarSpec();
-
-    /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.ParamSpecImpl <em>Param Spec</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.ParamSpecImpl
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getParamSpec()
-     * @generated
-     */
-    EClass PARAM_SPEC = eINSTANCE.getParamSpec();
+    EAttribute DIS__DIRECTION = eINSTANCE.getdis_Direction();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -4976,24 +5167,6 @@ public interface GreedySnakePackage extends EPackage
     EAttribute ABOUT_SPECIFICATION__Y = eINSTANCE.getAboutSpecification_Y();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.StringValImpl <em>String Val</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.StringValImpl
-     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getStringVal()
-     * @generated
-     */
-    EClass STRING_VAL = eINSTANCE.getStringVal();
-
-    /**
-     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute STRING_VAL__VALUE = eINSTANCE.getStringVal_Value();
-
-    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.HelpSpecificationImpl <em>Help Specification</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5094,6 +5267,24 @@ public interface GreedySnakePackage extends EPackage
      * @generated
      */
     EReference BACKGROUND_ICON__BACKGROUND_TAG = eINSTANCE.getBackgroundIcon_BackgroundTag();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.BackGroundSizeImpl <em>Back Ground Size</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.BackGroundSizeImpl
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getBackGroundSize()
+     * @generated
+     */
+    EClass BACK_GROUND_SIZE = eINSTANCE.getBackGroundSize();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BACK_GROUND_SIZE__VAL = eINSTANCE.getBackGroundSize_Val();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.BackgroundTagImpl <em>Background Tag</em>}' class.
@@ -5216,6 +5407,24 @@ public interface GreedySnakePackage extends EPackage
     EAttribute MUSIC_PATH__PATH = eINSTANCE.getMusicPath_Path();
 
     /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.StringValImpl <em>String Val</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.StringValImpl
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getStringVal()
+     * @generated
+     */
+    EClass STRING_VAL = eINSTANCE.getStringVal();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_VAL__VALUE = eINSTANCE.getStringVal_Value();
+
+    /**
      * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.impl.AdditionImpl <em>Addition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -5282,6 +5491,16 @@ public interface GreedySnakePackage extends EPackage
      * @generated
      */
     EReference MULTIPLICATION__RIGHT = eINSTANCE.getMultiplication_Right();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl2.group16.greedySnake.Direction <em>Direction</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl2.group16.greedySnake.Direction
+     * @see org.xtext.example.mydsl2.group16.greedySnake.impl.GreedySnakePackageImpl#getDirection()
+     * @generated
+     */
+    EEnum DIRECTION = eINSTANCE.getDirection();
 
   }
 

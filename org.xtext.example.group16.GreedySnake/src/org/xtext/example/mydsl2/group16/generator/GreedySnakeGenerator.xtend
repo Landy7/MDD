@@ -20,31 +20,31 @@ class GreedySnakeGenerator extends AbstractGenerator {
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 	 //the model name
 	 val processorModel = new ModelPreprocessor(resource)
-	 //mainWindow页面
+	 //mainWindow page
 	 new MainWindowGenerator (processorModel).generate(fsa)
-	  //About页面
+	  //About page
 	 new About (processorModel).generate(fsa)
-	  //Body页面
+	  //Body page
 	 new Body (processorModel).generate(fsa)
-	  //coordinate页面
+	  //coordinate page
 	 new Coordinate (processorModel).generate(fsa)
-	  //direction页面
+	  //direction page
 	 new Direction (processorModel).generate(fsa)
-	  //foodset页面
+	  //foodset page
 	 new FoodSet (processorModel).generate(fsa)
-	  //Help页面
+	  //Help page
 	 new Help (processorModel).generate(fsa)
-	  //IndexToPixel页面
+	  //IndexToPixel page
 	 new IndexToPixel (processorModel).generate(fsa)
-	  //Music页面
+	  //Music page
 	 new Music (processorModel).generate(fsa)
-	  //obstacle页面
+	  //obstacle page
 	 new Obstacle (processorModel).generate(fsa)
-	 //playerSnake页面
+	 //playerSnake page
 	 new PlayerSnake (processorModel).generate(fsa)
-	 //SysTime页面
+	 //SysTime page
 	 new SysTime (processorModel).generate(fsa)
-	 //write2file页面
+	 //write2file page
 	 new Write2File (processorModel).generate(fsa)
 	 
 	 

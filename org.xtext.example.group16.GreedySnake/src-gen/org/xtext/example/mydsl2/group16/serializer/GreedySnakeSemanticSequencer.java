@@ -16,12 +16,13 @@ import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequence
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.xtext.example.mydsl2.group16.greedySnake.AboutSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.Addition;
-import org.xtext.example.mydsl2.group16.greedySnake.AllItemVarSpec;
+import org.xtext.example.mydsl2.group16.greedySnake.BackGroundSize;
 import org.xtext.example.mydsl2.group16.greedySnake.BackSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.BackgroundIcon;
 import org.xtext.example.mydsl2.group16.greedySnake.BackgroundTag;
 import org.xtext.example.mydsl2.group16.greedySnake.BackgroundTagLocate;
 import org.xtext.example.mydsl2.group16.greedySnake.Default;
+import org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.FireInitDisplay;
 import org.xtext.example.mydsl2.group16.greedySnake.FireMembers;
 import org.xtext.example.mydsl2.group16.greedySnake.FoodInitDisplay;
@@ -42,23 +43,23 @@ import org.xtext.example.mydsl2.group16.greedySnake.InitialObstacleSpecificatin;
 import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin;
 import org.xtext.example.mydsl2.group16.greedySnake.InitialSpeedSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.IntLiteral;
-import org.xtext.example.mydsl2.group16.greedySnake.Maxsize;
-import org.xtext.example.mydsl2.group16.greedySnake.Minsize;
+import org.xtext.example.mydsl2.group16.greedySnake.Move;
 import org.xtext.example.mydsl2.group16.greedySnake.Multiplication;
 import org.xtext.example.mydsl2.group16.greedySnake.MusicPath;
 import org.xtext.example.mydsl2.group16.greedySnake.MusicSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.ObstacleInitDisplay;
 import org.xtext.example.mydsl2.group16.greedySnake.ObstacleMembers;
 import org.xtext.example.mydsl2.group16.greedySnake.ObstacleTime;
-import org.xtext.example.mydsl2.group16.greedySnake.ParamSpec;
 import org.xtext.example.mydsl2.group16.greedySnake.RandomFoodSize;
 import org.xtext.example.mydsl2.group16.greedySnake.RealLiteral;
 import org.xtext.example.mydsl2.group16.greedySnake.RestartMenu;
 import org.xtext.example.mydsl2.group16.greedySnake.SnakeInitDisplay;
 import org.xtext.example.mydsl2.group16.greedySnake.SnakeMembers;
+import org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification;
 import org.xtext.example.mydsl2.group16.greedySnake.SpeedGroup;
 import org.xtext.example.mydsl2.group16.greedySnake.StartFieldDeclaration;
 import org.xtext.example.mydsl2.group16.greedySnake.StringVal;
+import org.xtext.example.mydsl2.group16.greedySnake.dis;
 import org.xtext.example.mydsl2.group16.services.GreedySnakeGrammarAccess;
 
 @SuppressWarnings("all")
@@ -81,8 +82,8 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case GreedySnakePackage.ADDITION:
 				sequence_Addition(context, (Addition) semanticObject); 
 				return; 
-			case GreedySnakePackage.ALL_ITEM_VAR_SPEC:
-				sequence_AllItemVarSpec(context, (AllItemVarSpec) semanticObject); 
+			case GreedySnakePackage.BACK_GROUND_SIZE:
+				sequence_BackGroundSize(context, (BackGroundSize) semanticObject); 
 				return; 
 			case GreedySnakePackage.BACK_SPECIFICATION:
 				sequence_BackSpecification(context, (BackSpecification) semanticObject); 
@@ -98,6 +99,9 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 				return; 
 			case GreedySnakePackage.DEFAULT:
 				sequence_Default(context, (Default) semanticObject); 
+				return; 
+			case GreedySnakePackage.DIRECTION_SPECIFICATION:
+				sequence_DirectionSpecification(context, (DirectionSpecification) semanticObject); 
 				return; 
 			case GreedySnakePackage.FIRE_INIT_DISPLAY:
 				sequence_FireInitDisplay(context, (FireInitDisplay) semanticObject); 
@@ -156,11 +160,8 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case GreedySnakePackage.INT_LITERAL:
 				sequence_IntLiteral(context, (IntLiteral) semanticObject); 
 				return; 
-			case GreedySnakePackage.MAXSIZE:
-				sequence_Maxsize(context, (Maxsize) semanticObject); 
-				return; 
-			case GreedySnakePackage.MINSIZE:
-				sequence_Minsize(context, (Minsize) semanticObject); 
+			case GreedySnakePackage.MOVE:
+				sequence_Move(context, (Move) semanticObject); 
 				return; 
 			case GreedySnakePackage.MULTIPLICATION:
 				sequence_Multiplication(context, (Multiplication) semanticObject); 
@@ -180,9 +181,6 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case GreedySnakePackage.OBSTACLE_TIME:
 				sequence_ObstacleTime(context, (ObstacleTime) semanticObject); 
 				return; 
-			case GreedySnakePackage.PARAM_SPEC:
-				sequence_ParamSpec(context, (ParamSpec) semanticObject); 
-				return; 
 			case GreedySnakePackage.RANDOM_FOOD_SIZE:
 				sequence_RandomFoodSize(context, (RandomFoodSize) semanticObject); 
 				return; 
@@ -198,6 +196,9 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 			case GreedySnakePackage.SNAKE_MEMBERS:
 				sequence_SnakeMembers(context, (SnakeMembers) semanticObject); 
 				return; 
+			case GreedySnakePackage.SNAKE_MOVE_SPECIFICATION:
+				sequence_SnakeMoveSpecification(context, (SnakeMoveSpecification) semanticObject); 
+				return; 
 			case GreedySnakePackage.SPEED_GROUP:
 				sequence_SpeedGroup(context, (SpeedGroup) semanticObject); 
 				return; 
@@ -206,6 +207,9 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 				return; 
 			case GreedySnakePackage.STRING_VAL:
 				sequence_StringVal(context, (StringVal) semanticObject); 
+				return; 
+			case GreedySnakePackage.DIS:
+				sequence_dis(context, (dis) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -260,14 +264,19 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
-	 *     VarSpec returns AllItemVarSpec
-	 *     AllItemVarSpec returns AllItemVarSpec
+	 *     BackGroundSize returns BackGroundSize
 	 *
 	 * Constraint:
-	 *     ((type='int' | type='String') name=ID)
+	 *     val=INT
 	 */
-	protected void sequence_AllItemVarSpec(ISerializationContext context, AllItemVarSpec semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+	protected void sequence_BackGroundSize(ISerializationContext context, BackGroundSize semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GreedySnakePackage.Literals.BACK_GROUND_SIZE__VAL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GreedySnakePackage.Literals.BACK_GROUND_SIZE__VAL));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getBackGroundSizeAccess().getValINTTerminalRuleCall_0(), semanticObject.getVal());
+		feeder.finish();
 	}
 	
 	
@@ -276,7 +285,7 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *     BackSpecification returns BackSpecification
 	 *
 	 * Constraint:
-	 *     (BackgroundIcon=BackgroundIcon BackGroundHeight=BackGroundSize BackGroundWidth=BackGroundSize)
+	 *     (BackgroundIcon=BackgroundIcon BackGroundHeight=INT BackGroundWidth=INT)
 	 */
 	protected void sequence_BackSpecification(ISerializationContext context, BackSpecification semanticObject) {
 		if (errorAcceptor != null) {
@@ -289,8 +298,8 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getBackSpecificationAccess().getBackgroundIconBackgroundIconParserRuleCall_4_0(), semanticObject.getBackgroundIcon());
-		feeder.accept(grammarAccess.getBackSpecificationAccess().getBackGroundHeightBackGroundSizeParserRuleCall_8_0(), semanticObject.getBackGroundHeight());
-		feeder.accept(grammarAccess.getBackSpecificationAccess().getBackGroundWidthBackGroundSizeParserRuleCall_11_0(), semanticObject.getBackGroundWidth());
+		feeder.accept(grammarAccess.getBackSpecificationAccess().getBackGroundHeightINTTerminalRuleCall_8_0(), semanticObject.getBackGroundHeight());
+		feeder.accept(grammarAccess.getBackSpecificationAccess().getBackGroundWidthINTTerminalRuleCall_11_0(), semanticObject.getBackGroundWidth());
 		feeder.finish();
 	}
 	
@@ -382,6 +391,18 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 		feeder.accept(grammarAccess.getDefaultAccess().getAmountSTRINGTerminalRuleCall_11_0(), semanticObject.getAmount());
 		feeder.accept(grammarAccess.getDefaultAccess().getWeaponSTRINGTerminalRuleCall_14_0(), semanticObject.getWeapon());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     DirectionSpecification returns DirectionSpecification
+	 *
+	 * Constraint:
+	 *     di+=dis*
+	 */
+	protected void sequence_DirectionSpecification(ISerializationContext context, DirectionSpecification semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -569,7 +590,9 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 	 *             fire+=InitialFireSpecification | 
 	 *             time+=TimeLimited | 
 	 *             Map+=GlobalMap | 
+	 *             SnakeMove+=SnakeMoveSpecification | 
 	 *             about+=AboutSpecification | 
+	 *             directions+=DirectionSpecification | 
 	 *             Help+=HelpSpecification | 
 	 *             Music+=MusicSpecification | 
 	 *             Backgrounds+=BackSpecification | 
@@ -758,37 +781,13 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
-	 *     Maxsize returns Maxsize
+	 *     Move returns Move
 	 *
 	 * Constraint:
-	 *     minsize=INT
+	 *     (dir=[dis|ID] name=ID (coor='x' | coor='y') (operator='+' | operator='-') moveVal=INT)
 	 */
-	protected void sequence_Maxsize(ISerializationContext context, Maxsize semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GreedySnakePackage.Literals.MAXSIZE__MINSIZE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GreedySnakePackage.Literals.MAXSIZE__MINSIZE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMaxsizeAccess().getMinsizeINTTerminalRuleCall_1_0(), semanticObject.getMinsize());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Minsize returns Minsize
-	 *
-	 * Constraint:
-	 *     maxsize=INT
-	 */
-	protected void sequence_Minsize(ISerializationContext context, Minsize semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, GreedySnakePackage.Literals.MINSIZE__MAXSIZE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GreedySnakePackage.Literals.MINSIZE__MAXSIZE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMinsizeAccess().getMaxsizeINTTerminalRuleCall_1_0(), semanticObject.getMaxsize());
-		feeder.finish();
+	protected void sequence_Move(ISerializationContext context, Move semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -895,19 +894,6 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
-	 *     VarSpec returns ParamSpec
-	 *     ParamSpec returns ParamSpec
-	 *
-	 * Constraint:
-	 *     ((type='int' | type='String' | type='Behaviour') name=ID)
-	 */
-	protected void sequence_ParamSpec(ISerializationContext context, ParamSpec semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     RandomFoodSize returns RandomFoodSize
 	 *
 	 * Constraint:
@@ -1004,6 +990,18 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 	
 	/**
 	 * Contexts:
+	 *     SnakeMoveSpecification returns SnakeMoveSpecification
+	 *
+	 * Constraint:
+	 *     IF+=Move*
+	 */
+	protected void sequence_SnakeMoveSpecification(ISerializationContext context, SnakeMoveSpecification semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     SpeedGroup returns SpeedGroup
 	 *
 	 * Constraint:
@@ -1056,6 +1054,27 @@ public class GreedySnakeSemanticSequencer extends AbstractDelegatingSemanticSequ
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getStringValAccess().getValueSTRINGTerminalRuleCall_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     dis returns dis
+	 *
+	 * Constraint:
+	 *     (name=ID direction=Direction)
+	 */
+	protected void sequence_dis(ISerializationContext context, dis semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, GreedySnakePackage.Literals.DIS__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GreedySnakePackage.Literals.DIS__NAME));
+			if (transientValues.isValueTransient(semanticObject, GreedySnakePackage.Literals.DIS__DIRECTION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, GreedySnakePackage.Literals.DIS__DIRECTION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getDisAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getDisAccess().getDirectionDirectionEnumRuleCall_2_0(), semanticObject.getDirection());
 		feeder.finish();
 	}
 	

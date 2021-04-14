@@ -32,14 +32,14 @@ public class GreedySnakeParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, GreedySnakeGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getGreedySnakeAccess().getAlternatives_3(), "rule__GreedySnake__Alternatives_3");
+			builder.put(grammarAccess.getMoveAccess().getCoorAlternatives_8_0(), "rule__Move__CoorAlternatives_8_0");
+			builder.put(grammarAccess.getMoveAccess().getOperatorAlternatives_9_0(), "rule__Move__OperatorAlternatives_9_0");
 			builder.put(grammarAccess.getTimeLimitedAccess().getAlternatives(), "rule__TimeLimited__Alternatives");
-			builder.put(grammarAccess.getVarSpecAccess().getAlternatives(), "rule__VarSpec__Alternatives");
-			builder.put(grammarAccess.getAllItemVarSpecAccess().getTypeAlternatives_0_0(), "rule__AllItemVarSpec__TypeAlternatives_0_0");
-			builder.put(grammarAccess.getParamSpecAccess().getTypeAlternatives_0_0(), "rule__ParamSpec__TypeAlternatives_0_0");
 			builder.put(grammarAccess.getAdditionAccess().getOperatorAlternatives_1_1_0(), "rule__Addition__OperatorAlternatives_1_1_0");
 			builder.put(grammarAccess.getMultiplicationAccess().getOperatorAlternatives_1_1_0(), "rule__Multiplication__OperatorAlternatives_1_1_0");
 			builder.put(grammarAccess.getPrimaryAccess().getAlternatives(), "rule__Primary__Alternatives");
 			builder.put(grammarAccess.getOptionSpecificationAccess().getAlternatives(), "rule__OptionSpecification__Alternatives");
+			builder.put(grammarAccess.getDirectionAccess().getAlternatives(), "rule__Direction__Alternatives");
 			builder.put(grammarAccess.getGreedySnakeAccess().getGroup(), "rule__GreedySnake__Group__0");
 			builder.put(grammarAccess.getGlobalMapAccess().getGroup(), "rule__GlobalMap__Group__0");
 			builder.put(grammarAccess.getGlobalFieldInitialisationAccess().getGroup(), "rule__GlobalFieldInitialisation__Group__0");
@@ -51,6 +51,8 @@ public class GreedySnakeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getInitialFireSpecificationAccess().getGroup(), "rule__InitialFireSpecification__Group__0");
 			builder.put(grammarAccess.getInitialSpeedSpecificationAccess().getGroup(), "rule__InitialSpeedSpecification__Group__0");
 			builder.put(grammarAccess.getSpeedGroupAccess().getGroup(), "rule__SpeedGroup__Group__0");
+			builder.put(grammarAccess.getSnakeMoveSpecificationAccess().getGroup(), "rule__SnakeMoveSpecification__Group__0");
+			builder.put(grammarAccess.getMoveAccess().getGroup(), "rule__Move__Group__0");
 			builder.put(grammarAccess.getFireInitDisplayAccess().getGroup(), "rule__FireInitDisplay__Group__0");
 			builder.put(grammarAccess.getSnakeInitDisplayAccess().getGroup(), "rule__SnakeInitDisplay__Group__0");
 			builder.put(grammarAccess.getIconAccess().getGroup(), "rule__Icon__Group__0");
@@ -59,14 +61,12 @@ public class GreedySnakeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getFoodKindAccess().getGroup(), "rule__FoodKind__Group__0");
 			builder.put(grammarAccess.getObstacleInitDisplayAccess().getGroup(), "rule__ObstacleInitDisplay__Group__0");
 			builder.put(grammarAccess.getRandomFoodSizeAccess().getGroup(), "rule__RandomFoodSize__Group__0");
-			builder.put(grammarAccess.getMinsizeAccess().getGroup(), "rule__Minsize__Group__0");
-			builder.put(grammarAccess.getMaxsizeAccess().getGroup(), "rule__Maxsize__Group__0");
 			builder.put(grammarAccess.getTimeLimitedAccess().getGroup_0(), "rule__TimeLimited__Group_0__0");
 			builder.put(grammarAccess.getTimeLimitedAccess().getGroup_1(), "rule__TimeLimited__Group_1__0");
 			builder.put(grammarAccess.getObstacleTimeAccess().getGroup(), "rule__ObstacleTime__Group__0");
 			builder.put(grammarAccess.getFoodTimeAccess().getGroup(), "rule__FoodTime__Group__0");
-			builder.put(grammarAccess.getAllItemVarSpecAccess().getGroup(), "rule__AllItemVarSpec__Group__0");
-			builder.put(grammarAccess.getParamSpecAccess().getGroup(), "rule__ParamSpec__Group__0");
+			builder.put(grammarAccess.getDirectionSpecificationAccess().getGroup(), "rule__DirectionSpecification__Group__0");
+			builder.put(grammarAccess.getDisAccess().getGroup(), "rule__Dis__Group__0");
 			builder.put(grammarAccess.getAdditionAccess().getGroup(), "rule__Addition__Group__0");
 			builder.put(grammarAccess.getAdditionAccess().getGroup_1(), "rule__Addition__Group_1__0");
 			builder.put(grammarAccess.getMultiplicationAccess().getGroup(), "rule__Multiplication__Group__0");
@@ -91,12 +91,14 @@ public class GreedySnakeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getGreedySnakeAccess().getFireAssignment_3_4(), "rule__GreedySnake__FireAssignment_3_4");
 			builder.put(grammarAccess.getGreedySnakeAccess().getTimeAssignment_3_5(), "rule__GreedySnake__TimeAssignment_3_5");
 			builder.put(grammarAccess.getGreedySnakeAccess().getMapAssignment_3_6(), "rule__GreedySnake__MapAssignment_3_6");
-			builder.put(grammarAccess.getGreedySnakeAccess().getAboutAssignment_3_7(), "rule__GreedySnake__AboutAssignment_3_7");
-			builder.put(grammarAccess.getGreedySnakeAccess().getHelpAssignment_3_8(), "rule__GreedySnake__HelpAssignment_3_8");
-			builder.put(grammarAccess.getGreedySnakeAccess().getMusicAssignment_3_9(), "rule__GreedySnake__MusicAssignment_3_9");
-			builder.put(grammarAccess.getGreedySnakeAccess().getBackgroundsAssignment_3_10(), "rule__GreedySnake__BackgroundsAssignment_3_10");
-			builder.put(grammarAccess.getGreedySnakeAccess().getFieldsAssignment_3_11(), "rule__GreedySnake__FieldsAssignment_3_11");
-			builder.put(grammarAccess.getGreedySnakeAccess().getOptionsAssignment_3_12(), "rule__GreedySnake__OptionsAssignment_3_12");
+			builder.put(grammarAccess.getGreedySnakeAccess().getSnakeMoveAssignment_3_7(), "rule__GreedySnake__SnakeMoveAssignment_3_7");
+			builder.put(grammarAccess.getGreedySnakeAccess().getAboutAssignment_3_8(), "rule__GreedySnake__AboutAssignment_3_8");
+			builder.put(grammarAccess.getGreedySnakeAccess().getDirectionsAssignment_3_9(), "rule__GreedySnake__DirectionsAssignment_3_9");
+			builder.put(grammarAccess.getGreedySnakeAccess().getHelpAssignment_3_10(), "rule__GreedySnake__HelpAssignment_3_10");
+			builder.put(grammarAccess.getGreedySnakeAccess().getMusicAssignment_3_11(), "rule__GreedySnake__MusicAssignment_3_11");
+			builder.put(grammarAccess.getGreedySnakeAccess().getBackgroundsAssignment_3_12(), "rule__GreedySnake__BackgroundsAssignment_3_12");
+			builder.put(grammarAccess.getGreedySnakeAccess().getFieldsAssignment_3_13(), "rule__GreedySnake__FieldsAssignment_3_13");
+			builder.put(grammarAccess.getGreedySnakeAccess().getOptionsAssignment_3_14(), "rule__GreedySnake__OptionsAssignment_3_14");
 			builder.put(grammarAccess.getGlobalMapAccess().getMapAssignment_2(), "rule__GlobalMap__MapAssignment_2");
 			builder.put(grammarAccess.getGlobalFieldInitialisationAccess().getNameAssignment_1(), "rule__GlobalFieldInitialisation__NameAssignment_1");
 			builder.put(grammarAccess.getGlobalFieldInitialisationAccess().getPanelWidthAssignment_5(), "rule__GlobalFieldInitialisation__PanelWidthAssignment_5");
@@ -132,6 +134,12 @@ public class GreedySnakeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSnakeMembersAccess().getSnaAssignment(), "rule__SnakeMembers__SnaAssignment");
 			builder.put(grammarAccess.getFoodMembersAccess().getFoodAssignment(), "rule__FoodMembers__FoodAssignment");
 			builder.put(grammarAccess.getObstacleMembersAccess().getObstacleAssignment(), "rule__ObstacleMembers__ObstacleAssignment");
+			builder.put(grammarAccess.getSnakeMoveSpecificationAccess().getIFAssignment_4(), "rule__SnakeMoveSpecification__IFAssignment_4");
+			builder.put(grammarAccess.getMoveAccess().getDirAssignment_4(), "rule__Move__DirAssignment_4");
+			builder.put(grammarAccess.getMoveAccess().getNameAssignment_6(), "rule__Move__NameAssignment_6");
+			builder.put(grammarAccess.getMoveAccess().getCoorAssignment_8(), "rule__Move__CoorAssignment_8");
+			builder.put(grammarAccess.getMoveAccess().getOperatorAssignment_9(), "rule__Move__OperatorAssignment_9");
+			builder.put(grammarAccess.getMoveAccess().getMoveValAssignment_10(), "rule__Move__MoveValAssignment_10");
 			builder.put(grammarAccess.getFireInitDisplayAccess().getFireIconAssignment_2(), "rule__FireInitDisplay__FireIconAssignment_2");
 			builder.put(grammarAccess.getFireInitDisplayAccess().getIconsizeAssignment_6(), "rule__FireInitDisplay__IconsizeAssignment_6");
 			builder.put(grammarAccess.getSnakeInitDisplayAccess().getHeadAssignment_2(), "rule__SnakeInitDisplay__HeadAssignment_2");
@@ -159,16 +167,13 @@ public class GreedySnakeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getObstacleInitDisplayAccess().getObstacleTagAssignment_9(), "rule__ObstacleInitDisplay__ObstacleTagAssignment_9");
 			builder.put(grammarAccess.getRandomFoodSizeAccess().getMaxsizeAssignment_1(), "rule__RandomFoodSize__MaxsizeAssignment_1");
 			builder.put(grammarAccess.getRandomFoodSizeAccess().getMinsizeAssignment_3(), "rule__RandomFoodSize__MinsizeAssignment_3");
-			builder.put(grammarAccess.getMinsizeAccess().getMaxsizeAssignment_1(), "rule__Minsize__MaxsizeAssignment_1");
-			builder.put(grammarAccess.getMaxsizeAccess().getMinsizeAssignment_1(), "rule__Maxsize__MinsizeAssignment_1");
 			builder.put(grammarAccess.getObstacleTimeAccess().getNameAssignment_0(), "rule__ObstacleTime__NameAssignment_0");
 			builder.put(grammarAccess.getObstacleTimeAccess().getObstacleTimeAssignment_2(), "rule__ObstacleTime__ObstacleTimeAssignment_2");
 			builder.put(grammarAccess.getFoodTimeAccess().getNameAssignment_0(), "rule__FoodTime__NameAssignment_0");
 			builder.put(grammarAccess.getFoodTimeAccess().getFoodTimeAssignment_2(), "rule__FoodTime__FoodTimeAssignment_2");
-			builder.put(grammarAccess.getAllItemVarSpecAccess().getTypeAssignment_0(), "rule__AllItemVarSpec__TypeAssignment_0");
-			builder.put(grammarAccess.getAllItemVarSpecAccess().getNameAssignment_1(), "rule__AllItemVarSpec__NameAssignment_1");
-			builder.put(grammarAccess.getParamSpecAccess().getTypeAssignment_0(), "rule__ParamSpec__TypeAssignment_0");
-			builder.put(grammarAccess.getParamSpecAccess().getNameAssignment_1(), "rule__ParamSpec__NameAssignment_1");
+			builder.put(grammarAccess.getDirectionSpecificationAccess().getDiAssignment_3(), "rule__DirectionSpecification__DiAssignment_3");
+			builder.put(grammarAccess.getDisAccess().getNameAssignment_0(), "rule__Dis__NameAssignment_0");
+			builder.put(grammarAccess.getDisAccess().getDirectionAssignment_2(), "rule__Dis__DirectionAssignment_2");
 			builder.put(grammarAccess.getAdditionAccess().getOperatorAssignment_1_1(), "rule__Addition__OperatorAssignment_1_1");
 			builder.put(grammarAccess.getAdditionAccess().getRightAssignment_1_2(), "rule__Addition__RightAssignment_1_2");
 			builder.put(grammarAccess.getMultiplicationAccess().getOperatorAssignment_1_1(), "rule__Multiplication__OperatorAssignment_1_1");
@@ -181,7 +186,6 @@ public class GreedySnakeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getAboutSpecificationAccess().getAboutInforAssignment_8(), "rule__AboutSpecification__AboutInforAssignment_8");
 			builder.put(grammarAccess.getAboutSpecificationAccess().getXAssignment_12(), "rule__AboutSpecification__XAssignment_12");
 			builder.put(grammarAccess.getAboutSpecificationAccess().getYAssignment_14(), "rule__AboutSpecification__YAssignment_14");
-			builder.put(grammarAccess.getStringValAccess().getValueAssignment(), "rule__StringVal__ValueAssignment");
 			builder.put(grammarAccess.getHelpSpecificationAccess().getNameAssignment_1(), "rule__HelpSpecification__NameAssignment_1");
 			builder.put(grammarAccess.getHelpSpecificationAccess().getHelpTitleAssignment_5(), "rule__HelpSpecification__HelpTitleAssignment_5");
 			builder.put(grammarAccess.getHelpSpecificationAccess().getHelpInforAssignment_8(), "rule__HelpSpecification__HelpInforAssignment_8");
@@ -191,6 +195,7 @@ public class GreedySnakeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getBackSpecificationAccess().getBackGroundHeightAssignment_8(), "rule__BackSpecification__BackGroundHeightAssignment_8");
 			builder.put(grammarAccess.getBackSpecificationAccess().getBackGroundWidthAssignment_11(), "rule__BackSpecification__BackGroundWidthAssignment_11");
 			builder.put(grammarAccess.getBackgroundIconAccess().getBackgroundTagAssignment_1(), "rule__BackgroundIcon__BackgroundTagAssignment_1");
+			builder.put(grammarAccess.getBackGroundSizeAccess().getValAssignment(), "rule__BackGroundSize__ValAssignment");
 			builder.put(grammarAccess.getBackgroundTagAccess().getNameAssignment_0(), "rule__BackgroundTag__NameAssignment_0");
 			builder.put(grammarAccess.getBackgroundTagAccess().getValueAssignment_1(), "rule__BackgroundTag__ValueAssignment_1");
 			builder.put(grammarAccess.getBackgroundTagAccess().getBKtagAssignment_3(), "rule__BackgroundTag__BKtagAssignment_3");
@@ -201,6 +206,7 @@ public class GreedySnakeParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMusicSpecificationAccess().getMusicPathAssignment_5(), "rule__MusicSpecification__MusicPathAssignment_5");
 			builder.put(grammarAccess.getMusicPathAccess().getNameAssignment_0(), "rule__MusicPath__NameAssignment_0");
 			builder.put(grammarAccess.getMusicPathAccess().getPathAssignment_3(), "rule__MusicPath__PathAssignment_3");
+			builder.put(grammarAccess.getStringValAccess().getValueAssignment(), "rule__StringVal__ValueAssignment");
 		}
 	}
 	

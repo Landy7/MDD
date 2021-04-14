@@ -4,6 +4,7 @@
 package org.xtext.example.mydsl2.group16.greedySnake.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -80,6 +81,8 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
       case GreedySnakePackage.SNAKE_MEMBERS: return createSnakeMembers();
       case GreedySnakePackage.FOOD_MEMBERS: return createFoodMembers();
       case GreedySnakePackage.OBSTACLE_MEMBERS: return createObstacleMembers();
+      case GreedySnakePackage.SNAKE_MOVE_SPECIFICATION: return createSnakeMoveSpecification();
+      case GreedySnakePackage.MOVE: return createMove();
       case GreedySnakePackage.FIRE_INIT_DISPLAY: return createFireInitDisplay();
       case GreedySnakePackage.SNAKE_INIT_DISPLAY: return createSnakeInitDisplay();
       case GreedySnakePackage.ICON: return createIcon();
@@ -88,14 +91,11 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
       case GreedySnakePackage.FOOD_KIND: return createFoodKind();
       case GreedySnakePackage.OBSTACLE_INIT_DISPLAY: return createObstacleInitDisplay();
       case GreedySnakePackage.RANDOM_FOOD_SIZE: return createRandomFoodSize();
-      case GreedySnakePackage.MINSIZE: return createMinsize();
-      case GreedySnakePackage.MAXSIZE: return createMaxsize();
       case GreedySnakePackage.TIME_LIMITED: return createTimeLimited();
       case GreedySnakePackage.OBSTACLE_TIME: return createObstacleTime();
       case GreedySnakePackage.FOOD_TIME: return createFoodTime();
-      case GreedySnakePackage.VAR_SPEC: return createVarSpec();
-      case GreedySnakePackage.ALL_ITEM_VAR_SPEC: return createAllItemVarSpec();
-      case GreedySnakePackage.PARAM_SPEC: return createParamSpec();
+      case GreedySnakePackage.DIRECTION_SPECIFICATION: return createDirectionSpecification();
+      case GreedySnakePackage.DIS: return createdis();
       case GreedySnakePackage.EXPRESSION: return createExpression();
       case GreedySnakePackage.INT_LITERAL: return createIntLiteral();
       case GreedySnakePackage.REAL_LITERAL: return createRealLiteral();
@@ -103,18 +103,53 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
       case GreedySnakePackage.RESTART_MENU: return createRestartMenu();
       case GreedySnakePackage.START_FIELD_DECLARATION: return createStartFieldDeclaration();
       case GreedySnakePackage.ABOUT_SPECIFICATION: return createAboutSpecification();
-      case GreedySnakePackage.STRING_VAL: return createStringVal();
       case GreedySnakePackage.HELP_SPECIFICATION: return createHelpSpecification();
       case GreedySnakePackage.BACK_SPECIFICATION: return createBackSpecification();
       case GreedySnakePackage.BACKGROUND_ICON: return createBackgroundIcon();
+      case GreedySnakePackage.BACK_GROUND_SIZE: return createBackGroundSize();
       case GreedySnakePackage.BACKGROUND_TAG: return createBackgroundTag();
       case GreedySnakePackage.BACKGROUND_TAG_LOCATE: return createBackgroundTagLocate();
       case GreedySnakePackage.MUSIC_SPECIFICATION: return createMusicSpecification();
       case GreedySnakePackage.MUSIC_PATH: return createMusicPath();
+      case GreedySnakePackage.STRING_VAL: return createStringVal();
       case GreedySnakePackage.ADDITION: return createAddition();
       case GreedySnakePackage.MULTIPLICATION: return createMultiplication();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case GreedySnakePackage.DIRECTION:
+        return createDirectionFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case GreedySnakePackage.DIRECTION:
+        return convertDirectionToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -304,6 +339,30 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
    * @generated
    */
   @Override
+  public SnakeMoveSpecification createSnakeMoveSpecification()
+  {
+    SnakeMoveSpecificationImpl snakeMoveSpecification = new SnakeMoveSpecificationImpl();
+    return snakeMoveSpecification;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Move createMove()
+  {
+    MoveImpl move = new MoveImpl();
+    return move;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public FireInitDisplay createFireInitDisplay()
   {
     FireInitDisplayImpl fireInitDisplay = new FireInitDisplayImpl();
@@ -400,30 +459,6 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
    * @generated
    */
   @Override
-  public Minsize createMinsize()
-  {
-    MinsizeImpl minsize = new MinsizeImpl();
-    return minsize;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Maxsize createMaxsize()
-  {
-    MaxsizeImpl maxsize = new MaxsizeImpl();
-    return maxsize;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public TimeLimited createTimeLimited()
   {
     TimeLimitedImpl timeLimited = new TimeLimitedImpl();
@@ -460,10 +495,10 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
    * @generated
    */
   @Override
-  public VarSpec createVarSpec()
+  public DirectionSpecification createDirectionSpecification()
   {
-    VarSpecImpl varSpec = new VarSpecImpl();
-    return varSpec;
+    DirectionSpecificationImpl directionSpecification = new DirectionSpecificationImpl();
+    return directionSpecification;
   }
 
   /**
@@ -472,22 +507,10 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
    * @generated
    */
   @Override
-  public AllItemVarSpec createAllItemVarSpec()
+  public dis createdis()
   {
-    AllItemVarSpecImpl allItemVarSpec = new AllItemVarSpecImpl();
-    return allItemVarSpec;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ParamSpec createParamSpec()
-  {
-    ParamSpecImpl paramSpec = new ParamSpecImpl();
-    return paramSpec;
+    disImpl dis = new disImpl();
+    return dis;
   }
 
   /**
@@ -580,18 +603,6 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
    * @generated
    */
   @Override
-  public StringVal createStringVal()
-  {
-    StringValImpl stringVal = new StringValImpl();
-    return stringVal;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public HelpSpecification createHelpSpecification()
   {
     HelpSpecificationImpl helpSpecification = new HelpSpecificationImpl();
@@ -620,6 +631,18 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
   {
     BackgroundIconImpl backgroundIcon = new BackgroundIconImpl();
     return backgroundIcon;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BackGroundSize createBackGroundSize()
+  {
+    BackGroundSizeImpl backGroundSize = new BackGroundSizeImpl();
+    return backGroundSize;
   }
 
   /**
@@ -676,6 +699,18 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
    * @generated
    */
   @Override
+  public StringVal createStringVal()
+  {
+    StringValImpl stringVal = new StringValImpl();
+    return stringVal;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Addition createAddition()
   {
     AdditionImpl addition = new AdditionImpl();
@@ -692,6 +727,28 @@ public class GreedySnakeFactoryImpl extends EFactoryImpl implements GreedySnakeF
   {
     MultiplicationImpl multiplication = new MultiplicationImpl();
     return multiplication;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Direction createDirectionFromString(EDataType eDataType, String initialValue)
+  {
+    Direction result = Direction.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertDirectionToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

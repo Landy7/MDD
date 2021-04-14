@@ -3,7 +3,18 @@
  */
 package org.xtext.example.mydsl2.group16.ui.quickfix;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.ui.editor.model.edit.IMultiModification;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
+import org.eclipse.xtext.ui.editor.quickfix.Fix;
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
+import org.eclipse.xtext.validation.Issue;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
+import org.xtext.example.mydsl2.group16.greedySnake.GlobalFieldInitialisation;
+import org.xtext.example.mydsl2.group16.greedySnake.InitialFoodSpecificatin;
+import org.xtext.example.mydsl2.group16.greedySnake.InitialObstacleSpecificatin;
+import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin;
+import org.xtext.example.mydsl2.group16.validation.GreedySnakeValidator;
 
 /**
  * Custom quickfixes.
@@ -12,4 +23,39 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
  */
 @SuppressWarnings("all")
 public class GreedySnakeQuickfixProvider extends DefaultQuickfixProvider {
+  @Fix(GreedySnakeValidator.INVALID_FIELD_NAME)
+  public void checkFieldStartWithLowerCase(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final IMultiModification<EObject> _function = (EObject element) -> {
+      final GlobalFieldInitialisation m = ((GlobalFieldInitialisation) element);
+      m.setName(StringExtensions.toFirstLower(m.getName()));
+    };
+    acceptor.<EObject>acceptMulti(issue, "Lowercase field", "change the name to start with lower-case character", null, _function);
+  }
+  
+  @Fix(GreedySnakeValidator.INVALID_SNAKE_NAME)
+  public void checkSnakeStartWithLowerCase(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final IMultiModification<EObject> _function = (EObject element) -> {
+      final InitialSnakeSpecificatin m = ((InitialSnakeSpecificatin) element);
+      m.setName(StringExtensions.toFirstLower(m.getName()));
+    };
+    acceptor.<EObject>acceptMulti(issue, "Lowercase snake", "change the name to start with lower-case character", null, _function);
+  }
+  
+  @Fix(GreedySnakeValidator.INVALID_FOOD_NAME)
+  public void checkFoodStartWithLowerCase(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final IMultiModification<EObject> _function = (EObject element) -> {
+      final InitialFoodSpecificatin m = ((InitialFoodSpecificatin) element);
+      m.setName(StringExtensions.toFirstLower(m.getName()));
+    };
+    acceptor.<EObject>acceptMulti(issue, "Lowercase food", "change the name to start with lower-case character", null, _function);
+  }
+  
+  @Fix(GreedySnakeValidator.INVALID_OBSTACLE_NAME)
+  public void checkObstacleStartWithLowerCase(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final IMultiModification<EObject> _function = (EObject element) -> {
+      final InitialObstacleSpecificatin m = ((InitialObstacleSpecificatin) element);
+      m.setName(StringExtensions.toFirstLower(m.getName()));
+    };
+    acceptor.<EObject>acceptMulti(issue, "Lowercase obstacle", "change the name to start with lower-case character", null, _function);
+  }
 }

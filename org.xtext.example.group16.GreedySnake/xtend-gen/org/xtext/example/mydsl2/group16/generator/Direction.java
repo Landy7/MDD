@@ -27,7 +27,7 @@ public class Direction extends GeneralGenerator {
     _builder.append("public enum Direction {");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("UP, DOWN, LEFT, RIGHT;//上下左右");
+    _builder.append("UP, DOWN, LEFT, RIGHT;");
     _builder.newLine();
     _builder.append("}");
     _builder.newLine();

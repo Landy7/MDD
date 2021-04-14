@@ -159,6 +159,24 @@ public interface GreedySnakeFactory extends EFactory
   ObstacleMembers createObstacleMembers();
 
   /**
+   * Returns a new object of class '<em>Snake Move Specification</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Snake Move Specification</em>'.
+   * @generated
+   */
+  SnakeMoveSpecification createSnakeMoveSpecification();
+
+  /**
+   * Returns a new object of class '<em>Move</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Move</em>'.
+   * @generated
+   */
+  Move createMove();
+
+  /**
    * Returns a new object of class '<em>Fire Init Display</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -231,24 +249,6 @@ public interface GreedySnakeFactory extends EFactory
   RandomFoodSize createRandomFoodSize();
 
   /**
-   * Returns a new object of class '<em>Minsize</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Minsize</em>'.
-   * @generated
-   */
-  Minsize createMinsize();
-
-  /**
-   * Returns a new object of class '<em>Maxsize</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Maxsize</em>'.
-   * @generated
-   */
-  Maxsize createMaxsize();
-
-  /**
    * Returns a new object of class '<em>Time Limited</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -276,31 +276,22 @@ public interface GreedySnakeFactory extends EFactory
   FoodTime createFoodTime();
 
   /**
-   * Returns a new object of class '<em>Var Spec</em>'.
+   * Returns a new object of class '<em>Direction Specification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Var Spec</em>'.
+   * @return a new object of class '<em>Direction Specification</em>'.
    * @generated
    */
-  VarSpec createVarSpec();
+  DirectionSpecification createDirectionSpecification();
 
   /**
-   * Returns a new object of class '<em>All Item Var Spec</em>'.
+   * Returns a new object of class '<em>dis</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>All Item Var Spec</em>'.
+   * @return a new object of class '<em>dis</em>'.
    * @generated
    */
-  AllItemVarSpec createAllItemVarSpec();
-
-  /**
-   * Returns a new object of class '<em>Param Spec</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Param Spec</em>'.
-   * @generated
-   */
-  ParamSpec createParamSpec();
+  dis createdis();
 
   /**
    * Returns a new object of class '<em>Expression</em>'.
@@ -366,15 +357,6 @@ public interface GreedySnakeFactory extends EFactory
   AboutSpecification createAboutSpecification();
 
   /**
-   * Returns a new object of class '<em>String Val</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Val</em>'.
-   * @generated
-   */
-  StringVal createStringVal();
-
-  /**
    * Returns a new object of class '<em>Help Specification</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -400,6 +382,15 @@ public interface GreedySnakeFactory extends EFactory
    * @generated
    */
   BackgroundIcon createBackgroundIcon();
+
+  /**
+   * Returns a new object of class '<em>Back Ground Size</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Back Ground Size</em>'.
+   * @generated
+   */
+  BackGroundSize createBackGroundSize();
 
   /**
    * Returns a new object of class '<em>Background Tag</em>'.
@@ -436,6 +427,15 @@ public interface GreedySnakeFactory extends EFactory
    * @generated
    */
   MusicPath createMusicPath();
+
+  /**
+   * Returns a new object of class '<em>String Val</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Val</em>'.
+   * @generated
+   */
+  StringVal createStringVal();
 
   /**
    * Returns a new object of class '<em>Addition</em>'.

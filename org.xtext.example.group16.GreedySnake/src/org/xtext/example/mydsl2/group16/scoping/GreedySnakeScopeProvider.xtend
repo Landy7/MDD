@@ -11,6 +11,11 @@ import org.eclipse.xtext.EcoreUtil2
 import java.util.List
 import org.eclipse.xtext.scoping.Scopes
 import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
+import org.xtext.example.mydsl2.group16.greedySnake.Move
+import org.xtext.example.mydsl2.group16.greedySnake.SnakeMoveSpecification
+import org.xtext.example.mydsl2.group16.greedySnake.GreedySnake
+import org.xtext.example.mydsl2.group16.greedySnake.DirectionSpecification
 
 /**
  * This class contains custom scoping description.
@@ -18,21 +23,39 @@ import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#scoping
  * on how and when to use it.
  */
-class GreedySnakeScopeProvider extends AbstractGreedySnakeScopeProvider {
-	override IScope getScope(EObject context, EReference reference) {
-		if (reference.EReferenceType == GreedySnakePackage.Literals.INITIAL_SNAKE_SPECIFICATIN) {
-			// All references to cell specifications, no matter where, always see all the cell specifications in the model
-			var EObject rootElement = EcoreUtil2.getRootContainer(context);
-			var List<? extends EObject> candidates = EcoreUtil2.getAllContentsOfType(rootElement, InitialSnakeSpecificatin);
-			return Scopes.scopeFor(candidates);
-		} else {
-			return super.getScope(context, reference);
-		}
-	}
+class GreedySnakeScopeProvider extends AbstractDeclarativeScopeProvider {
 
-//	def IScope scope_StateFilterExpression_cell_state(StateFilterExpression sfe, EReference reference) {
-//		var EObject rootElement = EcoreUtil2.getRootContainer(sfe);
-//		var List<? extends EObject> candidates = EcoreUtil2.getAllContentsOfType(rootElement, CellState);
-//		return Scopes.scopeFor(candidates);
-//	}
+//first pramaters---EObject : instance of meta-class
+
+  def IScope scope_Move_dir(Move context,EReference ref){
+  	 context.visibleVariablesScope
+  }
+  dispatch def IScope visibleVariablesScope(SnakeMoveSpecification sms) {
+		sms.eContainer.visibleVariablesScope
+	}
+  dispatch def IScope visibleVariablesScope(DirectionSpecification ds) {
+		Scopes.scopeFor(ds.di)
+  }
+	
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }

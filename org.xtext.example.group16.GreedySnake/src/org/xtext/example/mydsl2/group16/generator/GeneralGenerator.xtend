@@ -12,7 +12,7 @@ class GeneralGenerator {
 		gs = mpp.greedySnake
 	}
 	
-	//两个包---game and snake
+	//two package---game and snake
 	def generateGamePackage() '''«gs.name».game'''
 	
 	def generateGamePackageFolder() '''«gs.name»/game'''
@@ -21,7 +21,7 @@ class GeneralGenerator {
 	
 	def generateSnakePackageFolder() '''«gs.name»/snake'''
 	
-	//每个包下面有几个java文件
+	//java file
 	//game package
 	def generateAboutClassFileName()  '''«generateGamePackageFolder»/About.java'''
 	def generateCoordinateClassFileName()  '''«generateGamePackageFolder»/Coordinate.java'''
@@ -40,7 +40,7 @@ class GeneralGenerator {
 	def generatePlayerSnakeClassFileName() '''«generateSnakePackageFolder»/PlayerSnake.java'''
 	
 	
-	//所有java文件的class名字
+	//class name of java
 	//body的class name
 	def generateBodyClassName(String b) '''«b.toFirstUpper»Body'''
 	def generatePlayerSnakeClassName(String b) '''«b.toFirstUpper»PlayerSnake'''

@@ -7,6 +7,13 @@ import org.xtext.example.mydsl2.group16.typing.validation.GreedySnakeSystemValid
 import org.xtext.example.mydsl2.group16.greedySnake.GlobalFieldInitialisation
 import org.xtext.example.mydsl2.group16.greedySnake.GreedySnakePackage
 import org.eclipse.xtext.validation.Check
+import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin
+import org.xtext.example.mydsl2.group16.greedySnake.InitialFoodSpecificatin
+import org.xtext.example.mydsl2.group16.greedySnake.InitialObstacleSpecificatin
+import org.xtext.example.mydsl2.group16.greedySnake.BackSpecification
+import org.xtext.example.mydsl2.group16.greedySnake.FoodInitDisplay
+import org.xtext.example.mydsl2.group16.greedySnake.ObstacleInitDisplay
+import org.xtext.example.mydsl2.group16.greedySnake.SnakeInitDisplay
 
 /**
  * This class contains custom validation rules. 
@@ -15,18 +22,94 @@ import org.eclipse.xtext.validation.Check
  */
 class GreedySnakeValidator extends GreedySnakeSystemValidator {
 	
-	public static val INVALID_NAME = 'org.xtext.example.mydsl2.group16.greedySnake.INVALID_GLOBALFIELD_NAME'
+	public static val INVALID_FIELD_NAME = 'org.xtext.example.mydsl2.group16.greedySnake.INVALID_GLOBALFIELD_NAME'
+	public static val INVALID_SNAKE_NAME = 'org.xtext.example.mydsl2.group16.greedySnake.INVALID_SNAKE_NAME'
+	public static val INVALID_FOOD_NAME = 'org.xtext.example.mydsl2.group16.greedySnake.INVALID_FOOD_NAME'
+	public static val INVALID_OBSTACLE_NAME = 'org.xtext.example.mydsl2.group16.greedySnake.INVALID_OBSTACLE_NAME'
+	public static val INVALID_WIDTH = 'org.xtext.example.mydsl2.group16.greedySnake.INVALID_WIDTH'
+	public static val INVALID_SNAKE_TAG = 'org.xtext.example.mydsl2.group16.greedySnake.INVALID_SNAKE_TAG'
+	public static val INVALID_FOOD_TAG = 'org.xtext.example.mydsl2.group16.greedySnake.INVALID_FOOD_TAG'
+	public static val INVALID_OBSTACLE_TAG = 'org.xtext.example.mydsl2.group16.greedySnake.INVALID_OBSTACLE_TAG'
+	
 //check variable name with lowerUpper 
-
 //GlobalFieldName lowercase
 @Check
-def checkVariableStartWithLowerCase(GlobalFieldInitialisation gfi){
+def checkFieldStartWithLowerCase(GlobalFieldInitialisation gfi){
 	if(!Character.isLowerCase(gfi.name.charAt(0))){
 		warning('Name should start with a lower-case character', 
 			gfi,GreedySnakePackage.Literals.GLOBAL_FIELD_INITIALISATION__NAME,
-			INVALID_NAME
+			INVALID_FIELD_NAME
 		 )
 	 }
   }
+  
+@Check
+def checkSnakeStartWithLowerCase(InitialSnakeSpecificatin iss){
+	if(!Character.isLowerCase(iss.name.charAt(0))){
+		warning('Name should start with a lower-case character', 
+			iss,GreedySnakePackage.Literals.INITIAL_SNAKE_SPECIFICATIN__NAME,
+			INVALID_SNAKE_NAME
+		 )
+	 }
+  }
+  
+@Check
+def checkFoodStartWithLowerCase(InitialFoodSpecificatin ifs){
+	if(!Character.isLowerCase(ifs.name.charAt(0))){
+		warning('Name should start with a lower-case character', 
+			ifs,GreedySnakePackage.Literals.INITIAL_FOOD_SPECIFICATIN__NAME,
+			INVALID_FOOD_NAME
+		 )
+	 }
+  }
+  
+@Check
+def checkObsatcleStartWithLowerCase(InitialObstacleSpecificatin ios){
+	if(!Character.isLowerCase(ios.name.charAt(0))){
+		warning('Name should start with a lower-case character', 
+			ios,GreedySnakePackage.Literals.INITIAL_OBSTACLE_SPECIFICATIN__NAME,
+			INVALID_OBSTACLE_NAME
+		 )
+	 }
+  }
+
+//可能还是要用到dispatch
+@Check
+def checkTheTag(InitialFoodSpecificatin ifs, InitialObstacleSpecificatin ios,InitialSnakeSpecificatin iss){
+	ifs.members.food.foodTag
+	if(iss.members.sna.snakeTag !== 1){
+		warning("Snake Tag must be 1",iss.members,
+			GreedySnakePackage.Literals.SNAKE_INIT_DISPLAY__SNAKE_TAG,
+			INVALID_SNAKE_TAG
+		)
+	 }
+	 if(ifs.members.food.foodTag !== 2){
+		warning("Food Tag must be 2",ifs.members,
+			GreedySnakePackage.Literals.FOOD_INIT_DISPLAY__FOOD_TAG,
+			INVALID_FOOD_TAG
+		)
+	 }
+	if(ios.members.obstacle.obstacleTag !== 3){
+		warning("Obstacle Tag must be 3",ios.members,
+			GreedySnakePackage.Literals.OBSTACLE_INIT_DISPLAY__OBSTACLE_TAG,
+			INVALID_OBSTACLE_TAG
+		)
+	 }
+  }
+
+@Check
+def checkHeightAndWeight(GlobalFieldInitialisation gfi, BackSpecification bs){
+	if(gfi.labelWidth !== bs.backGroundWidth){
+		warning("height of background and field should be the same",bs,
+			GreedySnakePackage.Literals.BACK_SPECIFICATION__BACK_GROUND_WIDTH,
+			INVALID_WIDTH
+		)
+		warning("height of background and field should be the same",gfi,
+			GreedySnakePackage.Literals.GLOBAL_FIELD_INITIALISATION__LABEL_WIDTH,
+			INVALID_WIDTH
+		)
+	 }
+  }
+
 
 }

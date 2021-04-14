@@ -10,45 +10,26 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.xtext.example.mydsl2.group16.greedySnake.Direction;
 import org.xtext.example.mydsl2.group16.greedySnake.GreedySnakePackage;
-import org.xtext.example.mydsl2.group16.greedySnake.VarSpec;
+import org.xtext.example.mydsl2.group16.greedySnake.dis;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Var Spec</b></em>'.
+ * An implementation of the model object '<em><b>dis</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.VarSpecImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.VarSpecImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.disImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.example.mydsl2.group16.greedySnake.impl.disImpl#getDirection <em>Direction</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VarSpecImpl extends MinimalEObjectImpl.Container implements VarSpec
+public class disImpl extends MinimalEObjectImpl.Container implements dis
 {
-  /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected static final String TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected String type = TYPE_EDEFAULT;
-
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -70,11 +51,31 @@ public class VarSpecImpl extends MinimalEObjectImpl.Container implements VarSpec
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The default value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDirection()
+   * @generated
+   * @ordered
+   */
+  protected static final Direction DIRECTION_EDEFAULT = Direction.LEFT;
+
+  /**
+   * The cached value of the '{@link #getDirection() <em>Direction</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getDirection()
+   * @generated
+   * @ordered
+   */
+  protected Direction direction = DIRECTION_EDEFAULT;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected VarSpecImpl()
+  protected disImpl()
   {
     super();
   }
@@ -87,32 +88,7 @@ public class VarSpecImpl extends MinimalEObjectImpl.Container implements VarSpec
   @Override
   protected EClass eStaticClass()
   {
-    return GreedySnakePackage.Literals.VAR_SPEC;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setType(String newType)
-  {
-    String oldType = type;
-    type = newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GreedySnakePackage.VAR_SPEC__TYPE, oldType, type));
+    return GreedySnakePackage.Literals.DIS;
   }
 
   /**
@@ -137,7 +113,32 @@ public class VarSpecImpl extends MinimalEObjectImpl.Container implements VarSpec
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, GreedySnakePackage.VAR_SPEC__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, GreedySnakePackage.DIS__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Direction getDirection()
+  {
+    return direction;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setDirection(Direction newDirection)
+  {
+    Direction oldDirection = direction;
+    direction = newDirection == null ? DIRECTION_EDEFAULT : newDirection;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, GreedySnakePackage.DIS__DIRECTION, oldDirection, direction));
   }
 
   /**
@@ -150,10 +151,10 @@ public class VarSpecImpl extends MinimalEObjectImpl.Container implements VarSpec
   {
     switch (featureID)
     {
-      case GreedySnakePackage.VAR_SPEC__TYPE:
-        return getType();
-      case GreedySnakePackage.VAR_SPEC__NAME:
+      case GreedySnakePackage.DIS__NAME:
         return getName();
+      case GreedySnakePackage.DIS__DIRECTION:
+        return getDirection();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -168,11 +169,11 @@ public class VarSpecImpl extends MinimalEObjectImpl.Container implements VarSpec
   {
     switch (featureID)
     {
-      case GreedySnakePackage.VAR_SPEC__TYPE:
-        setType((String)newValue);
-        return;
-      case GreedySnakePackage.VAR_SPEC__NAME:
+      case GreedySnakePackage.DIS__NAME:
         setName((String)newValue);
+        return;
+      case GreedySnakePackage.DIS__DIRECTION:
+        setDirection((Direction)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -188,11 +189,11 @@ public class VarSpecImpl extends MinimalEObjectImpl.Container implements VarSpec
   {
     switch (featureID)
     {
-      case GreedySnakePackage.VAR_SPEC__TYPE:
-        setType(TYPE_EDEFAULT);
-        return;
-      case GreedySnakePackage.VAR_SPEC__NAME:
+      case GreedySnakePackage.DIS__NAME:
         setName(NAME_EDEFAULT);
+        return;
+      case GreedySnakePackage.DIS__DIRECTION:
+        setDirection(DIRECTION_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -208,10 +209,10 @@ public class VarSpecImpl extends MinimalEObjectImpl.Container implements VarSpec
   {
     switch (featureID)
     {
-      case GreedySnakePackage.VAR_SPEC__TYPE:
-        return TYPE_EDEFAULT == null ? type != null : !TYPE_EDEFAULT.equals(type);
-      case GreedySnakePackage.VAR_SPEC__NAME:
+      case GreedySnakePackage.DIS__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case GreedySnakePackage.DIS__DIRECTION:
+        return direction != DIRECTION_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -227,12 +228,12 @@ public class VarSpecImpl extends MinimalEObjectImpl.Container implements VarSpec
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (type: ");
-    result.append(type);
-    result.append(", name: ");
+    result.append(" (name: ");
     result.append(name);
+    result.append(", direction: ");
+    result.append(direction);
     result.append(')');
     return result.toString();
   }
 
-} //VarSpecImpl
+} //disImpl

@@ -6,9 +6,9 @@ import javax.swing.JLabel;
 
 import  GreedySnake.game.*;
 
-//身体节点的数据结构
+
 public class Body {
-	Coordinate coor;//坐标
+	Coordinate coor;
 	JLabel label;
 	public Body(int x,int y,ImageIcon icon)
 	{

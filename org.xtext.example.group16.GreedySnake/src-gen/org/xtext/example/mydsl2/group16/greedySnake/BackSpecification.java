@@ -52,12 +52,12 @@ public interface BackSpecification extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Back Ground Height</em>' attribute.
-   * @see #setBackGroundHeight(String)
+   * @see #setBackGroundHeight(int)
    * @see org.xtext.example.mydsl2.group16.greedySnake.GreedySnakePackage#getBackSpecification_BackGroundHeight()
    * @model
    * @generated
    */
-  String getBackGroundHeight();
+  int getBackGroundHeight();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl2.group16.greedySnake.BackSpecification#getBackGroundHeight <em>Back Ground Height</em>}' attribute.
@@ -67,19 +67,19 @@ public interface BackSpecification extends EObject
    * @see #getBackGroundHeight()
    * @generated
    */
-  void setBackGroundHeight(String value);
+  void setBackGroundHeight(int value);
 
   /**
    * Returns the value of the '<em><b>Back Ground Width</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Back Ground Width</em>' attribute.
-   * @see #setBackGroundWidth(String)
+   * @see #setBackGroundWidth(int)
    * @see org.xtext.example.mydsl2.group16.greedySnake.GreedySnakePackage#getBackSpecification_BackGroundWidth()
    * @model
    * @generated
    */
-  String getBackGroundWidth();
+  int getBackGroundWidth();
 
   /**
    * Sets the value of the '{@link org.xtext.example.mydsl2.group16.greedySnake.BackSpecification#getBackGroundWidth <em>Back Ground Width</em>}' attribute.
@@ -89,6 +89,6 @@ public interface BackSpecification extends EObject
    * @see #getBackGroundWidth()
    * @generated
    */
-  void setBackGroundWidth(String value);
+  void setBackGroundWidth(int value);
 
 } // BackSpecification

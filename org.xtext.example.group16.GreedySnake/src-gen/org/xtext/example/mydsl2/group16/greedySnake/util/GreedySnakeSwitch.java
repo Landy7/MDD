@@ -178,6 +178,20 @@ public class GreedySnakeSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case GreedySnakePackage.SNAKE_MOVE_SPECIFICATION:
+      {
+        SnakeMoveSpecification snakeMoveSpecification = (SnakeMoveSpecification)theEObject;
+        T result = caseSnakeMoveSpecification(snakeMoveSpecification);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GreedySnakePackage.MOVE:
+      {
+        Move move = (Move)theEObject;
+        T result = caseMove(move);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case GreedySnakePackage.FIRE_INIT_DISPLAY:
       {
         FireInitDisplay fireInitDisplay = (FireInitDisplay)theEObject;
@@ -234,20 +248,6 @@ public class GreedySnakeSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GreedySnakePackage.MINSIZE:
-      {
-        Minsize minsize = (Minsize)theEObject;
-        T result = caseMinsize(minsize);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GreedySnakePackage.MAXSIZE:
-      {
-        Maxsize maxsize = (Maxsize)theEObject;
-        T result = caseMaxsize(maxsize);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case GreedySnakePackage.TIME_LIMITED:
       {
         TimeLimited timeLimited = (TimeLimited)theEObject;
@@ -271,26 +271,17 @@ public class GreedySnakeSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GreedySnakePackage.VAR_SPEC:
+      case GreedySnakePackage.DIRECTION_SPECIFICATION:
       {
-        VarSpec varSpec = (VarSpec)theEObject;
-        T result = caseVarSpec(varSpec);
+        DirectionSpecification directionSpecification = (DirectionSpecification)theEObject;
+        T result = caseDirectionSpecification(directionSpecification);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GreedySnakePackage.ALL_ITEM_VAR_SPEC:
+      case GreedySnakePackage.DIS:
       {
-        AllItemVarSpec allItemVarSpec = (AllItemVarSpec)theEObject;
-        T result = caseAllItemVarSpec(allItemVarSpec);
-        if (result == null) result = caseVarSpec(allItemVarSpec);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case GreedySnakePackage.PARAM_SPEC:
-      {
-        ParamSpec paramSpec = (ParamSpec)theEObject;
-        T result = caseParamSpec(paramSpec);
-        if (result == null) result = caseVarSpec(paramSpec);
+        dis dis = (dis)theEObject;
+        T result = casedis(dis);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -347,13 +338,6 @@ public class GreedySnakeSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case GreedySnakePackage.STRING_VAL:
-      {
-        StringVal stringVal = (StringVal)theEObject;
-        T result = caseStringVal(stringVal);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case GreedySnakePackage.HELP_SPECIFICATION:
       {
         HelpSpecification helpSpecification = (HelpSpecification)theEObject;
@@ -372,6 +356,13 @@ public class GreedySnakeSwitch<T> extends Switch<T>
       {
         BackgroundIcon backgroundIcon = (BackgroundIcon)theEObject;
         T result = caseBackgroundIcon(backgroundIcon);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GreedySnakePackage.BACK_GROUND_SIZE:
+      {
+        BackGroundSize backGroundSize = (BackGroundSize)theEObject;
+        T result = caseBackGroundSize(backGroundSize);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -400,6 +391,13 @@ public class GreedySnakeSwitch<T> extends Switch<T>
       {
         MusicPath musicPath = (MusicPath)theEObject;
         T result = caseMusicPath(musicPath);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case GreedySnakePackage.STRING_VAL:
+      {
+        StringVal stringVal = (StringVal)theEObject;
+        T result = caseStringVal(stringVal);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -664,6 +662,38 @@ public class GreedySnakeSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Snake Move Specification</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Snake Move Specification</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSnakeMoveSpecification(SnakeMoveSpecification object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Move</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Move</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMove(Move object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Fire Init Display</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -792,38 +822,6 @@ public class GreedySnakeSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Minsize</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Minsize</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMinsize(Minsize object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Maxsize</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Maxsize</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMaxsize(Maxsize object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Time Limited</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -872,49 +870,33 @@ public class GreedySnakeSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Var Spec</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Direction Specification</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Var Spec</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Direction Specification</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseVarSpec(VarSpec object)
+  public T caseDirectionSpecification(DirectionSpecification object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>All Item Var Spec</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>dis</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>All Item Var Spec</em>'.
+   * @return the result of interpreting the object as an instance of '<em>dis</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAllItemVarSpec(AllItemVarSpec object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Param Spec</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Param Spec</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseParamSpec(ParamSpec object)
+  public T casedis(dis object)
   {
     return null;
   }
@@ -1032,22 +1014,6 @@ public class GreedySnakeSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>String Val</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Val</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringVal(StringVal object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Help Specification</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1091,6 +1057,22 @@ public class GreedySnakeSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseBackgroundIcon(BackgroundIcon object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Back Ground Size</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Back Ground Size</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBackGroundSize(BackGroundSize object)
   {
     return null;
   }
@@ -1155,6 +1137,22 @@ public class GreedySnakeSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseMusicPath(MusicPath object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Val</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Val</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringVal(StringVal object)
   {
     return null;
   }

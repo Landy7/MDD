@@ -1,6 +1,6 @@
 package GreedySnake.game;
 
 public enum Direction {
-	UP, DOWN, LEFT, RIGHT;//上下左右
+	UP, DOWN, LEFT, RIGHT;
 }
 

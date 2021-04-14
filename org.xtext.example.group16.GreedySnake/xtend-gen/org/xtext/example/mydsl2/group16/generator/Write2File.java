@@ -36,7 +36,6 @@ public class Write2File extends GeneralGenerator {
     _builder.append("public class Write2file {");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("//字符串写出到文本");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("public static void  Write2Txt(String str,String filepath) throws Exception{");
