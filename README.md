@@ -8,12 +8,12 @@
 #### 1.1 how to install 
 There are 5 projects that having the extension of <b>xtext</b> need to be installed in the <b>Development Eclipse</b>. 
 
-The Java project called  <b>GreedySnake</b> install into the <b>run-time Eclipse</b>
+The Java project called  <b>Greedysnake</b> need to be install in the <b>run-time Eclipse</b>
 
 #### 1.2 how to play 
 1. Using the <b>key of up/down/left/right</b> to control the snake's direction 
 2. Using the <b>shift</b> key to release the bullets
-3. When the snake collide <b>obstacle</b>, it will die, and the game is over.
+3. When the snake collides <b>obstacle</b>, it will die, and the game is over.
 
 
 ## 2. Attention
