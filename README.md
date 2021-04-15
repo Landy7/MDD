@@ -32,6 +32,10 @@ If using the first method appears something wrong, please choose the second meth
    
 4. In the runtime-Eclipse, right-click the <b>Greedysnake</b> and click <b> Run AS --> JAVA Application -----> </b>  choose <b>MainWindow.GreedySnake.game</b> -----> click <b>OK</b>
 
+
+#### The error in the org.xtext.example.group16.GreedySnake.ui.test
+If you import the project and find errors of ui.test project, <b>please add two new folders-----src and xtend-gen.</b> And the error will be fixed.
+
 ### 1.2 how to play 
 1. Using the <b>key of up/down/left/right</b> to control the snake's direction 
 2. Using the <b>shift</b> key to release the bullets
