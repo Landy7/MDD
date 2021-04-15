@@ -19,7 +19,7 @@ There are two methods to build this project
 
 4. In the runtime-Eclipse, right-click the <b>Greedysnake</b> and click <b> Run AS --> JAVA Application -----> </b>  choose <b>MainWindow.GreedySnake.game</b> -----> click <b>OK</b>
 
-If there are somthing wrong in the git, please choose the second method.
+If using the first method appears something wrong, please choose the second method.
 
 
 
