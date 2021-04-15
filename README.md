@@ -13,11 +13,11 @@ There are two methods to build this project
 
 1. In the <b>development Eclipse</b>, use the <b>Git</b> to import the whole projects
 
-2. There are 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be placed in the <b>development Eclipse</b>. 
+2. There are 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be imported in the <b>development Eclipse</b>. 
 
-3. The Java project called  <b>Greedysnake</b> need to be placed in the <b>run-time Eclipse</b>
+3. The Java project called  <b>Greedysnake</b> need to be imported in the <b>run-time Eclipse</b>
 
-4. In the runtime-Eclipse, right-click the <b> Run AS --> JAVA Application -----> </b>  choose <b>MainWindow.GreedySnake.game</b> -----> click <b>OK</b>
+4. In the runtime-Eclipse, right-click the <b>Greedysnake</b> and click <b> Run AS --> JAVA Application -----> </b>  choose <b>MainWindow.GreedySnake.game</b> -----> click <b>OK</b>
 
 If there are somthing wrong in the git, please choose the second method.
 
@@ -26,13 +26,13 @@ If there are somthing wrong in the git, please choose the second method.
 #### Second method: import manually 
 1. Download <b>Zip</b>
 
-2. There are 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be placed in the <b>development Eclipse</b>. 
+2. There are 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be imported in the <b>development Eclipse</b>. 
    
-3. The Java project called  <b>Greedysnake</b> need to be placed in the <b>run-time Eclipse</b>
+3. The Java project called  <b>Greedysnake</b> need to be imported in the <b>run-time Eclipse</b>
    
-4. In the runtime-Eclipse, right-click the <b> Run AS --> JAVA Application -----> </b>  choose <b>MainWindow.GreedySnake.game</b> -----> click <b>OK</b>
+4. In the runtime-Eclipse, right-click the <b>Greedysnake</b> and click <b> Run AS --> JAVA Application -----> </b>  choose <b>MainWindow.GreedySnake.game</b> -----> click <b>OK</b>
 
-#### 1.2 how to play 
+### 1.2 how to play 
 1. Using the <b>key of up/down/left/right</b> to control the snake's direction 
 2. Using the <b>shift</b> key to release the bullets
 3. Aiming to eat food
