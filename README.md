@@ -7,11 +7,27 @@
 
 #### 1.1 how to install 
 
+There are two methods to build this project
+
+##### First method: using git to import 
+
 1. In the <b>development Eclipse</b>, use the <b>Git</b> to import the whole projects
 
-2. There are 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be installed in the <b>development Eclipse</b>. 
+2. There are 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be placed in the <b>development Eclipse</b>. 
 
-3. The Java project called  <b>Greedysnake</b> need to be installed in the <b>run-time Eclipse</b>
+3. The Java project called  <b>Greedysnake</b> need to be placed in the <b>run-time Eclipse</b>
+
+4. In the runtime-Eclipse, right-click the <b> Run AS --> JAVA Application -----> </b>  choose <b>MainWindow.GreedySnake.game</b> -----> click <b>OK</b>
+
+If there are somthing wrong in the git, please choose the second method.
+
+##### Second method: manually import
+1. Download <b>Zip</b>
+
+2. There are 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be placed in the <b>development Eclipse</b>. 
+   
+3. The Java project called  <b>Greedysnake</b> need to be placed in the <b>run-time Eclipse</b>
+   
 4. In the runtime-Eclipse, right-click the <b> Run AS --> JAVA Application -----> </b>  choose <b>MainWindow.GreedySnake.game</b> -----> click <b>OK</b>
 
 #### 1.2 how to play 
