@@ -13,7 +13,7 @@ There are two methods to build this project
 
 1. In the <b>development Eclipse</b>, use the <b>Git</b> to import the whole projects
 
-2. There are 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be imported in the <b>development Eclipse</b>. 
+2. The 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be imported in the <b>development Eclipse</b>. 
 
 3. The Java project called  <b>Greedysnake</b> need to be imported in the <b>run-time Eclipse</b>
 
@@ -26,7 +26,7 @@ If there are somthing wrong in the git, please choose the second method.
 #### Second method: import manually 
 1. Download <b>Zip</b>
 
-2. There are 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be imported in the <b>development Eclipse</b>. 
+2. The five projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be imported in the <b>development Eclipse</b>. 
    
 3. The Java project called  <b>Greedysnake</b> need to be imported in the <b>run-time Eclipse</b>
    
