@@ -28,7 +28,7 @@ public class MainWindow extends JFrame{
 	private JPanel paintPanel;
     private JLabel label  = new JLabel("Length：");
     private JLabel label2 = new JLabel("Cost Time：");
-    private JLabel label3 = new JLabel("Point：");
+    private JLabel label3 = new JLabel("Score：");
     private JLabel label4 = new JLabel("FoodNumber：");
     private JLabel label5 = new JLabel("RestBullet：");
 	private JLabel FoodCoor = new JLabel("");
@@ -234,7 +234,7 @@ public class MainWindow extends JFrame{
 		setLayout(null);
 		setLocationRelativeTo(null);
 						    
-		backgroundImage = new ImageIcon("background//sky2.jpg");
+		backgroundImage = new ImageIcon("background//ocean2.jpg");
 		backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(1000,540,Image.SCALE_SMOOTH));
 		background_label = new JLabel(backgroundImage);  
 		background_label.setBounds(0,0, this.getWidth(), this.getHeight());   
@@ -253,7 +253,7 @@ public class MainWindow extends JFrame{
         		g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,RenderingHints.VALUE_STROKE_NORMALIZE);
         		
         		
-        		g.setPaint(new GradientPaint(115,135,Color.CYAN,230,135,Color.MAGENTA,true));
+        		g.setPaint(new GradientPaint(115,135,Color.BLACK,230,135,Color.BLACK,true));
         		g.setStroke( new BasicStroke(4,BasicStroke.CAP_BUTT,BasicStroke.JOIN_BEVEL));
         		g.drawRect(3, 6, 887, 468);//+400
         		
@@ -468,7 +468,7 @@ public class MainWindow extends JFrame{
 			     }
 			);
 		}
-		headItems[0].setSelected(true);
+		headItems[2].setSelected(true);
 		
 		
 		String body[] = {"hello1","hello2","hello3","hello4","hello4"};
@@ -512,7 +512,7 @@ public class MainWindow extends JFrame{
 				}
 			);
 		}
-		bodyItems[0].setSelected(true);
+		bodyItems[1].setSelected(true);
 		
 		
 		set_background.addActionListener(new ActionListener(){

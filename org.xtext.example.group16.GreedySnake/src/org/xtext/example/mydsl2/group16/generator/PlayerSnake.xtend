@@ -469,9 +469,9 @@ class PlayerSnake extends GeneralGenerator{
 	    private int bulletNumber = 20;//the bullet
 	    				
 	    private ImageIcon[] headIcon = new ImageIcon[«headIcon.length»];//snake headIcon
-	    private int headIconTag = «headIconTag.get(0)»;
+	    private int headIconTag = «headIconTag.get(2)»;
 	    private ImageIcon[] bodyIcon = new ImageIcon[«bodyIcon.length»];//snake bodyIcon
-	    private int bodyIconTag = «bodyIconTag.get(0)»;
+	    private int bodyIconTag = «bodyIconTag.get(1)»;
 	    private boolean quit = false;
 	    				
 	    public PlayerSnake(MainWindow GameUI,Foodset food,Obstacle obstacle){

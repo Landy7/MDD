@@ -113,10 +113,7 @@ public class About extends GeneralGenerator {
     _builder.append("int height = getHeight();");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("GradientPaint paint = new GradientPaint(0, 0, Color.CYAN, 0, height,Color.MAGENTA);");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("//GradientPaint paint = new GradientPaint(0, 0, Color.red, 0, height,Color.blue);");
+    _builder.append("GradientPaint paint = new GradientPaint(0, 0, Color.WHITE, 0, height,Color.WHITE);");
     _builder.newLine();
     _builder.append("        ");
     _builder.append("g.setPaint(paint);");

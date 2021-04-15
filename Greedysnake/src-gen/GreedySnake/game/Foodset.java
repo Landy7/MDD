@@ -29,7 +29,7 @@ public class Foodset {
 					this.GameUI = GameUI;
 					
 					//the point for each food
-					point[0] = 7.5;
+					point[0] = 3.5;
 					point[1] = 13.5;
 					point[2] = 23.5;
 					point[3] = 7.5;

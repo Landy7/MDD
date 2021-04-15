@@ -26,7 +26,7 @@ public class Help extends JDialog {
     	contentPane.add(shadePanel, BorderLayout.CENTER);
     	shadePanel.setLayout(null);
     	
-    	JTextArea J1 = new JTextArea("......");
+    	JTextArea J1 = new JTextArea("using the key of up/down/left/right to control the snake and using the shift key to release bullets.");
         J1.setFocusable(false);
     	J1.setFont(f);
     	J1.setEditable(false);

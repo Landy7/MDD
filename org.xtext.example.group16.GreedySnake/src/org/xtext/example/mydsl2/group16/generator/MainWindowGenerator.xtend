@@ -48,7 +48,7 @@ class MainWindowGenerator extends GeneralGenerator{
 				private JPanel paintPanel;
 			    private JLabel label  = new JLabel("Length：");
 			    private JLabel label2 = new JLabel("Cost Time：");
-			    private JLabel label3 = new JLabel("Point：");
+			    private JLabel label3 = new JLabel("Score：");
 			    private JLabel label4 = new JLabel("FoodNumber：");
 			    private JLabel label5 = new JLabel("RestBullet：");
 				private JLabel FoodCoor = new JLabel("");
@@ -246,7 +246,7 @@ class MainWindowGenerator extends GeneralGenerator{
 			        		g.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL,RenderingHints.VALUE_STROKE_NORMALIZE);
 			        		
 			        		
-			        		g.setPaint(new GradientPaint(115,135,Color.CYAN,230,135,Color.MAGENTA,true));
+			        		g.setPaint(new GradientPaint(115,135,Color.BLACK,230,135,Color.BLACK,true));
 			        		g.setStroke( new BasicStroke(4,BasicStroke.CAP_BUTT,BasicStroke.JOIN_BEVEL));
 			        		g.drawRect(3, 6, 887, 468);//+400
 			        		
@@ -572,7 +572,7 @@ class MainWindowGenerator extends GeneralGenerator{
 		setLayout(null);
 		setLocationRelativeTo(null);
 						    
-		backgroundImage = new ImageIcon(«backIconLocate.get(5)»);
+		backgroundImage = new ImageIcon(«backIconLocate.get(3)»);
 		backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(«bks.backGroundWidth»,«bks.backGroundHeight»,Image.SCALE_SMOOTH));
 		background_label = new JLabel(backgroundImage);  
 		background_label.setBounds(0,0, this.getWidth(), this.getHeight());   
@@ -744,7 +744,7 @@ class MainWindowGenerator extends GeneralGenerator{
 				}
 			);
 		}
-		bodyItems[«bodyTag.get(0)»].setSelected(true);
+		bodyItems[«bodyTag.get(1)»].setSelected(true);
 		'''
 	}
 	
@@ -831,7 +831,7 @@ class MainWindowGenerator extends GeneralGenerator{
 			     }
 			);
 		}
-		headItems[«HeadTag.get(0)»].setSelected(true);
+		headItems[«HeadTag.get(2)»].setSelected(true);
 	'''
 	}
 	

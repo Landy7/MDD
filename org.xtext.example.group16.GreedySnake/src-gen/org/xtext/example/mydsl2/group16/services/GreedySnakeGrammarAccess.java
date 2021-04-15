@@ -1292,8 +1292,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 		
 		//IconTag:
 		//	name=ID value=STRING "=" tag=INT
-		//	"Locate" ":" Locate=STRING // 图像地址
-		//;
+		//	"Locate" ":" Locate=STRING;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//name=ID value=STRING "=" tag=INT
@@ -3003,8 +3002,7 @@ public class GreedySnakeGrammarAccess extends AbstractElementFinder.AbstractGram
 	
 	//IconTag:
 	//	name=ID value=STRING "=" tag=INT
-	//	"Locate" ":" Locate=STRING // 图像地址
-	//;
+	//	"Locate" ":" Locate=STRING;
 	public IconTagElements getIconTagAccess() {
 		return pIconTag;
 	}

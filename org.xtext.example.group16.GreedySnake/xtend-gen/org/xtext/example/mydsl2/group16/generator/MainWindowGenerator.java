@@ -120,7 +120,7 @@ public class MainWindowGenerator extends GeneralGenerator {
     _builder.append("private JLabel label2 = new JLabel(\"Cost Time：\");");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("private JLabel label3 = new JLabel(\"Point：\");");
+    _builder.append("private JLabel label3 = new JLabel(\"Score：\");");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("private JLabel label4 = new JLabel(\"FoodNumber：\");");
@@ -694,7 +694,7 @@ public class MainWindowGenerator extends GeneralGenerator {
     _builder.append("        \t\t");
     _builder.newLine();
     _builder.append("        \t\t");
-    _builder.append("g.setPaint(new GradientPaint(115,135,Color.CYAN,230,135,Color.MAGENTA,true));");
+    _builder.append("g.setPaint(new GradientPaint(115,135,Color.BLACK,230,135,Color.BLACK,true));");
     _builder.newLine();
     _builder.append("        \t\t");
     _builder.append("g.setStroke( new BasicStroke(4,BasicStroke.CAP_BUTT,BasicStroke.JOIN_BEVEL));");
@@ -1635,7 +1635,7 @@ public class MainWindowGenerator extends GeneralGenerator {
       _builder.append("\t\t\t\t    ");
       _builder.newLine();
       _builder.append("backgroundImage = new ImageIcon(");
-      String _get = backIconLocate.get(5);
+      String _get = backIconLocate.get(3);
       _builder.append(_get);
       _builder.append(");");
       _builder.newLineIfNotEmpty();
@@ -2144,7 +2144,7 @@ public class MainWindowGenerator extends GeneralGenerator {
       _builder.append("}");
       _builder.newLine();
       _builder.append("bodyItems[");
-      Integer _get_1 = bodyTag.get(0);
+      Integer _get_1 = bodyTag.get(1);
       _builder.append(_get_1);
       _builder.append("].setSelected(true);");
       _builder.newLineIfNotEmpty();
@@ -2377,7 +2377,7 @@ public class MainWindowGenerator extends GeneralGenerator {
       _builder.append("}");
       _builder.newLine();
       _builder.append("headItems[");
-      Integer _get_1 = HeadTag.get(0);
+      Integer _get_1 = HeadTag.get(2);
       _builder.append(_get_1);
       _builder.append("].setSelected(true);");
       _builder.newLineIfNotEmpty();

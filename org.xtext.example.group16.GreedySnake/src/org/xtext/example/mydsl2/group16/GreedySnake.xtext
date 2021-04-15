@@ -145,7 +145,7 @@ IconSize:
 
 IconTag:
 	 name=ID value=STRING "=" tag=INT
-	 "Locate" ":" Locate=STRING//图像地址
+	 "Locate" ":" Locate=STRING
 ;
 
 

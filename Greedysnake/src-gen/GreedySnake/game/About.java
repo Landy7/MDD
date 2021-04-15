@@ -38,8 +38,7 @@ class ShadePanel extends JPanel {
         super.paintComponent(g);
         int width = getWidth();
         int height = getHeight();
-        GradientPaint paint = new GradientPaint(0, 0, Color.CYAN, 0, height,Color.MAGENTA);
-        //GradientPaint paint = new GradientPaint(0, 0, Color.red, 0, height,Color.blue);
+        GradientPaint paint = new GradientPaint(0, 0, Color.WHITE, 0, height,Color.WHITE);
         g.setPaint(paint);
         g.fillRect(0, 0, width, height);
     }

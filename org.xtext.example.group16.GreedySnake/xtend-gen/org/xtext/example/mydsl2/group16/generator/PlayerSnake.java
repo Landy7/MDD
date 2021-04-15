@@ -1254,7 +1254,7 @@ public class PlayerSnake extends GeneralGenerator {
       _builder.append("];//snake headIcon");
       _builder.newLineIfNotEmpty();
       _builder.append("private int headIconTag = ");
-      Integer _get = headIconTag.get(0);
+      Integer _get = headIconTag.get(2);
       _builder.append(_get);
       _builder.append(";");
       _builder.newLineIfNotEmpty();
@@ -1264,7 +1264,7 @@ public class PlayerSnake extends GeneralGenerator {
       _builder.append("];//snake bodyIcon");
       _builder.newLineIfNotEmpty();
       _builder.append("private int bodyIconTag = ");
-      Integer _get_1 = bodyIconTag.get(0);
+      Integer _get_1 = bodyIconTag.get(1);
       _builder.append(_get_1);
       _builder.append(";");
       _builder.newLineIfNotEmpty();

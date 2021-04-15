@@ -73,43 +73,38 @@ def checkObsatcleStartWithLowerCase(InitialObstacleSpecificatin ios){
 	 }
   }
 
-//可能还是要用到dispatch
+//check the tag
 @Check
-def checkTheTag(InitialFoodSpecificatin ifs, InitialObstacleSpecificatin ios,InitialSnakeSpecificatin iss){
-	ifs.members.food.foodTag
-	if(iss.members.sna.snakeTag !== 1){
-		warning("Snake Tag must be 1",iss.members,
+def checkSnakeTag(SnakeInitDisplay iss){
+	if(iss.snakeTag !== 1){
+		warning("Snake Tag must be 1",iss,
 			GreedySnakePackage.Literals.SNAKE_INIT_DISPLAY__SNAKE_TAG,
 			INVALID_SNAKE_TAG
 		)
 	 }
-	 if(ifs.members.food.foodTag !== 2){
-		warning("Food Tag must be 2",ifs.members,
+  }
+  
+@Check
+def checkFoodTag(FoodInitDisplay fid){
+	if(fid.foodTag !== 2){
+		warning("Food Tag must be 2",fid,
 			GreedySnakePackage.Literals.FOOD_INIT_DISPLAY__FOOD_TAG,
 			INVALID_FOOD_TAG
 		)
 	 }
-	if(ios.members.obstacle.obstacleTag !== 3){
-		warning("Obstacle Tag must be 3",ios.members,
+}
+
+@Check
+def checkObstacleTag(ObstacleInitDisplay oid){
+	if(oid.obstacleTag !== 3){
+			warning("Obstacle Tag must be 3",oid,
 			GreedySnakePackage.Literals.OBSTACLE_INIT_DISPLAY__OBSTACLE_TAG,
 			INVALID_OBSTACLE_TAG
 		)
 	 }
-  }
+}
 
-@Check
-def checkHeightAndWeight(GlobalFieldInitialisation gfi, BackSpecification bs){
-	if(gfi.labelWidth !== bs.backGroundWidth){
-		warning("height of background and field should be the same",bs,
-			GreedySnakePackage.Literals.BACK_SPECIFICATION__BACK_GROUND_WIDTH,
-			INVALID_WIDTH
-		)
-		warning("height of background and field should be the same",gfi,
-			GreedySnakePackage.Literals.GLOBAL_FIELD_INITIALISATION__LABEL_WIDTH,
-			INVALID_WIDTH
-		)
-	 }
-  }
+
 
 
 }

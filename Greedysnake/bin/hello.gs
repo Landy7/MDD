@@ -9,7 +9,7 @@ game GreedySnake{
 		row = 21
 		label_width = 1000
 		label_Height = 540
-		//modify
+		
 		init item (){
 			Default : 
 			snakeLength = "1"
@@ -23,6 +23,7 @@ game GreedySnake{
 	snake snake_initial {
 		head = (0,0)
 		//locate
+		//do not modify
 		headIcon {
 			HeadTag1 "emotion1" = 0
 			Locate : "head//head0.png"
@@ -38,6 +39,7 @@ game GreedySnake{
 				
 		}
 		Icon_size = 20
+		//do not modify
 		BodyIcon {
 			BodyTag1 "hello1" = 0
 			Locate : "body//body0.png"
@@ -57,7 +59,7 @@ game GreedySnake{
 		
 		defaultSpeed = 300
 		snakeTag = 1
-	}
+		}
 	
 	Direction{
 		up = UP
@@ -102,7 +104,7 @@ game GreedySnake{
 		}
 		Icon_size = 20
 		foodKind {
-			FoodTag1 : point = (2 * 2) + 3.5
+			FoodTag1 : point = (0 * 2) + 3.5
 			FoodTag2 : point = (1 * 10.5 + 3)
 			FoodTag3 : point = (2 * 10 + 3.5)
 			FoodTag4 : point = (3 + 2) + 2.5
@@ -145,17 +147,17 @@ game GreedySnake{
 	
 	about aboutContent {
 		Title : "About game"
-		Information  : "......"
+		Information  : "hello"
 		Label_size : (410,380)
 	}
 	
 	help helpContent {
 		Title : "Help"
-		Information : "......"
+		Information : "using the key of up/down/left/right to control the snake and using the shift key to release bullets."
 		Label_size : (410,380)
 	}
 	
-	//at least 5 icon
+	//at least 6 icon
 	backGround {
 		Icon {
 			BodyTag1 "desert" = 0

@@ -12,6 +12,9 @@ import org.xtext.example.mydsl2.group16.greedySnake.GlobalFieldInitialisation
 import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin
 import org.xtext.example.mydsl2.group16.greedySnake.InitialFoodSpecificatin
 import org.xtext.example.mydsl2.group16.greedySnake.InitialObstacleSpecificatin
+import org.xtext.example.mydsl2.group16.greedySnake.SnakeInitDisplay
+import org.xtext.example.mydsl2.group16.greedySnake.FoodInitDisplay
+import org.xtext.example.mydsl2.group16.greedySnake.ObstacleInitDisplay
 
 /**
  * Custom quickfixes.
@@ -47,6 +50,28 @@ class GreedySnakeQuickfixProvider extends DefaultQuickfixProvider {
  		acceptor.acceptMulti(issue, "Lowercase obstacle", "change the name to start with lower-case character",null)[ element |
  			val m  = element as InitialObstacleSpecificatin
  			m.name = m.name.toFirstLower
+ 		]
+ 	}
+ 	@Fix(GreedySnakeValidator.INVALID_SNAKE_TAG)
+ 	def checkSnakeTag(Issue issue,IssueResolutionAcceptor acceptor){
+ 		acceptor.acceptMulti(issue, "Change Tag", "Change to 1",null)[ element |
+ 			val m  = element as SnakeInitDisplay
+ 			m.snakeTag = 1
+ 		]
+ 	}
+ 	
+ 	@Fix(GreedySnakeValidator.INVALID_FOOD_TAG)
+ 	def checkFoodTag(Issue issue,IssueResolutionAcceptor acceptor){
+ 		acceptor.acceptMulti(issue, "Change Tag", "Change to 2",null)[ element |
+ 			val m  = element as FoodInitDisplay
+ 			m.foodTag = 2
+ 		]
+ 	}
+ 	@Fix(GreedySnakeValidator.INVALID_OBSTACLE_TAG)
+ 	def checkObstacleTag(Issue issue,IssueResolutionAcceptor acceptor){
+ 		acceptor.acceptMulti(issue, "Change Tag", "Change to 3",null)[ element |
+ 			val m  = element as ObstacleInitDisplay
+ 			m.obstacleTag = 3
  		]
  	}
 }

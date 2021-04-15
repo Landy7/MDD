@@ -10,10 +10,13 @@ import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
+import org.xtext.example.mydsl2.group16.greedySnake.FoodInitDisplay;
 import org.xtext.example.mydsl2.group16.greedySnake.GlobalFieldInitialisation;
 import org.xtext.example.mydsl2.group16.greedySnake.InitialFoodSpecificatin;
 import org.xtext.example.mydsl2.group16.greedySnake.InitialObstacleSpecificatin;
 import org.xtext.example.mydsl2.group16.greedySnake.InitialSnakeSpecificatin;
+import org.xtext.example.mydsl2.group16.greedySnake.ObstacleInitDisplay;
+import org.xtext.example.mydsl2.group16.greedySnake.SnakeInitDisplay;
 import org.xtext.example.mydsl2.group16.validation.GreedySnakeValidator;
 
 /**
@@ -57,5 +60,32 @@ public class GreedySnakeQuickfixProvider extends DefaultQuickfixProvider {
       m.setName(StringExtensions.toFirstLower(m.getName()));
     };
     acceptor.<EObject>acceptMulti(issue, "Lowercase obstacle", "change the name to start with lower-case character", null, _function);
+  }
+  
+  @Fix(GreedySnakeValidator.INVALID_SNAKE_TAG)
+  public void checkSnakeTag(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final IMultiModification<EObject> _function = (EObject element) -> {
+      final SnakeInitDisplay m = ((SnakeInitDisplay) element);
+      m.setSnakeTag(1);
+    };
+    acceptor.<EObject>acceptMulti(issue, "Change Tag", "Change to 1", null, _function);
+  }
+  
+  @Fix(GreedySnakeValidator.INVALID_FOOD_TAG)
+  public void checkFoodTag(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final IMultiModification<EObject> _function = (EObject element) -> {
+      final FoodInitDisplay m = ((FoodInitDisplay) element);
+      m.setFoodTag(2);
+    };
+    acceptor.<EObject>acceptMulti(issue, "Change Tag", "Change to 2", null, _function);
+  }
+  
+  @Fix(GreedySnakeValidator.INVALID_OBSTACLE_TAG)
+  public void checkObstacleTag(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final IMultiModification<EObject> _function = (EObject element) -> {
+      final ObstacleInitDisplay m = ((ObstacleInitDisplay) element);
+      m.setObstacleTag(3);
+    };
+    acceptor.<EObject>acceptMulti(issue, "Change Tag", "Change to 3", null, _function);
   }
 }

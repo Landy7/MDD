@@ -25,9 +25,9 @@ public class PlayerSnake {
 	private int bulletNumber = 20;//the bullet
 					
 	private ImageIcon[] headIcon = new ImageIcon[4];//snake headIcon
-	private int headIconTag = 0;
+	private int headIconTag = 2;
 	private ImageIcon[] bodyIcon = new ImageIcon[5];//snake bodyIcon
-	private int bodyIconTag = 0;
+	private int bodyIconTag = 1;
 	private boolean quit = false;
 					
 	public PlayerSnake(MainWindow GameUI,Foodset food,Obstacle obstacle){
