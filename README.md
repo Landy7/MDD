@@ -56,7 +56,7 @@ If you really want to change something to test:
 3. change the <b>location</b> of images.
 
 
-## 3. About the content of hello.gs
+## 3. About Syntax
 ```
 game GreedySnake{
 	//map Path
