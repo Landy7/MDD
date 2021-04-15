@@ -3,7 +3,7 @@
 ##### Coursework of Model-Driven Development
 
 ## 1. Instruction
-<b>The DSML for the Greedy Snake Game</b>
+<b>The Greedy Snake Game Based on Xtext Language</b>
 
 #### 1.1 how to install 
 
