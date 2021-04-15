@@ -5,11 +5,11 @@
 ## 1. Instruction
 <b>The Greedy Snake Game Based on Xtext Language</b>
 
-#### 1.1 how to install 
+### 1.1 how to install 
 
 There are two methods to build this project
 
-##### First method: using git to import 
+#### First method: use Git to import 
 
 1. In the <b>development Eclipse</b>, use the <b>Git</b> to import the whole projects
 
@@ -21,7 +21,9 @@ There are two methods to build this project
 
 If there are somthing wrong in the git, please choose the second method.
 
-##### Second method: manually import
+
+
+#### Second method: import manually 
 1. Download <b>Zip</b>
 
 2. There are 5 projects named <b>org.xtext.example.group16.GreedySnake.XX</b> need to be placed in the <b>development Eclipse</b>. 
