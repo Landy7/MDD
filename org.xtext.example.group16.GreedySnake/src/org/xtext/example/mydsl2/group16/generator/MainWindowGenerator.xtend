@@ -46,11 +46,11 @@ class MainWindowGenerator extends GeneralGenerator{
 				private JLabel background_label;
 				private JPanel imagePanel;
 				private JPanel paintPanel;
-			    private JLabel label  = new JLabel("Length：");
-			    private JLabel label2 = new JLabel("Cost Time：");
-			    private JLabel label3 = new JLabel("Score：");
-			    private JLabel label4 = new JLabel("FoodNumber：");
-			    private JLabel label5 = new JLabel("RestBullet：");
+			    private JLabel label  = new JLabel("Length: ");
+			    private JLabel label2 = new JLabel("Cost Time: ");
+			    private JLabel label3 = new JLabel("Score: ");
+			    private JLabel label4 = new JLabel("FoodNumber: ");
+			    private JLabel label5 = new JLabel("RestBullet: ");
 				private JLabel FoodCoor = new JLabel("");
 				private JLabel NextStepCoor = new JLabel("");
 				«gs.fields.join("",[fi | generateInitalJPanel(fi)])»

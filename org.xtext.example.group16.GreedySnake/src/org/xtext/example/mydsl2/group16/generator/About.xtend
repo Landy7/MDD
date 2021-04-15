@@ -131,7 +131,7 @@ class About extends GeneralGenerator{
 		contentPane.add(shadePanel, BorderLayout.CENTER);
 		shadePanel.setLayout(null);
 					        
-		JTextArea J1 = new JTextArea("developer ：randy \nlanguage：Java & xtend \n"
+		JTextArea J1 = new JTextArea("developer : randy \nlanguage: Java & xtend \n"
 					    			+ "Email: di.lan@kcl.ac.uk");
 		J1.setFocusable(false);
 		J1.setFont(f2);
